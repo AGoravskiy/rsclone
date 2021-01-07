@@ -74,7 +74,35 @@ const loadPlugins = () => {
   return plugins;
 };
 
-const jsLoaders = () => (isDev ? ['babel-loader', 'eslint-loader'] : 'babel-loader');
+const babelOptions = (preset) => {
+  const opts = {
+    presets: [
+      '@babel/preset-env',
+    ],
+    plugins: [
+      '@babel/plugin-proposal-class-properties',
+    ],
+  };
+
+  if (preset) {
+    opts.presets.push(preset);
+  }
+
+  return opts;
+};
+
+const jsLoaders = () => {
+  const loaders = [{
+    loader: 'babel-loader',
+    options: babelOptions(),
+  }];
+
+  if (isDev) {
+    loaders.push('eslint-loader');
+  }
+
+  return loaders;
+};
 
 module.exports = {
   mode: 'development',
@@ -94,6 +122,7 @@ module.exports = {
   devServer: {
     open: true,
     hot: isDev,
+    inline: false,
     port: 4300,
   },
   devtool: isDev ? 'source-map' : false,
@@ -128,6 +157,14 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: jsLoaders(),
+      },
+      {
+        test: /\.ts$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: babelOptions('@babel/preset-typescript'),
+        },
       },
     ],
   },
