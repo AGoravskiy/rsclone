@@ -123,7 +123,7 @@ module.exports = {
     open: true,
     hot: isDev,
     inline: false,
-    port: 4300,
+    port: 3000,
   },
   devtool: isDev ? 'source-map' : false,
   plugins: loadPlugins(),
