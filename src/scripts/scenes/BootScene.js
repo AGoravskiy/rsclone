@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import bgPng from '../../assets/bg.png';
+import bgPng from '../../assets/images/bg.png';
 
 export default class BootScene extends Phaser.Scene {
   constructor() {
