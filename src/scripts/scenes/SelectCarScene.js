@@ -14,6 +14,9 @@ export default class SelectCarScen extends Phaser.Scene {
     super('SelectCar');
     this.carProperty = carProperty;
   }
+  init(data){
+    this.map = data.map;
+  }
 
   create() {
     this.createBackground();
@@ -98,13 +101,13 @@ export default class SelectCarScen extends Phaser.Scene {
     wraper.append(maindiv);
     for (const item of maindiv.childNodes) {
       item.addEventListener('click', (event) => {
-        this.startGame(item.getAttribute('data-car'), this.carProperty[item.getAttribute('data-car')]);
+        this.startGame(item.getAttribute('data-car'), this.carProperty[item.getAttribute('data-car')], this.map);
         maindiv.style.display = 'none';
       });
     }
   }
 
-  startGame(car, carProperty) {
-    this.scene.start('Game', { client: this.client, car, carProperty });
+  startGame(car, carProperty, map) {
+    this.scene.start('Game', { client: this.client, car, carProperty, map });
   }
 }

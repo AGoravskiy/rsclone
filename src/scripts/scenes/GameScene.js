@@ -28,6 +28,8 @@ export default class GameScene extends Phaser.Scene {
 
   // метод который вызывается в начале, при старте сцены
   init(data) {
+    this.mapa = data.map;
+    console.log(this.mapa);
     if (data.client) {
       this.client = data.client;
     }
@@ -64,7 +66,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   create() {
-    this.map = new Map(this);
+    this.map = new Map(this, this.mapa);
 
     const car = this.getCarsConfig();
 

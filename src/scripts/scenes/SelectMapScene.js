@@ -12,14 +12,16 @@ export default class SelectMapScene extends Phaser.Scene {
   setEvents() {
     this.mapItems = [...document.querySelectorAll('.map-item')];
     for (let i = 0; i < this.mapItems.length; i += 1) {
-      this.mapItem = this.mapItems[i];
-      this.mapItem.addEventListener('click', () => {
-        this.startGame();
+      this.mapItems[i].addEventListener('click', (event) => {
+        let path = event.target.src;
+        let map = path.substr(path.indexOf('image') + 7);
+        map = map.replace('.png','')
+        this.startGame(map);
       });
     }
   }
 
-  startGame() {
+  startGame(map) {
     this.mapsOverlay = document.querySelector('.maps-overlay');
     this.mapsOverlay.classList.remove('active');
 
@@ -28,6 +30,6 @@ export default class SelectMapScene extends Phaser.Scene {
 
     this.mapsMenu = document.querySelector('.maps-menu');
     this.mapsMenu.classList.remove('active');
-    this.scene.start('SelectCar', { client: this.client });
+    this.scene.start('SelectCar', { client: this.client, map: map });
   }
 }
