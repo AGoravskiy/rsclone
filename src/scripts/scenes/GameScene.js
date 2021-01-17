@@ -10,10 +10,14 @@ const CARS = {
   BLUE: {
     sprite: 'car_blue_1',
     position: 'player',
+    carProperty: { MAXSPEED: 12, ACCELERATION: 1, SLIDE_ANGLE: 14 },
+
   },
   RED: {
     sprite: 'car_red_1',
     position: 'enemy',
+    carProperty: { MAXSPEED: 15, ACCELERATION: 0.4, SLIDE_ANGLE: 15 },
+
   },
 };
 
@@ -27,6 +31,12 @@ export default class GameScene extends Phaser.Scene {
     if (data.client) {
       this.client = data.client;
     }
+    if (data.carProperty) {
+      this.carProperty = data.carProperty;
+    }
+    if (data.car) {
+      this.carmodel = data.car;
+    }
     this.cursors = this.input.keyboard.createCursorKeys();
   }
 
@@ -35,6 +45,11 @@ export default class GameScene extends Phaser.Scene {
   }
 
   getCarsConfig() {
+    if (this.carmodel) {
+      CARS.BLUE.sprite = this.carmodel;
+      CARS.BLUE.carProperty = this.carProperty;
+    }
+
     let config = {
       player: CARS.BLUE,
       enemy: CARS.RED,
@@ -53,9 +68,9 @@ export default class GameScene extends Phaser.Scene {
 
     const car = this.getCarsConfig();
 
-    this.player = new Player(this, this.map, car.player);
+    this.player = new Player(this, this.map, car.player, CARS.BLUE.carProperty);
     if (this.client) {
-      this.enemy = new Player(this, this.map, car.enemy);
+      this.enemy = new Player(this, this.map, car.enemy, CARS.RED.carProperty);
       this.client.on('data', (data) => {
         this.enemy.car.setX(data.x);
         this.enemy.car.setY(data.y);

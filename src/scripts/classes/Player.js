@@ -11,12 +11,12 @@ const TURNS = Object.freeze({
   RIGHT: 1,
 });
 
-const MAXSPEED = 4;
-const ACCELERATION = 0.1;
-const SLIDE_ANGLE = 2;
+// const MAXSPEED = 4;
+// const ACCELERATION = 0.1;
+// const SLIDE_ANGLE = 2;
 
 export default class Player {
-  constructor(scene, map, config) {
+  constructor(scene, map, config, carProperty) {
     this.scene = scene;
     this.map = map;
     const position = this.map.getPlayerPosition(config.position);
@@ -26,6 +26,7 @@ export default class Player {
     this._velocity = 0;
     this.checkpoint = 0;
     this.soundMotor = this.scene.sound.sounds.find((audio) => audio.key === 'motor');
+    this.carProperty = carProperty;
   }
 
   get direction() {
@@ -54,11 +55,11 @@ export default class Player {
     const speed = Math.abs(this._velocity);
     const max = this.getMaxSpeed();
     if (this.direction && speed < max) {
-      this._velocity += ACCELERATION * this.nitro * Math.sign(this.direction);
+      this._velocity += this.carProperty.ACCELERATION * this.nitro * Math.sign(this.direction);
     } else if ((this.direction && speed > max)
          || (!this.direction && speed > 0)) {
       if (speed > 0.2) {
-        this._velocity -= ACCELERATION * this.nitro * Math.sign(this._velocity);
+        this._velocity -= this.carProperty.ACCELERATION * this.nitro * Math.sign(this._velocity);
       } else {
         this._velocity = 0;
       }
@@ -79,7 +80,7 @@ export default class Player {
 
   get angle() {
     // eslint-disable-next-line no-mixed-operators
-    return this.car.angle + this.turn * this.nitro * MAXSPEED / 2;
+    return this.car.angle + this.turn * this.nitro * this.carProperty.MAXSPEED / 2;
   }
 
   getVelocityFromAngle() {
@@ -88,11 +89,11 @@ export default class Player {
   }
 
   getMaxSpeed() {
-    return MAXSPEED * this.nitro * this.map.getTileFriction(this.car);
+    return this.carProperty.MAXSPEED * this.nitro * this.map.getTileFriction(this.car);
   }
 
   slide() {
-    this.car.angle += SLIDE_ANGLE * this.nitro;
+    this.car.angle += this.carProperty.SLIDE_ANGLE * this.nitro;
   }
 
   move() {

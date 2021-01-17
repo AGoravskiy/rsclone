@@ -5,12 +5,13 @@ import GameScene from './scripts/scenes/GameScene';
 import StartScene from './scripts/scenes/StartScene';
 import SettingsScene from './scripts/scenes/SettingsScene';
 import SelectMapScene from './scripts/scenes/SelectMapScene';
+import SelectCarScene from './scripts/scenes/SelectCarScene';
 
 const config = {
   type: Phaser.AUTO,
   width: 1280,
   height: 720,
-  scene: [BootScene, PreloadScene, StartScene, SettingsScene, SelectMapScene, GameScene],
+  scene: [BootScene, PreloadScene, StartScene, SettingsScene, SelectMapScene, SelectCarScene, GameScene],
   scale: {
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
