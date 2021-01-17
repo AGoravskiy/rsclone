@@ -13,9 +13,9 @@ export default class SelectMapScene extends Phaser.Scene {
     this.mapItems = [...document.querySelectorAll('.map-item')];
     for (let i = 0; i < this.mapItems.length; i += 1) {
       this.mapItems[i].addEventListener('click', (event) => {
-        let path = event.target.src;
+        const path = event.target.src;
         let map = path.substr(path.indexOf('image') + 7);
-        map = map.replace('.png','')
+        map = map.replace('.png', '');
         this.startGame(map);
       });
     }
@@ -30,6 +30,6 @@ export default class SelectMapScene extends Phaser.Scene {
 
     this.mapsMenu = document.querySelector('.maps-menu');
     this.mapsMenu.classList.remove('active');
-    this.scene.start('SelectCar', { client: this.client, map: map });
+    this.scene.start('SelectCar', { client: this.client, map });
   }
 }
