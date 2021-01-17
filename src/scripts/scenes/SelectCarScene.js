@@ -18,7 +18,6 @@ export default class SelectCarScen extends Phaser.Scene {
   create() {
     this.createBackground();
     this.createmenu();
-    // this.createButtons()
   }
 
   createBackground() {
@@ -31,51 +30,48 @@ export default class SelectCarScen extends Phaser.Scene {
     document.body.append(wraper);
     document.body.style = 'position: relative';
     const maindiv = document.createElement('div');
-
     maindiv.style = `
-        display:flex;
-        flex-direction:column;
-        justify-content:center;
-        gap:20px; 
-        width: 50%; 
-        height: 70%; 
-        `;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            gap:20px; 
+            width: 50%; 
+            height: 70%; 
+            `;
 
     function addCar(parent, path) {
       const carmodel = path.substr(0, path.length - 4);
-      //   div.textContent = `${carProperty[carmodel].MAXSPEED}`;
       const carInfo = document.createElement('div');
       carInfo.dataset.car = carmodel;
       carInfo.style = `
-            display:flex;
-            justify-content:center;
-            align-items: center;
-            gap:20px;
-            width: 100%; 
-            height: 100px; 
-            cursor:pointer; 
-            border-bottom: 1px solid;
-        `;
+                display:flex;
+                justify-content:center;
+                align-items: center;
+                gap:20px;
+                width: 100%; 
+                height: 100px; 
+                cursor:pointer; 
+                border-bottom: 1px solid;
+            `;
 
       const carImage = document.createElement('div');
-
       carImage.style = `
-            width: 100px; 
-            height: 100px; 
-            background-image:url("./src/assets/cars/${path}");
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: center;
-            margin-left: auto;
-        `;
+                width: 100px; 
+                height: 100px; 
+                background-image:url("./src/assets/cars/${path}");
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+                margin-left: auto;
+            `;
 
       const carProp = document.createElement('div');
       carProp.style = `
-        cursor:pointer; 
-        width: 100%; 
-        font: 24px Arial; 
-        margin-right: auto;
-    `;
+            cursor:pointer; 
+            width: 100%; 
+            font: 24px Arial; 
+            margin-right: auto;
+            `;
 
       const speed = document.createElement('p');
       speed.textContent = ` Max speed : ${carProperty[carmodel].MAXSPEED}`;
@@ -93,6 +89,7 @@ export default class SelectCarScen extends Phaser.Scene {
       carInfo.append(carProp);
       parent.append(carInfo);
     }
+
     addCar(maindiv, 'car_black_1.png');
     addCar(maindiv, 'car_blue_1.png');
     addCar(maindiv, 'car_green_1.png');
@@ -109,18 +106,5 @@ export default class SelectCarScen extends Phaser.Scene {
 
   startGame(car, carProperty) {
     this.scene.start('Game', { client: this.client, car, carProperty });
-  }
-
-  createButtons() {
-    this.button3 = this.add.text(this.cameras.main.centerX, this.cameras.main.centerY + 50, 'Choose Car',
-      { font: 'bold 46px Arial', fill: '#FAFAD2' })
-      .setOrigin(0.5)
-      .setInteractive();
-  }
-
-  setEvents() {
-    this.button1.on('pointerdown', this.startGame, this);
-    this.button2.on('pointerdown', this.requestGame, this);
-    this.button3.on('pointerdown', this.chooseCar, this);
   }
 }
