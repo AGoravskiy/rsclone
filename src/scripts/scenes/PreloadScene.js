@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 import LoadingBar from '../classes/LoadingBar';
 import tilesetPng from '../../assets/images/spritesheet_tiles.png';
-import tilemapJson from '../../assets/images/algarvemap.json';
+import tilemapJson from '../../assets/images/adelaidemap.json';
 import objectsPng from '../../assets/images/objects2.png';
 import objectsJson from '../../assets/images/objects2.json';
 

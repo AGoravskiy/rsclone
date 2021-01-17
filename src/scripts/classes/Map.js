@@ -62,20 +62,23 @@ export default class Map {
   createCheckPoints() {
     this.checkpoints = [];
     this.tilemap.findObject('checkpoints', (checkpoint) => {
-      const rectangle = new Phaser.Geom.Rectangle(checkpoint.x, checkpoint.y, checkpoint.width, checkpoint.height);
+      const rectangle = new Phaser.Geom.Rectangle(
+        checkpoint.x, checkpoint.y, checkpoint.width, checkpoint.height,
+      );
       rectangle.index = checkpoint.properties.find((property) => property.name === 'value').value;
       this.checkpoints.push(rectangle);
     });
   }
 
   getPlayerPosition(positionName) {
-    console.log(`possname ${positionName}`);
     return this.tilemap.findObject(positionName, (position) => position.name === positionName);
   }
 
   getTileFriction(car) {
     for (const road in ROADS_FRICTION) {
-      const tile = this.tilemap.getTileAtWorldXY(car.x, car.y, false, this.scene.cameras.main, road);
+      const tile = this.tilemap.getTileAtWorldXY(
+        car.x, car.y, false, this.scene.cameras.main, road,
+      );
       if (tile) {
         return ROADS_FRICTION[road];
       }
