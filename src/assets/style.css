@@ -5,6 +5,61 @@ body {
    height: 100vh;
 }
 
+/* Стили для сцены LOGIN */
+
+.log-background {
+   opacity: 0;
+   visibility: hidden;
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background: url(/src/assets/images/settings.jpg) no-repeat;
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+   z-index: 2;
+}
+
+.log-overlay {
+   opacity: 0;
+   visibility: hidden;
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background-color: rgba(0, 0, 0, 0.6);
+   z-index: 3;
+}
+
+.login-div {
+   opacity: 0;
+   visibility: hidden;
+   width: 40%;
+   height: 50%;
+   max-width: 1000px;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   z-index: 4;
+   text-align: center;
+   padding: 10px;
+   border-radius: 3px;
+   background-color: rgb(109, 109, 109, 0.5);
+   transition: 0.3s all;
+   display: flex;
+   flex-direction: column;
+   flex-wrap: wrap;
+   align-items: center;
+   justify-content: center;
+   color: white;
+   font-size: 20px;
+}
+
+
+
 .settings-background {
    opacity: 0;
    visibility: hidden;
@@ -48,10 +103,20 @@ body {
    border-radius: 3px;
    background-color: rgb(109, 109, 109, 0.5);
    transition: 0.3s all;
+   display: flex;
+   flex-direction: column;
+   flex-wrap: wrap;
+   align-items: center;
+   justify-content: center;
 }
 
-#language-parameters {
-   width: 100%;
+.language-text {
+   color: wheat;
+   margin: 20px;
+}
+
+.language-parameters {
+   width: 35%;
    height: 35px;
    border-radius: 5px;
    font-size: 15px;
@@ -62,10 +127,66 @@ body {
    position: relative;
 }
 
+.volume-text-value {
+   color: wheat;
+   margin: 20px;
+}
+
+.slidecontainer {
+   width: 100%;
+}
+
+.slider {
+   -webkit-appearance: none;
+   width: 20%;
+   height: 10px;
+   border-radius: 5px;
+   background: teal;
+   outline: none;
+   opacity: 0.7;
+   -webkit-transition: .2s;
+   transition: opacity .2s;
+   margin-left: 5px;
+   margin-right: 5px;
+}
+
+.slider:hover {
+   opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+   -webkit-appearance: none;
+   appearance: none;
+   width: 30px;
+   height: 30px;
+   border: 0;
+   background: url('/src/assets/images/icons/car-sport.svg');
+   cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+   width: 30px;
+   height: 24px;
+   border: 0;
+   background: url('/src/assets/images/icons/car-sport.svg');
+   cursor: pointer;
+}
+
+.volume-value-min,
+.volume-value-max {
+   color: wheat;
+   font-size: 15px;
+}
+
+
+.quit-btn {
+   margin-top: 20px;
+}
 
 
 
-/* Стили для сцены выбора карт */
+
+/* Стили для сцены ВЫБОРА КАРТ */
 
 
 .maps-background {
@@ -123,6 +244,57 @@ body {
    height: 100%;
 }
 
+
+/* Стили для сцены СТАТИСТИКИ */
+
+.stat-background {
+   opacity: 0;
+   visibility: hidden;
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background: url(/src/assets/images/maps.jpg) no-repeat;
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+   z-index: 2;
+}
+
+.stat-overlay {
+   opacity: 0;
+   visibility: hidden;
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background-color: rgba(0, 0, 0, 0.4);
+   z-index: 3;
+}
+
+.stat-table {
+   opacity: 0;
+   visibility: hidden;
+   width: 90%;
+   height: 80%;
+   max-width: 1000px;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   z-index: 4;
+   text-align: center;
+   padding: 10px;
+   border-radius: 3px;
+   background-color: rgb(109, 109, 109, 0.5);
+   transition: 0.3s all;
+   display: flex;
+   flex-direction: column;
+   flex-wrap: wrap;
+   align-items: center;
+   justify-content: center;
+}
 
 
 

@@ -49,6 +49,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   create() {
+    this.soundPlay();
     this.map = new Map(this);
 
     const car = this.getCarsConfig();
@@ -74,6 +75,14 @@ export default class GameScene extends Phaser.Scene {
       if (b.gameObject === this.player.car && a.gameObject.frame.name === 'oil') {
         this.player.slide();
       }
+    });
+  }
+
+  soundPlay() {
+    this.localVolume = +localStorage.getItem('volume');
+    this.sound.play('game', {
+      volume: this.localVolume * 0.01,
+      loop: true,
     });
   }
 

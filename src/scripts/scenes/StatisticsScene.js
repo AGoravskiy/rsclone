@@ -2,9 +2,9 @@ import Phaser from 'phaser';
 
 const output = document.querySelector('.output-value');
 
-export default class StartScene extends Phaser.Scene {
+export default class Statistics extends Phaser.Scene {
   constructor() {
-    super('Settings');
+    super('Statistics');
   }
 
   create() {

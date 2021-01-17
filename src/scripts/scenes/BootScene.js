@@ -11,6 +11,13 @@ export default class BootScene extends Phaser.Scene {
   }
 
   create() {
-    this.scene.start('Preload');
+    this.scene.start('Login');
+    this.settingsOverlay = document.querySelector('.log-overlay');
+    this.settingsOverlay.classList.add('active');
+
+    this.settingsBg = document.querySelector('.log-background');
+    this.settingsBg.classList.add('active');
+    this.loginMenu = document.querySelector('.login-div');
+    this.loginMenu.classList.add('active');
   }
 }
