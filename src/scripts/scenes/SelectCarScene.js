@@ -33,30 +33,65 @@ export default class SelectCarScen extends Phaser.Scene {
     const maindiv = document.createElement('div');
 
     maindiv.style = `
-            display:flex;
-            flex-direction:column;
-            justify-content:center;
-            gap:20px; 
-            width: 50%; 
-            height: 70%; 
-            `;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        gap:20px; 
+        width: 50%; 
+        height: 70%; 
+        `;
+
     function addCar(parent, path) {
-      const div = document.createElement('div');
       const carmodel = path.substr(0, path.length - 4);
-      console.log(carProperty[carmodel].MAXSPEED);
-    //   div.textContent = `${carProperty[carmodel].MAXSPEED}`;
-      div.dataset.car = carmodel;
-      div.style = `
-                cursor:pointer; width: 100px; 
-                height: 100px; 
-                font: 48px Arial; 
-                font-weight: bold;
-                background-image:url("./src/assets/cars/${path}");
-                background-repeat: no-repeat;
-                background-size: contain;
-                background-position: center;
-            `;
-      parent.append(div);
+      //   div.textContent = `${carProperty[carmodel].MAXSPEED}`;
+      const carInfo = document.createElement('div');
+      carInfo.dataset.car = carmodel;
+      carInfo.style = `
+            display:flex;
+            justify-content:center;
+            align-items: center;
+            gap:20px;
+            width: 100%; 
+            height: 100px; 
+            cursor:pointer; 
+            border-bottom: 1px solid;
+        `;
+
+      const carImage = document.createElement('div');
+
+      carImage.style = `
+            width: 100px; 
+            height: 100px; 
+            background-image:url("./src/assets/cars/${path}");
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            margin-left: auto;
+        `;
+
+      const carProp = document.createElement('div');
+      carProp.style = `
+        cursor:pointer; 
+        width: 100%; 
+        font: 24px Arial; 
+        margin-right: auto;
+    `;
+
+      const speed = document.createElement('p');
+      speed.textContent = ` Max speed : ${carProperty[carmodel].MAXSPEED}`;
+      carProp.append(speed);
+
+      const acceleration = document.createElement('p');
+      acceleration.textContent = `Acceleration : ${carProperty[carmodel].ACCELERATION}`;
+      carProp.append(acceleration);
+
+      const slide = document.createElement('p');
+      slide.textContent = `Slide angle : ${carProperty[carmodel].SLIDE_ANGLE}`;
+      carProp.append(slide);
+
+      carInfo.append(carImage);
+      carInfo.append(carProp);
+      parent.append(carInfo);
     }
     addCar(maindiv, 'car_black_1.png');
     addCar(maindiv, 'car_blue_1.png');
@@ -64,10 +99,12 @@ export default class SelectCarScen extends Phaser.Scene {
     addCar(maindiv, 'car_red_1.png');
     addCar(maindiv, 'car_yellow_1.png');
     wraper.append(maindiv);
-    maindiv.addEventListener('click', (event) => {
-      this.startGame(event.target.getAttribute('data-car'), this.carProperty[event.target.getAttribute('data-car')]);
-      maindiv.style.display = 'none';
-    });
+    for (const item of maindiv.childNodes) {
+      item.addEventListener('click', (event) => {
+        this.startGame(item.getAttribute('data-car'), this.carProperty[item.getAttribute('data-car')]);
+        maindiv.style.display = 'none';
+      });
+    }
   }
 
   startGame(car, carProperty) {
@@ -75,16 +112,6 @@ export default class SelectCarScen extends Phaser.Scene {
   }
 
   createButtons() {
-    // this.button1 = this.add.text(this.cameras.main.centerX, this.cameras.main.centerY - 50, 'ONE PLAYER',
-    // {font: 'bold 46px Arial', fill: '#FAFAD2'})
-    // .setOrigin(0.5)
-    // .setInteractive();
-
-    // this.button2 = this.add.text(this.cameras.main.centerX, this.cameras.main.centerY, 'TWO PLAYER',
-    // {font: 'bold 46px Arial', fill: '#FAFAD2'})
-    // .setOrigin(0.5)
-    // .setInteractive();
-
     this.button3 = this.add.text(this.cameras.main.centerX, this.cameras.main.centerY + 50, 'Choose Car',
       { font: 'bold 46px Arial', fill: '#FAFAD2' })
       .setOrigin(0.5)
