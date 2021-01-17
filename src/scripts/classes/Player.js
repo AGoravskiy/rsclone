@@ -21,6 +21,7 @@ export default class Player {
     this.map = map;
     const position = this.map.getPlayerPosition(config.position);
     this.car = this.scene.matter.add.sprite(position.x, position.y, 'objects', config.sprite);
+    this.car.angle = position.type;
     this.car.setFixedRotation(false);
     this._velocity = 0;
     this.checkpoint = 0;

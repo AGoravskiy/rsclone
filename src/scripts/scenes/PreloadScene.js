@@ -1,9 +1,9 @@
 import Phaser from 'phaser';
 import LoadingBar from '../classes/LoadingBar';
-import tilesetPng from '../../assets/images/tileset.png';
-import tilemapJson from '../../assets/images/tilemap.json';
-import objectsPng from '../../assets/images/objects.png';
-import objectsJson from '../../assets/images/objects.json';
+import tilesetPng from '../../assets/images/spritesheet_tiles.png';
+import tilemapJson from '../../assets/images/algarvemap.json';
+import objectsPng from '../../assets/images/objects2.png';
+import objectsJson from '../../assets/images/objects2.json';
 
 export default class PreloadScene extends Phaser.Scene {
   constructor() {
