@@ -1,15 +1,15 @@
 import Phaser from 'phaser';
-import Client from '../classes/Client';
+import Client from '../../classes/Client';
 
 const carProperty = {
   car_black_1: { MAXSPEED: 12, ACCELERATION: 0.6, SLIDE_ANGLE: 12 },
   car_blue_1: { MAXSPEED: 12, ACCELERATION: 1, SLIDE_ANGLE: 14 },
   car_red_1: { MAXSPEED: 15, ACCELERATION: 0.4, SLIDE_ANGLE: 15 },
   car_green_1: { MAXSPEED: 14, ACCELERATION: 0.7, SLIDE_ANGLE: 10 },
-  car_yellow_1: { MAXSPEED: 10, ACCELERATION: 0.5, SLIDE_ANGLE: 10 },
+  car_yellow_1: { MAXSPEED: 3, ACCELERATION: 0.5, SLIDE_ANGLE: 20 },
 };
 
-export default class SelectCarScen extends Phaser.Scene {
+export default class SelectCarScene extends Phaser.Scene {
   constructor() {
     super('SelectCar');
     this.carProperty = carProperty;

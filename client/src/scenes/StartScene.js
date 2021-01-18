@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import Client from '../classes/Client';
+import Client from '../../classes/Client';
 
 export default class StartScene extends Phaser.Scene {
   constructor() {

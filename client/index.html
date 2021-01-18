@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body>
+
+   <script>
+      const state = {
+         'page_id': 1,
+         'user_id': 5
+      }
+      const title = ''
+      const url = '/pages/game.html'
+
+      history.pushState(state, title, url)
+      window.history.pushState(state, title, url)
+   </script>
+</body>
+
+</html>

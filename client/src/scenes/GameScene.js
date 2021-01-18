@@ -1,9 +1,9 @@
 import Phaser from 'phaser';
-import Map from '../classes/Map';
-import Player from '../classes/Player';
-import Stats from '../classes/Stats';
-import StatsPanel from '../classes/StatsPanel';
-import StatsPopup from '../classes/StatsPopup';
+import Map from '../../classes/Map';
+import Player from '../../classes/Player';
+import Stats from '../../classes/Stats';
+import StatsPanel from '../../classes/StatsPanel';
+import StatsPopup from '../../classes/StatsPopup';
 
 const LAPS = 5;
 const CARS = {

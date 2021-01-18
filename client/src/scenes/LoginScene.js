@@ -40,11 +40,30 @@ export default class LoginScene extends Phaser.Scene {
       password: document.forms[0].elements[1].value,
     };
     this.sendData = JSON.stringify(this.data);
+    fetch(`${HOST}/login`, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+      body: this.sendData,
+    }).then((res) => {
+      this.settingsOverlay = document.querySelector('.log-overlay');
+      this.settingsOverlay.classList.remove('active');
+      this.settingsBg = document.querySelector('.log-background');
+      this.settingsBg.classList.remove('active');
+      this.loginMenu = document.querySelector('.login-div');
+      this.loginMenu.classList.remove('active');
+      this.scene.start('Preload');
+      console.log('всё работает');
+    });
+    /*
     console.log(this.sendData);
     this.xhr = new XMLHttpRequest();
     this.xhr.open('POST', `${HOST}/login`, true);
     this.xhr.onreadystatechange = () => this.startPreload();
     this.xhr.send(this.sendData);
     this.xhr.onload = () => this.startPreload();
+    */
   }
 }

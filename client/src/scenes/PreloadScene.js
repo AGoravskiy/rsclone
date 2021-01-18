@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import LoadingBar from '../classes/LoadingBar';
+import LoadingBar from '../../classes/LoadingBar';
 import tilesetPng from '../../assets/images/spritesheet_tiles.png';
 // import tilemapJson from '../../assets/images/adelaidemap.json';
 import adelaidemap from '../../assets/images/adelaidemap.json';
@@ -22,7 +22,7 @@ export default class PreloadScene extends Phaser.Scene {
     // this.load.audio('game', '../../assets/sounds/galvanize.mp3');
     this.load.audio('game', '../../assets/sounds/theme.mp3');
     this.load.spritesheet('tileset', tilesetPng, { frameWidth: 64, frameHeight: 64 });
-    // this.load.tilemapTiledJSON('tilemap', tilemapJson);
+
     this.load.tilemapTiledJSON('adelaidemap', adelaidemap);
     this.load.tilemapTiledJSON('algarvemap', algarvemap);
     this.load.tilemapTiledJSON('catalunyamap', catalunyamap);
