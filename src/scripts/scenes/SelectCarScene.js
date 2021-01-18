@@ -14,7 +14,8 @@ export default class SelectCarScen extends Phaser.Scene {
     super('SelectCar');
     this.carProperty = carProperty;
   }
-  init(data){
+
+  init(data) {
     this.map = data.map;
   }
 
@@ -108,6 +109,8 @@ export default class SelectCarScen extends Phaser.Scene {
   }
 
   startGame(car, carProperty, map) {
-    this.scene.start('Game', { client: this.client, car, carProperty, map });
+    this.scene.start('Game', {
+      client: this.client, car, carProperty, map,
+    });
   }
 }

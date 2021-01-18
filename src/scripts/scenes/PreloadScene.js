@@ -2,11 +2,11 @@ import Phaser from 'phaser';
 import LoadingBar from '../classes/LoadingBar';
 import tilesetPng from '../../assets/images/spritesheet_tiles.png';
 // import tilemapJson from '../../assets/images/adelaidemap.json';
-import adelaidemap from '../../assets/images/adelaidemap.json'
-import algarvemap from '../../assets/images/algarvemap.json'
-import catalunyamap from '../../assets/images/catalunyamap.json'
-import brandshatchmap from '../../assets/images/brandshatchmap.json'
-import detroitmap from '../../assets/images/detroitmap.json'
+import adelaidemap from '../../assets/images/adelaidemap.json';
+import algarvemap from '../../assets/images/algarvemap.json';
+import catalunyamap from '../../assets/images/catalunyamap.json';
+import brandshatchmap from '../../assets/images/brandshatchmap.json';
+import detroitmap from '../../assets/images/detroitmap.json';
 
 import objectsPng from '../../assets/images/objects2.png';
 import objectsJson from '../../assets/images/objects2.json';

@@ -29,7 +29,6 @@ export default class GameScene extends Phaser.Scene {
   // метод который вызывается в начале, при старте сцены
   init(data) {
     this.mapa = data.map;
-    console.log(this.mapa);
     if (data.client) {
       this.client = data.client;
     }
