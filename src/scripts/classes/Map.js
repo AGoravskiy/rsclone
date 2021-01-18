@@ -1,5 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable guard-for-in */
 const GRASS_FRICTION = 0.3;
 const ROADS_FRICTION = {
   road: 1,
@@ -16,7 +14,7 @@ export default class Map {
 
   init() {
     this.tilemap = this.scene.make.tilemap({ key: 'tilemap' });
-    this.tileset = this.tilemap.addTilesetImage('tileset', 'tileset', 64, 64, 0, 1);
+    this.tileset = this.tilemap.addTilesetImage('tileset', 'tileset', 64, 64, 0, 0);
   }
 
   create() {
@@ -24,18 +22,21 @@ export default class Map {
     this.createCollisions();
     this.createOils();
     this.createCheckPoints();
+    this.createArrow();
   }
 
   createLayers() {
     this.tilemap.createLayer('grass', this.tileset);
-    this.tilemap.createLayer('road', this.tileset);
-    this.tilemap.createLayer('sand', this.tileset);
     this.tilemap.createLayer('ground', this.tileset);
+    this.tilemap.createLayer('sand', this.tileset);
+    this.tilemap.createLayer('road', this.tileset);
   }
 
   createCollisions() {
     this.tilemap.findObject('collisions', (collision) => {
-      const sprite = this.scene.matter.add.sprite(collision.x + collision.width / 2, collision.y - collision.height / 2, 'objects', collision.name);
+      const sprite = this.scene.matter.add.sprite(collision.x, collision.y, 'objects', collision.name);
+      sprite.setOrigin(0, 1);
+      sprite.angle = collision.rotation;
       sprite.setStatic(true);
     });
   }
@@ -48,25 +49,36 @@ export default class Map {
     });
   }
 
+  createArrow() {
+    this.tilemap.findObject('arrows', (arrow) => {
+      const sprite = this.scene.matter.add.sprite(arrow.x, arrow.y, 'objects', arrow.name);
+      sprite.setOrigin(0, 1);
+      sprite.angle = arrow.rotation;
+      sprite.setStatic(true); // отключаем обработку физических воздействий
+      sprite.setSensor(true);
+    });
+  }
+
   createCheckPoints() {
     this.checkpoints = [];
     this.tilemap.findObject('checkpoints', (checkpoint) => {
-      const rectangle = new Phaser.Geom.Rectangle(checkpoint.x, checkpoint.y, checkpoint.width, checkpoint.height);
+      const rectangle = new Phaser.Geom.Rectangle(
+        checkpoint.x, checkpoint.y, checkpoint.width, checkpoint.height,
+      );
       rectangle.index = checkpoint.properties.find((property) => property.name === 'value').value;
       this.checkpoints.push(rectangle);
     });
   }
 
   getPlayerPosition(positionName) {
-    // eslint-disable-next-line no-console
-    console.log(positionName);
     return this.tilemap.findObject(positionName, (position) => position.name === positionName);
   }
 
-  // eslint-disable-next-line consistent-return
   getTileFriction(car) {
     for (const road in ROADS_FRICTION) {
-      const tile = this.tilemap.getTileAtWorldXY(car.x, car.y, false, this.scene.cameras.main, road);
+      const tile = this.tilemap.getTileAtWorldXY(
+        car.x, car.y, false, this.scene.cameras.main, road,
+      );
       if (tile) {
         return ROADS_FRICTION[road];
       }
@@ -76,7 +88,6 @@ export default class Map {
 
   getCheckPoint(car) {
     const checkpoint = this.checkpoints.find((checkpoint) => checkpoint.contains(car.x, car.y));
-    // eslint-disable-next-line radix
     return checkpoint ? parseInt(checkpoint.index) : false;
   }
 }

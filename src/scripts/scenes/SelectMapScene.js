@@ -28,6 +28,6 @@ export default class SelectMapScene extends Phaser.Scene {
 
     this.mapsMenu = document.querySelector('.maps-menu');
     this.mapsMenu.classList.remove('active');
-    this.scene.start('Game', { client: this.client });
+    this.scene.start('SelectCar', { client: this.client });
   }
 }
