@@ -6,14 +6,15 @@ const ROADS_FRICTION = {
 };
 
 export default class Map {
-  constructor(scene) {
+  constructor(scene, mapa) {
+    this.mapa = mapa;
     this.scene = scene;
     this.init();
     this.create();
   }
 
   init() {
-    this.tilemap = this.scene.make.tilemap({ key: 'tilemap' });
+    this.tilemap = this.scene.make.tilemap({ key: this.mapa });
     this.tileset = this.tilemap.addTilesetImage('tileset', 'tileset', 64, 64, 0, 0);
   }
 
