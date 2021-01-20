@@ -2,7 +2,7 @@
 import Phaser from 'phaser';
 import io from 'socket.io-client';
 
-const PORT = 3000;
+const PORT = 8080;
 
 const HOST = process.env.NODE_ENV === 'development' ? `http://localhost:${PORT}` : 'https://crazyrace.herokuapp.com/';
 

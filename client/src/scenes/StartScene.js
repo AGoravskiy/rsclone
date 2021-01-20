@@ -15,8 +15,8 @@ export default class StartScene extends Phaser.Scene {
 
   createSounds() {
     this.sounds = {
-      roar: this.sound.add('roar', { volume: 0.1 }),
-      menu: this.sound.add('menu', { volume: 0.2, loop: true }),
+      // roar: this.sound.add('roar', { volume: 0.1 }),
+      // game: this.sound.add('game', { volume: 0.2, loop: true }),
     };
   }
 
@@ -39,12 +39,29 @@ export default class StartScene extends Phaser.Scene {
       { font: 'bold 46px Arial', fill: '#FAFAD2' })
       .setOrigin(0.5)
       .setInteractive();
+
+    this.statisticsBtn = this.add.text(this.cameras.main.centerX, this.cameras.main.centerY + 50, 'STATISTICS',
+      { font: 'bold 46px Arial', fill: '#FAFAD2' })
+      .setOrigin(0.5)
+      .setInteractive();
   }
 
   setEvents() {
     this.onePlayerBtn.on('pointerdown', this.selectMap, this);
     this.twoPlayerBtn.on('pointerdown', this.requestGame, this);
     this.settingsBtn.on('pointerdown', this.selectSettings, this);
+    this.statisticsBtn.on('pointerdown', this.viewStatistics, this);
+  }
+
+  viewStatistics() {
+    this.scene.start('Statistics');
+    this.statOverlay = document.querySelector('.stat-overlay');
+    this.statOverlay.classList.add('active');
+
+    this.statBg = document.querySelector('.stat-background');
+    this.statBg.classList.add('active');
+    this.statTable = document.querySelector('.stat-table');
+    this.statTable.classList.add('active');
   }
 
   selectSettings() {
@@ -65,14 +82,12 @@ export default class StartScene extends Phaser.Scene {
 
   selectMap() {
     this.scene.start('SelectMapScene');
-    this.mapsOverlay = document.querySelector('.maps-overlay');
-    this.mapsOverlay.classList.add('active');
 
     this.mapsBg = document.querySelector('.maps-background');
     this.mapsBg.classList.add('active');
 
-    this.mapsMenu = document.querySelector('.maps-menu');
-    this.mapsMenu.classList.add('active');
+    this.mapsSlider = document.querySelector('.maps-slider-wrapper');
+    this.mapsSlider.classList.add('active-block');
   }
 
   requestGame() {

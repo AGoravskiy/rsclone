@@ -102,7 +102,9 @@ export default class Map {
     return this.tilemap.findObject(positionName, (position) => position.name === positionName);
   }
 
+  // eslint-disable-next-line consistent-return
   getTileFriction(car) {
+    // eslint-disable-next-line guard-for-in
     for (const road in ROADS_FRICTION) {
       const tile = this.tilemap.getTileAtWorldXY(
         car.x, car.y, false, this.scene.cameras.main, road,
@@ -116,6 +118,6 @@ export default class Map {
 
   getCheckPoint(car) {
     const checkpoint = this.checkpoints.find((checkpoint) => checkpoint.contains(car.x, car.y));
-    return checkpoint ? parseInt(checkpoint.index) : false;
+    return checkpoint ? +checkpoint.index : false;
   }
 }
