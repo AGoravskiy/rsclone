@@ -44,7 +44,7 @@ export default class Map {
       return this.scene.matter.add.sprite(obj.x + obj.height / 2, obj.y + obj.width / 2, 'objects', obj.name);
     }
     else if(obj.rotation > 90 && obj.rotation < 180){
-      return this.scene.matter.add.sprite(obj.x - obj.width / 2, obj.y + obj.height / 2 + obj.width*Math.tan(obj.rotation), 'objects', obj.name);
+      return this.scene.matter.add.sprite(obj.x - obj.width / 2, obj.y + obj.height / 2 + obj.width * Math.tan(obj.rotation), 'objects', obj.name);
     }
     else if(obj.rotation == 180){
       return this.scene.matter.add.sprite(obj.x - obj.width / 2, obj.y + obj.height / 2, 'objects', obj.name);

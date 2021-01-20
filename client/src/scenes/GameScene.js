@@ -75,8 +75,28 @@ export default class GameScene extends Phaser.Scene {
     }
     return config;
   }
+  pauseScene(){
+    this.scene.pause()
+  }
 
   create() {
+    this.esc = this.input.keyboard.addKey('ESC');
+    this.esc.on('down', function(event) { 
+      console.log('press') ;
+      // this.scene.pause();
+      // this.scene.launch('Start');
+    }, this);
+
+    this.motor = this.sound.add('motor');
+    this.motor.loop = true;
+    this.keyUp = this.input.keyboard.addKey('up');
+    this.keyUp.on('down', function(event) { 
+      this.motor.play();
+    }, this);
+    this.keyUp.on('up', function(event) { 
+      this.motor.stop();
+    }, this);
+
     this.soundPlay();
     this.map = new Map(this, this.mapa);
 
@@ -104,7 +124,30 @@ export default class GameScene extends Phaser.Scene {
         this.player.slide();
       }
     });
+    // setEvents() {
+    //   // this.onePlayerBtn.on('pointerdown', this.selectMap, this);
+    //   // this.twoPlayerBtn.on('pointerdown', this.requestGame, this);
+    //   // this.settingsBtn.on('pointerdown', this.selectSettings, this);
+    //   // this.statisticsBtn.on('pointerdown', this.viewStatistics, this);
+    //   this.scene.cursors.left.isDown{
+    //     console.log('press left');
+    //   }
+    // }
+
+   
   }
+  // soundMotor() {
+  //   this.localVolume = +localStorage.getItem('volume');
+  //   this.sound.play('motor', {
+  //     volume: this.localVolume * 0.01,
+  //     loop: true,
+  //   });
+  // }
+  // soundMotorstop() {
+  //   this.localVolume = +localStorage.getItem('volume');
+  //   this.sound.stopAll()
+  // }
+
 
   soundPlay() {
     this.localVolume = +localStorage.getItem('volume');
