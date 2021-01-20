@@ -11,10 +11,6 @@ const TURNS = Object.freeze({
   RIGHT: 1,
 });
 
-// const MAXSPEED = 4;
-// const ACCELERATION = 0.1;
-// const SLIDE_ANGLE = 2;
-
 export default class Player {
   constructor(scene, map, config, carProperty) {
     this.scene = scene;
@@ -37,7 +33,6 @@ export default class Player {
     } else if (this.scene.cursors.down.isDown) {
       direction = DIRECTIONS.BACKWARD;
     }
-
     return direction;
   }
 
@@ -58,7 +53,7 @@ export default class Player {
       this._velocity += this.carProperty.ACCELERATION * this.nitro * Math.sign(this.direction);
     } else if ((this.direction && speed > max)
          || (!this.direction && speed > 0)) {
-      if (speed > 0.2) {
+      if (speed > 0.7) {
         this._velocity -= this.carProperty.ACCELERATION * this.nitro * Math.sign(this._velocity);
       } else {
         this._velocity = 0;
