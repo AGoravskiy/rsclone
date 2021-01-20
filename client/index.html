@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>INDEX HTML</title>
+   <link rel="stylesheet" href="assets/styles/style.css">
+</head>
+
+<body>
+
+
+   <button type="button" class="btn btn-primary preload-btn"
+   style="position: absolute; left: 200px; top: 200px;">START</button>
+
+   <script>
+
+      const button = document.querySelector('.preload-btn');
+      button.addEventListener('click', () => {
+         console.log('click');
+         window.location.href = 'login.html';
+      })
+      
+   </script>
+</body>
+
+</html>
