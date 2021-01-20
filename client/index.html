@@ -15,15 +15,11 @@
    style="position: absolute; left: 200px; top: 200px;">START</button>
 
    <script>
-      const state = {};
-      const title = '';
-      const url = '/login.html';
 
       const button = document.querySelector('.preload-btn');
       button.addEventListener('click', () => {
          console.log('click');
-         history.pushState(state, title, url);
-         history.go(1);
+         window.location.href = 'login.html';
       })
       
    </script>

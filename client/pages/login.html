@@ -64,24 +64,15 @@ body {
    <input type="password" id="password" class="form-control" placeholder="Password" required>
    <label for="name" class="sr-only">Name</label>
    <input type="text" id="name" class="form-control" placeholder="Name" required>
-   <a class="btn btn-lg btn-primary btn-block">Sign up</a>
-   <a href="#!">Already have an account? Login here.</a>
+   <a class="btn btn-lg btn-primary btn-block sign-up-btn">Sign up</a>
+   <a >Already have an account? Login here.</a>
  </form>
 
-
-  <button type="button" class="btn btn-primary preload-btn"
-  style="position: absolute; left: 100px; top: 100px; z-index: 4;">START</button>
-
   <script>
-     const state = {};
-     const title = '';
-     const url = '/game.html';
 
-     const button = document.querySelector('.preload-btn');
+     const button = document.querySelector('.sign-up-btn');
      button.addEventListener('click', () => {
-        console.log('click');
-        history.pushState(state, title, url);
-        history.go(1);
+        window.location.href = 'game.html'
      })
      
   </script>

@@ -6,17 +6,38 @@ export default class SelectMapScene extends Phaser.Scene {
   }
 
   create() {
-    this.setEvents();
-    this.carousel();
-    this.checkBtns();
+    if (!this.track) {
+      this.createMenu();
+      this.carousel();
+      this.quit();
+      this.checkBtns();
+    }
   }
 
-  setEvents() {
-    this.selectMap();
-    this.quit();
-  }
+  createMenu() {
+    this.container = document.querySelector('.maps-slider-container');
+    this.track = document.createElement('div');
+    this.track.classList.add('maps-slider-track');
 
-  selectMap() {
+    function addMap(mainDiv, src, map) {
+      const mapItem = document.createElement('div');
+      mapItem.classList.add('maps-slider-item');
+
+      const mapImage = document.createElement('img');
+      mapImage.classList.add('map-image');
+      mapImage.setAttribute('src', `${src}`);
+      mapImage.setAttribute('data-map', `${map}`);
+      mapItem.appendChild(mapImage);
+      mainDiv.appendChild(mapItem);
+    }
+
+    addMap(this.track, '../assets/images/adelaidemap.png', 'adelaidemap');
+    addMap(this.track, '../assets/images/algarvemap.png', 'algarvemap');
+    addMap(this.track, '../assets/images/brandshatchmap.png', 'brandshatchmap');
+    addMap(this.track, '../assets/images/catalunyamap.png', 'catalunyamap');
+    addMap(this.track, '../assets/images/detroitmap.png', 'detroitmap');
+
+    this.container.appendChild(this.track);
     this.maps = [...document.querySelectorAll('.maps-slider-item')];
     for (let i = 0; i < this.maps.length; i += 1) {
       this.maps[i].addEventListener('click', (event) => {
@@ -26,7 +47,27 @@ export default class SelectMapScene extends Phaser.Scene {
     }
   }
 
+  createButtons() {
+    this.btnContainer = document.createElement('div');
+    this.btnPrev = document.createElement('button');
+    this.btnNext = document.createElement('button');
+
+    this.btnContainer.classList.add('maps-slider-buttons');
+    this.btnPrev.classList.add('maps-btn-prev', 'btn', 'btn-primary');
+    this.btnNext.classList.add('maps-btn-next', 'btn', 'btn-primary');
+
+    this.btnNext.textContent = 'NEXT';
+    this.btnPrev.textContent = 'PREV';
+
+    this.wrapper = document.querySelector('.maps-slider-wrapper');
+
+    this.wrapper.appendChild(this.btnContainer);
+    this.btnContainer.appendChild(this.btnPrev);
+    this.btnContainer.appendChild(this.btnNext);
+  }
+
   carousel() {
+    this.createButtons();
     this.position = 0;
     this.sliderToShow = 1;
     this.sliderToScroll = 1;
@@ -34,6 +75,7 @@ export default class SelectMapScene extends Phaser.Scene {
     this.track = document.querySelector('.maps-slider-track');
     this.btnPrev = document.querySelector('.maps-btn-prev');
     this.btnNext = document.querySelector('.maps-btn-next');
+    this.maps = [...document.querySelectorAll('.maps-slider-item')];
     this.mapsCount = this.maps.length;
     this.mapsWidth = this.container.clientWidth / this.sliderToShow;
     this.movePosition = this.sliderToScroll * this.mapsWidth;
@@ -75,7 +117,10 @@ export default class SelectMapScene extends Phaser.Scene {
   }
 
   quit() {
-    this.quitBtn = document.querySelector('.quit-from-select-map');
+    this.quitBtn = document.createElement('button');
+    this.quitBtn.classList.add('btn', 'btn-primary', 'quit-from-select-map');
+    this.quitBtn.textContent = 'QUIT';
+    this.wrapper.appendChild(this.quitBtn);
     this.quitBtn.addEventListener('click', () => {
       this.mapsBg = document.querySelector('.maps-background');
       this.mapsBg.classList.remove('active');
