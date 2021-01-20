@@ -19,10 +19,17 @@ const config = {
   physics: {
     default: 'matter',
     matter: {
-      debug: false,
+      debug: true,
       gravity: { x: 0, y: 0 },
     },
   },
 };
 
 const game = new Phaser.Game(config);
+
+// document.addEventListener('keydown', function(event) {
+//   if (event.code == 'Escape') {
+//     game.scene.start('Start');
+//     console.log('escape')
+//   }
+// });

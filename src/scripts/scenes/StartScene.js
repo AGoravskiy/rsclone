@@ -83,4 +83,9 @@ export default class StartScene extends Phaser.Scene {
     // когда получили противника то стартуем игру
     this.client.on('game', this.startGame, this);
   }
+  startGame(car, carProperty, map) {
+    this.scene.start('Game', {
+      client: this.client, car, carProperty, map,
+    });
+  }
 }
