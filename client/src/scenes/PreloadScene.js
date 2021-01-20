@@ -21,7 +21,7 @@ export default class PreloadScene extends Phaser.Scene {
     this.LoadingBar = new LoadingBar(this);
     // this.load.audio('game', '../../assets/sounds/galvanize.mp3');
     this.load.audio('game', '../../assets/sounds/theme.mp3');
-    this.load.audio('motor', '../../assets/sounds/motor.mp3');
+    this.load.audio('motor', '../../assets/sounds/motorloop.mp3');
     this.load.spritesheet('tileset', tilesetPng, { frameWidth: 64, frameHeight: 64 });
 
     this.load.tilemapTiledJSON('adelaidemap', adelaidemap);

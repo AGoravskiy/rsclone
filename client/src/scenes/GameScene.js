@@ -54,7 +54,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   preload() {
-    this.add.sprite(0, 0, 'bg').setOrigin(0);
+    // this.add.sprite(0, 0, 'bg').setOrigin(0);
   }
 
   getCarsConfig() {
@@ -75,16 +75,25 @@ export default class GameScene extends Phaser.Scene {
     }
     return config;
   }
-  pauseScene(){
-    this.scene.pause()
-  }
 
   create() {
+
     this.esc = this.input.keyboard.addKey('ESC');
     this.esc.on('down', function(event) { 
-      console.log('press') ;
-      // this.scene.pause();
-      // this.scene.launch('Start');
+      this.scene.pause();
+      this.scene.launch('Start');
+      // if(this.isPause){
+      //   console.log("resume")
+      //   this.scene.resume();
+      //   this.isPause = false;
+      // }
+      // else{
+      //   console.log("pause")
+      //   this.scene.pause();
+      //   this.scene.start('Start');
+      //   this.isPause = true;
+      // }
+      
     }, this);
 
     this.motor = this.sound.add('motor');
@@ -136,19 +145,6 @@ export default class GameScene extends Phaser.Scene {
 
    
   }
-  // soundMotor() {
-  //   this.localVolume = +localStorage.getItem('volume');
-  //   this.sound.play('motor', {
-  //     volume: this.localVolume * 0.01,
-  //     loop: true,
-  //   });
-  // }
-  // soundMotorstop() {
-  //   this.localVolume = +localStorage.getItem('volume');
-  //   this.sound.stopAll()
-  // }
-
-
   soundPlay() {
     this.localVolume = +localStorage.getItem('volume');
     this.sound.play('game', {
