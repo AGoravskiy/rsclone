@@ -1,22 +1,34 @@
 import Phaser from 'phaser';
-import Map from '../../classes/Map';
-import Player from '../../classes/Player';
-import Stats from '../../classes/Stats';
-import StatsPanel from '../../classes/StatsPanel';
-import StatsPopup from '../../classes/StatsPopup';
+import Map from '../classes/Map';
+import Player from '../classes/Player';
+import Stats from '../classes/Stats';
+import StatsPanel from '../classes/StatsPanel';
+import StatsPopup from '../classes/StatsPopup';
 
 const LAPS = 5;
 const CARS = {
   BLUE: {
     sprite: 'car_blue_1',
     position: 'player',
-    carProperty: { MAXSPEED: 12, ACCELERATION: 1, SLIDE_ANGLE: 14 },
+    carProperty: {
+      MAXSPEED: 5,
+      ACCELERATION: 0.9,
+      SLIDE_ANGLE: 3,
+      NITROGEN: 1.5,
+      NAME: 'Bugatti Veyron Super Sport',
+    },
 
   },
   RED: {
     sprite: 'car_red_1',
     position: 'enemy',
-    carProperty: { MAXSPEED: 15, ACCELERATION: 0.4, SLIDE_ANGLE: 15 },
+    carProperty: {
+      MAXSPEED: 6,
+      ACCELERATION: 1.2,
+      SLIDE_ANGLE: 3.5,
+      NITROGEN: 1.6,
+      NAME: 'Hennessey Venom GT',
+    },
 
   },
 };

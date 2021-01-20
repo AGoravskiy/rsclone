@@ -1,20 +1,18 @@
 import Phaser from 'phaser';
-import BootScene from './scripts/scenes/BootScene';
-import PreloadScene from './scripts/scenes/PreloadScene';
-import GameScene from './scripts/scenes/GameScene';
-import StartScene from './scripts/scenes/StartScene';
-import SettingsScene from './scripts/scenes/SettingsScene';
-import SelectMapScene from './scripts/scenes/SelectMapScene';
-import SelectCarScene from './scripts/scenes/SelectCarScene';
-import StatisticsScene from './scripts/scenes/StatisticsScene';
-import LoginScene from './scripts/scenes/LoginScene';
+import BootScene from './scenes/BootScene';
+import PreloadScene from './scenes/PreloadScene';
+import GameScene from './scenes/GameScene';
+import StartScene from './scenes/StartScene';
+import SettingsScene from './scenes/SettingsScene';
+import SelectMapScene from './scenes/SelectMapScene';
+import SelectCarScene from './scenes/SelectCarScene';
+import StatisticsScene from './scenes/StatisticsScene';
 
 const config = {
   type: Phaser.AUTO,
   width: 1280,
   height: 720,
   scene: [BootScene,
-    LoginScene,
     PreloadScene,
     StartScene,
     SettingsScene,
@@ -34,7 +32,4 @@ const config = {
     },
   },
 };
-
-export default function startGame() {
-  const game = new Phaser.Game(config);
-}
+const game = new Phaser.Game(config);

@@ -4,21 +4,28 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Document</title>
+   <title>INDEX HTML</title>
+   <link rel="stylesheet" href="assets/styles/style.css">
 </head>
 
 <body>
 
-   <script>
-      const state = {
-         'page_id': 1,
-         'user_id': 5
-      }
-      const title = ''
-      const url = '/pages/game.html'
 
-      history.pushState(state, title, url)
-      window.history.pushState(state, title, url)
+   <button type="button" class="btn btn-primary preload-btn"
+   style="position: absolute; left: 200px; top: 200px;">START</button>
+
+   <script>
+      const state = {};
+      const title = '';
+      const url = '/login.html';
+
+      const button = document.querySelector('.preload-btn');
+      button.addEventListener('click', () => {
+         console.log('click');
+         history.pushState(state, title, url);
+         history.go(1);
+      })
+      
    </script>
 </body>
 

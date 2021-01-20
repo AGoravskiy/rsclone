@@ -47,18 +47,35 @@ const cssLoaders = (extra) => {
 const loadPlugins = () => {
   const plugins = [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, './src/index.html'),
-      filename: 'index.html',
-      favicon: './src/assets/images/icons/favicon.png',
+      template: path.resolve(__dirname, './pages/game.html'),
+      filename: 'game.html',
+      favicon: './assets/images/icons/favicon.png',
       minify: {
         collapseWhitespace: isProd,
       },
     }),
-    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, './index.html'),
+      filename: 'index.html',
+      favicon: './assets/images/icons/favicon.png',
+      chunks: [],
+      minify: {
+        collapseWhitespace: isProd,
+      },
+    }),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, './pages/login.html'),
+      filename: 'login.html',
+      favicon: './assets/images/icons/favicon.png',
+      chunks: [],
+      minify: {
+        collapseWhitespace: isProd,
+      },
+    }),
     new CopyWebpackPlugin(
       {
         patterns: [
-          { from: './src/assets', to: './assets' },
+          { from: './assets', to: './assets' },
         ],
       },
     ),
@@ -67,6 +84,9 @@ const loadPlugins = () => {
     }),
   ];
 
+  if (isProd) {
+    plugins.push(new CleanWebpackPlugin());
+  }
   if (isDev) {
     plugins.push(new webpack.HotModuleReplacementPlugin());
   }
@@ -100,15 +120,15 @@ const jsLoaders = () => {
   if (isDev) {
     loaders.push('eslint-loader');
   }
-
   return loaders;
 };
 
 module.exports = {
-  mode: 'development',
   entry: {
-    main: ['@babel/polyfill', './src/index.js'],
+    main: ['@babel/polyfill'],
+    game: './src/game.js',
   },
+  mode: 'development',
   output: {
     filename: filename('js'),
     path: path.resolve(__dirname, './dist'),
@@ -118,7 +138,7 @@ module.exports = {
       '@': path.resolve(__dirname, 'src'),
     },
   },
-  optimization: optimization(),
+  // optimization: optimization(),
   devServer: {
     open: true,
     hot: isDev,

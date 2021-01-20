@@ -4,41 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crazy Race</title>
+  <title>Game HTML</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
   </script>
-  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="stylesheet" href="../assets/styles/style.css">
 </head>
 
 <body>
-
-
-  <!-- LOGIN -->
-
-  <div class="log-background">
-
-  </div>
-
-  <div class="log-overlay">
-    <div class="login-div">
-
-    <form class="form-signin" name="person">
-      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-      <label for="email" class="sr-only">Email address</label>
-      <input type="email" id="email" class="form-control" placeholder="Email address" required autofocus>
-      <label for="password" class="sr-only">Password</label>
-      <input type="password" id="password" class="form-control" placeholder="Password" required>
-      <a class="btn btn-lg btn-primary btn-block important-button">Sign in</a>
-      <a href="/signup.html">Don't have an account? Sign up here.</a>
-    </form>
-    </div>
-    
-
-    <button type="button" class="btn btn-primary preload-btn">START</button>
-  </div>
 
 
   <!-- НАСТРОЙКИ -->
@@ -81,30 +56,118 @@
 
   <!-- ВЫБОР КАРТ -->
 
+
   <div class="maps-background">
 
   </div>
 
-  <div class="maps-overlay">
+  <div class="maps-slider-wrapper">
+
+    <div class="maps-slider-container">
+      <div class="maps-slider-track">
+        <div class="maps-slider-item">
+            <img src="../assets/images/adelaidemap.png" data-map ="adelaidemap" class="map-image" alt="map">
+        </div>
+        <div class="maps-slider-item">
+          <img src="../assets/images/algarvemap.png" data-map ="algarvemap" class="map-image" alt="map">
+        </div>
+        <div class="maps-slider-item">
+          <img src="../assets/images/brandshatchmap.png" data-map ="brandshatchmap" class="map-image" alt="map">
+        </div>
+        <div class="maps-slider-item">
+          <img src="../assets/images/catalunyamap.png" data-map ="catalunyamap" class="map-image" alt="map">
+        </div>
+        <div class="maps-slider-item">
+          <img src="../assets/images/detroitmap.png" data-map ="detroitmap" class="map-image" alt="map">
+        </div>
+      </div>
+    </div>
+<div class="maps-slider-buttons">
+  <button class="maps-btn-prev btn btn-primary">Previos</button>
+  <button class="maps-btn-next btn btn-primary">Next</button>
+</div>
+
+<button type="button" class="btn btn-primary quit-from-select-map">Quit</button>
+  </div>
+
+
+  <!-- ВЫБОР МАШИНЫ -->
+
+
+  
+
+  <div class="cars-background">
 
   </div>
 
-  <div class="maps-menu">
-    <div class="map-item">
-      <img src="/src/assets/images/adelaidemap.png" data-map ="adelaidemap" class="map-image" alt="map">
+  <div class="cars-slider-wrapper">
+
+    <div class="cars-slider-container">
+      <!-- СТАТИСТИКА 
+      <div class="cars-slider-track">
+        <div class="cars-slider-item">
+          <div class="car-image-container">
+            <img src="../assets/cars/car_black_1.png" data-car ="black car" class="car-image" alt="car">
+          </div>
+            <div class="car-parameters">
+              <div class="car-parameter-container speed">
+                <p class="car-parameter-name">SPEED: 20</p>
+                <div class="progress-container">
+                  <span>0</span>
+                <progress class="progress-speed progress" value="20" max="100">20</progress>
+                <span>100</span>
+                </div>
+              </div>
+              <div class="car-parameter-container acceleration">
+                <p class="car-parameter-name">ACCELERATION: 40</p>
+                <div class="progress-container">
+                  <span>0</span>
+                <progress class="progress-acceleration progress" value="40" max="100">40</progress>
+                <span>100</span>
+                </div>
+              </div>
+              <div class="car-parameter-container rotation">
+                <p class="car-parameter-name">ROTATION: <span class="car-parameter-value">60</span></p>
+                <div class="progress-container">
+                  <span>0</span>
+                <progress class="progress-rotation progress" value="60" max="100">60</progress>
+                <span>100</span>
+                </div>
+              </div>
+              <div class="car-parameter-container nitrogen">
+                <p class="car-parameter-name">NITROGEN OXIDE: 80</p>
+                <div class="progress-container">
+                  <span>0</span>
+                <progress class="progress-nitrogen progress" value="80" max="100">80</progress>
+                <span>100</span>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="cars-slider-item">
+          <img src="../assets/cars/car_blue_1.png" data-car ="blue car" class="car-image" alt="car">
+        </div>
+        <div class="cars-slider-item">
+          <img src="../assets/cars/car_green_1.png" data-car ="green car" class="car-image" alt="car">
+        </div>
+        <div class="cars-slider-item">
+          <img src="../assets/cars/car_red_1.png" data-car ="red car" class="car-image" alt="car">
+          
+        </div>
+        <div class="cars-slider-item">
+          <img src="../assets/cars/car_yellow_1.png" data-car ="yellow car" class="car-image" alt="car">
+        </div>
+      </div>
     </div>
-    <div class="map-item">
-      <img src="/src/assets/images/algarvemap.png" data-map ="algarvemap" class="map-image" alt="map">
-    </div>
-    <div class="map-item">
-      <img src="/src/assets/images/brandshatchmap.png" data-map ="brandshatchmap" class="map-image" alt="map">
-    </div>
-    <div class="map-item">
-      <img src="/src/assets/images/catalunyamap.png" data-map ="catalunyamap" class="map-image" alt="map">
-    </div>
+
+    <button type="button" class="btn btn-primary quit-from-select-car">Quit</button>
+<div class="cars-slider-buttons">
+  <button class="cars-btn-prev btn btn-primary">Previos</button>
+  <button class="cars-btn-next btn btn-primary">Next</button>-->
+</div>
+
+
   </div>
-
-
 
   <!-- СТАТИСТИКА -->
 
@@ -150,7 +213,6 @@
 
     <button type="button" class="btn btn-primary quit-btn">Quit</button>
     </div>
-
 </body>
 
 </html>

@@ -5,59 +5,8 @@ body {
    height: 100vh;
 }
 
-/* Стили для сцены LOGIN */
 
-.log-background {
-   opacity: 0;
-   visibility: hidden;
-   position: absolute;
-   top: 0;
-   left: 0;
-   right: 0;
-   bottom: 0;
-   background: url(/src/assets/images/settings.jpg) no-repeat;
-   background-repeat: no-repeat;
-   background-size: 100% 100%;
-   z-index: 2;
-}
-
-.log-overlay {
-   opacity: 0;
-   visibility: hidden;
-   position: absolute;
-   top: 0;
-   left: 0;
-   right: 0;
-   bottom: 0;
-   background-color: rgba(0, 0, 0, 0.6);
-   z-index: 3;
-}
-
-.login-div {
-   opacity: 0;
-   visibility: hidden;
-   width: 40%;
-   height: 50%;
-   max-width: 1000px;
-   position: absolute;
-   top: 50%;
-   left: 50%;
-   transform: translate(-50%, -50%);
-   z-index: 4;
-   text-align: center;
-   padding: 10px;
-   border-radius: 3px;
-   background-color: rgb(109, 109, 109, 0.5);
-   transition: 0.3s all;
-   display: flex;
-   flex-direction: column;
-   flex-wrap: wrap;
-   align-items: center;
-   justify-content: center;
-   color: white;
-   font-size: 20px;
-}
-
+/* Стили для сцены НАСТРОЕК */
 
 
 .settings-background {
@@ -68,7 +17,7 @@ body {
    left: 0;
    right: 0;
    bottom: 0;
-   background: url(/src/assets/images/settings.jpg) no-repeat;
+   background: url(../images/settings.jpg) no-repeat;
    background-repeat: no-repeat;
    background-size: 100% 100%;
    z-index: 2;
@@ -160,7 +109,7 @@ body {
    width: 30px;
    height: 30px;
    border: 0;
-   background: url('/src/assets/images/icons/car-sport.svg');
+   background: url(../images/icons/car-sport.svg);
    cursor: pointer;
 }
 
@@ -168,7 +117,7 @@ body {
    width: 30px;
    height: 24px;
    border: 0;
-   background: url('/src/assets/images/icons/car-sport.svg');
+   background: url(../images/icons/car-sport.svg);
    cursor: pointer;
 }
 
@@ -197,7 +146,7 @@ body {
    left: 0;
    right: 0;
    bottom: 0;
-   background: url(/src/assets/images/maps.jpg) no-repeat;
+   background-color: #534292;
    background-repeat: no-repeat;
    background-size: 100% 100%;
    z-index: 2;
@@ -234,7 +183,7 @@ body {
    transition: 0.3s all;
    display: grid;
    grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+   grid-template-rows: repeat(2, 1fr);
 
 }
 
@@ -243,6 +192,213 @@ body {
    width: 100%;
    height: 100%;
 }
+
+.maps-slider-wrapper {
+   display: none;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   z-index: 4;
+   width: 90%;
+   max-width: 800px;
+   height: 700px;
+}
+
+.maps-slider-container {
+   overflow: hidden;
+   background-color: pink;
+}
+
+.maps-slider-track {
+   display: flex;
+   transition: .6s;
+}
+
+.maps-slider-item {
+   height: 500px;
+   cursor: pointer;
+}
+
+.maps-slider-buttons {
+   margin-top: 20px;
+   text-align: center;
+   display: flex;
+   justify-content: space-around;
+}
+
+.quit-from-select-map {
+   margin: 0 auto;
+   margin-top: 40px;
+   display: flex;
+   align-self: center;
+}
+
+
+/* Стили для сцены ВЫБОРА МАШИНЫ */
+
+
+
+.cars-background {
+   opacity: 0;
+   visibility: hidden;
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background-color: #534292;
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+   z-index: 2;
+}
+
+.cars-overlay {
+   opacity: 0;
+   visibility: hidden;
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background-color: rgba(0, 0, 0, 0.6);
+   z-index: 3;
+}
+
+.cars-slider-wrapper {
+   display: none;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   z-index: 4;
+   width: 90%;
+   max-width: 800px;
+   height: 700px;
+}
+
+.cars-slider-container {
+   overflow: hidden;
+   color:wheat;
+   font-size: 20px;
+}
+
+.cars-slider-track {
+   display: flex;
+   transition: .6s;
+}
+
+.cars-slider-item {
+   width: 100%;
+   height: 500px;
+   cursor: pointer;
+   display: flex;
+   flex-wrap: wrap;
+}
+
+.car-image-container {
+   width: 30%;
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: space-around;
+   text-align: center;
+}
+
+.car-image {
+   width: 60%;
+   height: 40%;
+}
+
+.car-name {
+   font-size: 30px;
+   font-weight: 700;
+   color: sienna;
+   text-align: center;
+}
+
+.car-parameters {
+   width: 70%;
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   flex-wrap: wrap;
+   justify-content: space-evenly;
+   align-items: center;
+}
+
+.car-parameter-container {
+   display: flex;
+   flex-direction: column;
+   flex-wrap: wrap;
+   justify-content: center;
+   align-items: center;
+   margin-bottom: 20px;
+   width: 70%;
+}
+
+.car-parameter-name {
+   padding: 0px;
+   margin: 0px;
+}
+
+.car-parameter-value {
+   font-size: 30px;
+   color: tomato;
+   font-weight: bold;
+}
+
+.progress-container {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   align-items: center;
+   width: 70%;
+}
+
+.progress-box {
+   width: 70%;
+   height: 25px;
+   border-radius: 5px;
+   margin: 10px;
+   background-color: thistle;
+}
+
+.progress-bar {
+   background-color: violet;
+   height: 100%;
+   border-radius: 5px;
+}
+
+progress[value]::-webkit-progress-value {
+   background-image:
+       -webkit-linear-gradient(-45deg, 
+                               transparent 33%, rgba(0, 0, 0, .1) 33%, 
+                               rgba(0,0, 0, .1) 66%, transparent 66%),
+       -webkit-linear-gradient(top, 
+                               rgba(255, 255, 255, .25), 
+                               rgba(0, 0, 0, .25)),
+       -webkit-linear-gradient(left, #09c, #f44);
+ 
+     border-radius: 2px; 
+     background-size: 35px 20px, 100% 100%, 100% 100%;
+ }
+
+.cars-slider-buttons {
+   margin-top: 20px;
+   text-align: center;
+   display: flex;
+   justify-content: space-around;
+}
+
+.quit-from-select-car {
+   margin: 0 auto;
+   margin-top: 40px;
+   display: flex;
+   align-self: center;
+}
+
 
 
 /* Стили для сцены СТАТИСТИКИ */
@@ -255,7 +411,7 @@ body {
    left: 0;
    right: 0;
    bottom: 0;
-   background: url(/src/assets/images/maps.jpg) no-repeat;
+   background: url(../images/maps.jpg) no-repeat;
    background-repeat: no-repeat;
    background-size: 100% 100%;
    z-index: 2;
@@ -304,4 +460,9 @@ body {
 .active {
    opacity: 1;
    visibility: visible;
+}
+
+.active-block {
+   display: block;
+   opacity: 1;
 }

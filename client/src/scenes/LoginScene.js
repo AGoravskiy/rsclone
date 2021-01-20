@@ -57,13 +57,5 @@ export default class LoginScene extends Phaser.Scene {
       this.scene.start('Preload');
       console.log('всё работает');
     });
-    /*
-    console.log(this.sendData);
-    this.xhr = new XMLHttpRequest();
-    this.xhr.open('POST', `${HOST}/login`, true);
-    this.xhr.onreadystatechange = () => this.startPreload();
-    this.xhr.send(this.sendData);
-    this.xhr.onload = () => this.startPreload();
-    */
   }
 }

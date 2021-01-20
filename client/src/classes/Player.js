@@ -44,7 +44,7 @@ export default class Player {
   get nitro() {
     let nitro = 1;
     if (this.scene.cursors.shift.isDown) {
-      nitro = 2;
+      nitro = this.carProperty.NITROGEN;
     } else {
       nitro = 1;
     }

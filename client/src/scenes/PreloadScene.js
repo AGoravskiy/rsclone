@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import LoadingBar from '../../classes/LoadingBar';
+import LoadingBar from '../classes/LoadingBar';
 import tilesetPng from '../../assets/images/spritesheet_tiles.png';
 // import tilemapJson from '../../assets/images/adelaidemap.json';
 import adelaidemap from '../../assets/images/adelaidemap.json';

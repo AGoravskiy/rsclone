@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import Client from '../../classes/Client';
+import Client from '../classes/Client';
 
 export default class StartScene extends Phaser.Scene {
   constructor() {
@@ -82,14 +82,12 @@ export default class StartScene extends Phaser.Scene {
 
   selectMap() {
     this.scene.start('SelectMapScene');
-    this.mapsOverlay = document.querySelector('.maps-overlay');
-    this.mapsOverlay.classList.add('active');
 
     this.mapsBg = document.querySelector('.maps-background');
     this.mapsBg.classList.add('active');
 
-    this.mapsMenu = document.querySelector('.maps-menu');
-    this.mapsMenu.classList.add('active');
+    this.mapsSlider = document.querySelector('.maps-slider-wrapper');
+    this.mapsSlider.classList.add('active-block');
   }
 
   requestGame() {
