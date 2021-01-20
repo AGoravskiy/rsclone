@@ -53,10 +53,11 @@ export default class GameScene extends Phaser.Scene {
     this.cursors = this.input.keyboard.createCursorKeys();
   }
 
+  /*
   preload() {
-    // this.add.sprite(0, 0, 'bg').setOrigin(0);
+    this.add.sprite(0, 0, 'bg').setOrigin(0);
   }
-
+*/
   getCarsConfig() {
     if (this.carmodel) {
       CARS.BLUE.sprite = this.carmodel;
@@ -77,9 +78,8 @@ export default class GameScene extends Phaser.Scene {
   }
 
   create() {
-
     this.esc = this.input.keyboard.addKey('ESC');
-    this.esc.on('down', function(event) { 
+    this.esc.on('down', function (event) {
       this.scene.pause();
       this.scene.launch('Start');
       // if(this.isPause){
@@ -93,16 +93,15 @@ export default class GameScene extends Phaser.Scene {
       //   this.scene.start('Start');
       //   this.isPause = true;
       // }
-      
     }, this);
 
     this.motor = this.sound.add('motor');
     this.motor.loop = true;
     this.keyUp = this.input.keyboard.addKey('up');
-    this.keyUp.on('down', function(event) { 
+    this.keyUp.on('down', function (event) {
       this.motor.play();
     }, this);
-    this.keyUp.on('up', function(event) { 
+    this.keyUp.on('up', function (event) {
       this.motor.stop();
     }, this);
 
@@ -142,9 +141,8 @@ export default class GameScene extends Phaser.Scene {
     //     console.log('press left');
     //   }
     // }
-
-   
   }
+
   soundPlay() {
     this.localVolume = +localStorage.getItem('volume');
     this.sound.play('game', {

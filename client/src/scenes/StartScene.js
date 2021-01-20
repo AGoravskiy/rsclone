@@ -29,8 +29,9 @@ export default class StartScene extends Phaser.Scene {
       { font: 'bold 46px Arial', fill: '#FAFAD2', cursor: 'pointer' })
       .setOrigin(0.5)
       .setInteractive();
-      this.resumeBtn.inputEnabled;
-      this.resumeBtn.useHandCursor = true;
+    // eslint-disable-next-line no-unused-expressions
+    this.resumeBtn.inputEnabled;
+    this.resumeBtn.useHandCursor = true;
 
     this.onePlayerBtn = this.add.text(this.cameras.main.centerX, this.cameras.main.centerY - 100, 'ONE PLAYER',
       { font: 'bold 46px Arial', fill: '#FAFAD2', cursor: 'pointer' })
@@ -38,27 +39,27 @@ export default class StartScene extends Phaser.Scene {
       .setInteractive();
 
     this.twoPlayerBtn = this.add.text(this.cameras.main.centerX, this.cameras.main.centerY - 50, 'TWO PLAYER',
-      { font: 'bold 46px Arial', fill: '#FAFAD2',cursor: 'pointer' })
+      { font: 'bold 46px Arial', fill: '#FAFAD2', cursor: 'pointer' })
       .setOrigin(0.5)
       .setInteractive();
 
     this.settingsBtn = this.add.text(this.cameras.main.centerX, this.cameras.main.centerY, 'SETTINGS',
-      { font: 'bold 46px Arial', fill: '#FAFAD2',cursor: 'pointer' })
+      { font: 'bold 46px Arial', fill: '#FAFAD2', cursor: 'pointer' })
       .setOrigin(0.5)
       .setInteractive();
 
     this.statisticsBtn = this.add.text(this.cameras.main.centerX, this.cameras.main.centerY + 50, 'STATISTICS',
-      { font: 'bold 46px Arial', fill: '#FAFAD2',cursor: 'pointer' })
+      { font: 'bold 46px Arial', fill: '#FAFAD2', cursor: 'pointer' })
       .setOrigin(0.5)
       .setInteractive();
   }
 
   setEvents() {
     this.resumeBtn.on('pointerdown',
-    function(event) { 
-      this.scene.resume("Game");
-    }
-    , this);
+      function (event) {
+        this.scene.resume('Game');
+      },
+      this);
     this.onePlayerBtn.on('pointerdown', this.selectMap, this);
     this.twoPlayerBtn.on('pointerdown', this.requestGame, this);
     this.settingsBtn.on('pointerdown', this.selectSettings, this);
@@ -110,6 +111,7 @@ export default class StartScene extends Phaser.Scene {
     // когда получили противника то стартуем игру
     this.client.on('game', this.startGame, this);
   }
+
   startGame(car, carProperty, map) {
     this.scene.start('Game', {
       client: this.client, car, carProperty, map,

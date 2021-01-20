@@ -33,36 +33,35 @@ export default class Map {
     this.tilemap.createLayer('road', this.tileset);
   }
 
-  correctObjectPosition(obj){
-    if(obj.rotation == 0){
+  correctObjectPosition(obj) {
+    if (obj.rotation === 0) {
       return this.scene.matter.add.sprite(obj.x + obj.width / 2, obj.y - obj.height / 2, 'objects', obj.name);
     }
-    else if(obj.rotation > 0 && obj.rotation < 90){
-      return this.scene.matter.add.sprite(obj.x + obj.width / 2, obj.y + obj.height / 2 , 'objects', obj.name);
+    if (obj.rotation > 0 && obj.rotation < 90) {
+      return this.scene.matter.add.sprite(obj.x + obj.width / 2, obj.y + obj.height / 2, 'objects', obj.name);
     }
-    else if(obj.rotation == 90){
+    if (obj.rotation === 90) {
       return this.scene.matter.add.sprite(obj.x + obj.height / 2, obj.y + obj.width / 2, 'objects', obj.name);
     }
-    else if(obj.rotation > 90 && obj.rotation < 180){
+    if (obj.rotation > 90 && obj.rotation < 180) {
       return this.scene.matter.add.sprite(obj.x - obj.width / 2, obj.y + obj.height / 2 + obj.width * Math.tan(obj.rotation), 'objects', obj.name);
     }
-    else if(obj.rotation == 180){
+    if (obj.rotation === 180) {
       return this.scene.matter.add.sprite(obj.x - obj.width / 2, obj.y + obj.height / 2, 'objects', obj.name);
     }
-    else if(obj.rotation > 180 && obj.rotation < 270){
-      return this.scene.matter.add.sprite(obj.x - obj.width/2, obj.y - obj.height/4, 'objects', obj.name);
+    if (obj.rotation > 180 && obj.rotation < 270) {
+      return this.scene.matter.add.sprite(obj.x - obj.width / 2, obj.y - obj.height / 4, 'objects', obj.name);
     }
-    else if(obj.rotation == 270){
-      return this.scene.matter.add.sprite(obj.x - obj.height/2, obj.y - obj.width/2, 'objects', obj.name);
+    if (obj.rotation === 270) {
+      return this.scene.matter.add.sprite(obj.x - obj.height / 2, obj.y - obj.width / 2, 'objects', obj.name);
     }
-    else{
-      return this.scene.matter.add.sprite(obj.x + obj.width / 2, obj.y - obj.height / 2, 'objects', obj.name);
-    }
- }
+
+    return this.scene.matter.add.sprite(obj.x + obj.width / 2, obj.y - obj.height / 2, 'objects', obj.name);
+  }
 
   createCollisions() {
     this.tilemap.findObject('collisions', (collision) => {
-      const sprite = this.correctObjectPosition(collision)
+      const sprite = this.correctObjectPosition(collision);
       // sprite.setOrigin(0, 1);
       sprite.angle = collision.rotation;
       sprite.setStatic(true);
