@@ -1,0 +1,205 @@
+.video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translateX(calc((100% - 100vw) / 2));
+  z-index: -1;
+}
+
+.title-wrapper {
+  display: flex;
+
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 20%;
+  /* transition: 2s; */
+  transition: 2s cubic-bezier(0.075, 1.22, 0.165, 1.11);
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  z-index: 2;
+}
+
+.title {
+  font-family: Racing Sans One;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 144px;
+  line-height: 181px;
+  color: #f3c178;
+  text-shadow: 0px 4px 4px #0b0500;
+  margin: 0;
+  text-align: right;
+}
+
+.sub-title {
+  font-family: Racing Sans One;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 96px;
+  line-height: 121px;
+  color: #fe5e41;
+  text-shadow: 0px 4px 4px #0b0500;
+  margin: 0;
+  text-align: right;
+}
+
+.block {
+  display: block;
+  text-align: right;
+}
+
+.footer-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 1rem;
+  transition: 2s cubic-bezier(0.075, 1.22, 0.165, 1.11);
+  /* transition: 2s; */
+  margin-top: 4%;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer-text {
+  font-family: Racing Sans One;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 30px;
+  color: #fe5e41;
+  margin: 0;
+}
+
+.reflection {
+  transform: scale(1, -1);
+}
+
+.footer-img {
+  width: 100px;
+}
+
+.hide {
+  opacity: 0;
+}
+
+@media screen and (max-width: 1920px) {
+  .sub-title {
+    font-size: 84px;
+    line-height: 116px;
+  }
+
+  .title {
+    font-size: 124px;
+    line-height: 174px;
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  .sub-title {
+    font-size: 64px;
+    line-height: 90px;
+  }
+
+  .title {
+    font-size: 96px;
+    line-height: 121px;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .sub-title {
+    font-size: 48px;
+    line-height: 68px;
+  }
+
+  .title {
+    font-size: 84px;
+    line-height: 116px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .sub-title {
+    font-size: 48px;
+    line-height: 64px;
+  }
+
+  .title {
+    font-size: 64px;
+    line-height: 96px;
+  }
+  .footer-img {
+    width: 80px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .title-wrapper {
+    margin-top: 15%;
+  }
+
+  .sub-title {
+    font-size: 36px;
+    line-height: 48px;
+  }
+
+  .title {
+    font-size: 48px;
+    line-height: 64px;
+  }
+  .footer-wrapper {
+    width: 80%;
+  }
+
+  .footer-text {
+    font-size: 16px;
+    line-height: 28px;
+  }
+  .footer-img {
+    width: 60px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .sub-title {
+    font-size: 24px;
+    line-height: 36px;
+  }
+
+  .title {
+    font-size: 36px;
+    line-height: 48px;
+  }
+
+  .footer-text {
+    font-size: 14px;
+    line-height: 24px;
+  }
+  .footer-img {
+    width: 50px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .sub-title {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .title {
+    font-size: 24px;
+    line-height: 36px;
+  }
+
+  .footer-text {
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .footer-img {
+    width: 40px;
+  }
+}

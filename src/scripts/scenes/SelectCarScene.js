@@ -27,7 +27,8 @@ export default class SelectCarScen extends Phaser.Scene {
 
   createmenu() {
     const wraper = document.createElement('div');
-    wraper.style = 'display:flex; justify-content:center; align-items:center; position: absolute; top:0; width:100%; height:100%';
+    wraper.style =
+      'display:flex; justify-content:center; align-items:center; position: absolute; top:0; width:100%; height:100%';
     document.body.append(wraper);
     document.body.style = 'position: relative';
     const maindiv = document.createElement('div');
@@ -44,7 +45,7 @@ export default class SelectCarScen extends Phaser.Scene {
       const div = document.createElement('div');
       const carmodel = path.substr(0, path.length - 4);
       console.log(carProperty[carmodel].MAXSPEED);
-    //   div.textContent = `${carProperty[carmodel].MAXSPEED}`;
+      //   div.textContent = `${carProperty[carmodel].MAXSPEED}`;
       div.dataset.car = carmodel;
       div.style = `
                 cursor:pointer; width: 100px; 
@@ -65,7 +66,10 @@ export default class SelectCarScen extends Phaser.Scene {
     addCar(maindiv, 'car_yellow_1.png');
     wraper.append(maindiv);
     maindiv.addEventListener('click', (event) => {
-      this.startGame(event.target.getAttribute('data-car'), this.carProperty[event.target.getAttribute('data-car')]);
+      this.startGame(
+        event.target.getAttribute('data-car'),
+        this.carProperty[event.target.getAttribute('data-car')]
+      );
       maindiv.style.display = 'none';
     });
   }
@@ -85,8 +89,13 @@ export default class SelectCarScen extends Phaser.Scene {
     // .setOrigin(0.5)
     // .setInteractive();
 
-    this.button3 = this.add.text(this.cameras.main.centerX, this.cameras.main.centerY + 50, 'Choose Car',
-      { font: 'bold 46px Arial', fill: '#FAFAD2' })
+    this.button3 = this.add
+      .text(
+        this.cameras.main.centerX,
+        this.cameras.main.centerY + 50,
+        'Choose Car',
+        { font: 'bold 46px Arial', fill: '#FAFAD2' }
+      )
       .setOrigin(0.5)
       .setInteractive();
   }
