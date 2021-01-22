@@ -537,6 +537,47 @@ progress[value]::-webkit-progress-value {
   opacity: 0;
 }
 
+.proceed-wrapper {
+  padding-top: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.proceed {
+  font-family: Racing Sans One;
+  font-size: 24px;
+  color: #fe5e41;
+}
+
+#blink {
+  -webkit-animation: blink 2s linear infinite;
+  animation: blink 2s linear infinite;
+}
+@-webkit-keyframes blink {
+  50% {
+    color: #fe5e41;
+  }
+  51% {
+    opacity: 0;
+  }
+  100% {
+    color: #fe5e41;
+  }
+}
+@keyframes blink {
+  50% {
+    color: #fe5e41;
+  }
+  51% {
+    opacity: 0;
+  }
+
+  100% {
+    color: #fe5e41;
+  }
+}
+
 @media screen and (max-width: 1920px) {
   .sub-title {
     font-size: 84px;
