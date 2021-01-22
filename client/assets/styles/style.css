@@ -534,7 +534,47 @@ progress[value]::-webkit-progress-value {
 }
 
 .hide {
-  opacity: 0;
+  animation: hide 4s linear;
+}
+
+@keyframes hide {
+  0% {
+    transform: translateX(100%);
+  }
+  10% {
+    transform: translateX(90%);
+  }
+  20% {
+    transform: translateX(80%);
+  }
+
+  30% {
+    transform: translateX(70%);
+  }
+  40% {
+    transform: translateX(60%);
+  }
+  50% {
+    transform: translateX(50%);
+  }
+
+  60% {
+    transform: translateX(40%);
+  }
+  70% {
+    transform: translateX(30%);
+  }
+  80% {
+    transform: translateX(20%);
+  }
+
+  90% {
+    transform: translateX(10%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
 }
 
 .proceed-wrapper {
