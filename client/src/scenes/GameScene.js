@@ -51,6 +51,10 @@ export default class GameScene extends Phaser.Scene {
       this.carmodel = data.car;
     }
     this.cursors = this.input.keyboard.createCursorKeys();
+    this.w = this.input.keyboard.addKey('W');
+    this.s = this.input.keyboard.addKey('S');
+    this.a = this.input.keyboard.addKey('A');
+    this.d = this.input.keyboard.addKey('D');
   }
 
   /*
@@ -98,8 +102,11 @@ export default class GameScene extends Phaser.Scene {
     this.motor = this.sound.add('motor');
     this.motor.loop = true;
     this.keyUp = this.input.keyboard.addKey('up');
+    this.localVolume = +localStorage.getItem('volume');
     this.keyUp.on('down', function (event) {
-      this.motor.play();
+      this.motor.play({
+        volume: this.localVolume * 0.001,
+      });
     }, this);
     this.keyUp.on('up', function (event) {
       this.motor.stop();
@@ -144,9 +151,8 @@ export default class GameScene extends Phaser.Scene {
   }
 
   soundPlay() {
-    this.localVolume = +localStorage.getItem('volume');
     this.sound.play('game', {
-      volume: this.localVolume * 0.01,
+      volume: this.localVolume * 0.005,
       loop: true,
     });
   }

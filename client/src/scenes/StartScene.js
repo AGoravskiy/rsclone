@@ -68,13 +68,6 @@ export default class StartScene extends Phaser.Scene {
 
   viewStatistics() {
     this.scene.start('Statistics');
-    this.statOverlay = document.querySelector('.stat-overlay');
-    this.statOverlay.classList.add('active');
-
-    this.statBg = document.querySelector('.stat-background');
-    this.statBg.classList.add('active');
-    this.statTable = document.querySelector('.stat-table');
-    this.statTable.classList.add('active');
   }
 
   selectSettings() {

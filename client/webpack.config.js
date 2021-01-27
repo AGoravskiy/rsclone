@@ -72,6 +72,15 @@ const loadPlugins = () => {
         collapseWhitespace: isProd,
       },
     }),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, './pages/signup.html'),
+      filename: 'signup.html',
+      favicon: './assets/images/icons/favicon.png',
+      chunks: [],
+      minify: {
+        collapseWhitespace: isProd,
+      },
+    }),
     new CopyWebpackPlugin(
       {
         patterns: [

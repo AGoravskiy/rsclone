@@ -12,7 +12,8 @@ const config = {
   type: Phaser.AUTO,
   width: 1280,
   height: 720,
-  scene: [BootScene,
+  scene: [
+    BootScene,
     PreloadScene,
     StartScene,
     SettingsScene,
@@ -27,7 +28,6 @@ const config = {
   physics: {
     default: 'matter',
     matter: {
-      debug: true,
       gravity: { x: 0, y: 0 },
     },
   },

@@ -6,6 +6,127 @@ body {
 }
 
 
+/* Стили для СТАРТ сцены */
+
+.overlay-statistics {
+   display: block;
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background-color: #534292;
+   z-index: 2;
+   transition: .3s all;
+}
+
+.list-statistics {
+   visibility: visible;
+   opacity: 0;
+   width: 100%;
+   max-width: 500px;
+   height: 700px;
+
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   z-index: 3;
+
+   display: flex;
+   flex-wrap: wrap;
+   flex-direction: column;
+   align-items: center;
+   align-self: flex-end;
+   padding: 5px;
+   
+   box-shadow: 0 3px 10px -.5px rgba(0, 0, 0, .2); 
+   text-align: center;
+   padding: 30px;
+   border-radius: 3px;
+   background-color: rgb(99, 99, 99);
+   transition: 0.3s all;
+   color: white;
+}
+
+
+#maps-names {
+   width: 100%;
+   height: 35px;
+   border-radius: 5px;
+   font-size: 15px;
+   text-align: center;
+   background-color: teal;
+   color: wheat;
+   cursor: pointer;
+   position: relative;
+}
+
+.statistics-results {
+   width: 100%;
+   height: 500px;
+}
+
+
+.countries {
+   width: 100%;
+   list-style: none;
+   height: 500px;
+   overflow: auto;
+}
+
+.countries>[data-scroll] {
+   cursor: pointer;
+   text-align: center;
+   display: block;
+   background-color: rgba(0, 0, 0, .05);
+}
+
+.country-item {
+   background-color: #5c5c5c;
+   border-radius: 3px;
+   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   align-items: center;
+   padding: 5px;
+   margin-bottom: 10px;
+   cursor: pointer;
+   width: 100%;
+}
+
+.country-item__name {
+   width: 60%;
+   text-align: center;
+}
+
+.country-item__info {
+   display: flex;
+   flex-wrap: wrap;
+   flex-direction: column;
+   justify-content: space-between;
+   align-items: center;
+   height: 100%;
+   width: 40%;
+}
+
+.country-item__value {
+   color: red;
+   font-weight: bold;
+   letter-spacing: .5px;
+   text-align: center;
+}
+
+.country-item__flag {
+   margin-bottom: 5px;
+   width: 100%;
+   max-width: 40px;
+}
+
+
+
+
 /* Стили для сцены НАСТРОЕК */
 
 
@@ -274,13 +395,13 @@ body {
    z-index: 4;
    width: 90%;
    max-width: 800px;
-   height: 700px;
+   height: 750px;
 }
 
 .cars-slider-container {
    overflow: hidden;
    color:wheat;
-   font-size: 20px;
+   font-size: 18px;
 }
 
 .cars-slider-track {
@@ -290,7 +411,7 @@ body {
 
 .cars-slider-item {
    width: 100%;
-   height: 500px;
+   height: 550px;
    cursor: pointer;
    display: flex;
    flex-wrap: wrap;
@@ -324,7 +445,7 @@ body {
    display: flex;
    flex-direction: column;
    flex-wrap: wrap;
-   justify-content: space-evenly;
+   justify-content: space-between;
    align-items: center;
 }
 
@@ -334,7 +455,7 @@ body {
    flex-wrap: wrap;
    justify-content: center;
    align-items: center;
-   margin-bottom: 20px;
+   margin-bottom: 15px;
    width: 70%;
 }
 

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SIGNUP HTML</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+  <style>
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      display: -ms-flexbox;
+      display: -webkit-box;
+      display: flex;
+      -ms-flex-align: center;
+      -ms-flex-pack: center;
+      -webkit-box-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      justify-content: center;
+      padding-top: 40px;
+      padding-bottom: 40px;
+      background-color: #534292;
+    }
+
+    .form-signin {
+      width: 100%;
+      max-width: 330px;
+      padding: 15px;
+      margin: 0 auto;
+    }
+
+    .form-signin .checkbox {
+      font-weight: 400;
+    }
+
+    .form-signin .form-control {
+      position: relative;
+      box-sizing: border-box;
+      height: auto;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    .form-signin .form-control:focus {
+      z-index: 2;
+    }
+
+    .form-signin input {
+      margin-bottom: 10px;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  </style>
+
+  <!-- LOGIN -->
+
+
+  <form class="form-signin">
+    <h1 class="h3 mb-3 font-weight-normal">Sign Up</h1>
+    <label for="email" class="sr-only">Email address</label>
+    <input type="email" id="email" class="form-control" placeholder="Email address" required autofocus>
+    <label for="password" class="sr-only">Password</label>
+    <input type="password" id="password" class="form-control" placeholder="Password" required>
+    <label for="nickname" class="sr-only">Nickname</label>
+    <input type="text" id="nickname" class="form-control" placeholder="Nickname" required>
+    <a class="btn btn-lg btn-primary btn-block sign-up">Sign up</a>
+  </form>
+
+  <form action="#" class="form-sign-up">
+    <h1 class="h3 mb-3 font-weight-normal">Sign Up</h1>
+    <div class="form__field">
+      <input type="email" id="email" name="name" placeholder="E-Mail" class="form-control"
+        title="Must contain an E-mail in the format example@site.com" />
+      <span class="form-info">This field must contain an E-mail in the format example@site.com</span>
+      <span class="form-error">There is no such email address.</span>
+    </div>
+    <div class="form__field">
+      <input type="password" id="password" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+        title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters."
+        placeholder="Password" required>
+      <span class="form-info">At least one number and one uppercase and lowercase letter, and at least 8 or more
+        characters.</span>
+    </div>
+    <div class="form__field">
+      <input type="text" id="nickname" class="form-control" pattern=""
+        title="Must be unique."
+        placeholder="Nickname" required>
+      <span class="form-info">At least one number and one uppercase and lowercase letter, and at least 8 or more
+        characters.</span>
+        <span class="form-error">Wrong password entered.</span>
+    </div>
+    <button type="submit" class="btn btn-lg btn-primary btn-block sign-up-btn">Sign up</button>
+    <a href="login.html" class="sign-up">Already have an account? Login here.</a>
+  </form>
+
+  <script>
+    const PORT = 3000;
+
+    // const HOST = process.env.NODE_ENV === 'development' ? `http://localhost:${PORT}` :
+      // 'https://crazyrace.herokuapp.com/';
+    const HOST = 'https://nfs-jsu.herokuapp.com/user/register';
+console.log(HOST);
+    const button = document.querySelector('.sign-up-btn');
+
+
+    button.addEventListener('click', () => {
+   postData(HOST, { 
+  email: document.forms[0].elements[0].value,
+  password: document.forms[0].elements[1].value,
+   name: document.forms[0].elements[2].value })
+  .then(data => {
+    if (data.status === 'ok') {
+      alert('Now you are logged in')
+      window.location.href = 'game.html';
+    } else {
+      alert('Ooops! something wrong :(');
+    }
+    console.log(data); // JSON data parsed by `data.json()` call
+  });
+    })
+
+    async function postData(url, data) {
+  const response = await fetch(url, {
+    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    mode: 'cors', // no-cors, *cors, same-origin
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+      'Content-Type': 'application/json'
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    redirect: 'follow', // manual, *follow, error
+    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    body: JSON.stringify(data) // body data type must match "Content-Type" header
+  });
+  console.log(data)
+  return response.json(); // parses JSON response into native JavaScript objects
+}
+
+
+
+
+/*
+    function signIn() {
+      let data = {
+        email: document.forms[0].elements[0].value,
+        password: document.forms[0].elements[1].value,
+      };
+      console.log(data);
+      let sendData = JSON.stringify(data);
+      console.log(sendData);
+      fetch(`${HOST}`, {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        method: 'POST',
+        body: sendData,
+      }).then((response => response.json()).then(data => console.log(data)));
+      
+      
+      => {
+        
+        console.log('всё работает');
+        window.location.href = 'game.html';
+        
+      });
+    }*/
+  </script>
+
+</body>
+
+</html>
