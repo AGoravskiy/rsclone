@@ -60,6 +60,7 @@ export default class StatsPopup {
 
     this.scene.input.once('pointerdown', () => {
       this.scene.scene.start('Game');
+      console.log('end');
     });
   }
 }

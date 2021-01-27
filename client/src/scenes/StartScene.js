@@ -7,10 +7,21 @@ export default class StartScene extends Phaser.Scene {
   }
 
   create() {
+    
     this.createSounds();
     this.createBackground();
     this.createButtons();
     this.setEvents();
+    // this.style = {
+    //   'background-color': 'lime',
+    //   'width': '220px',
+    //   'height': '100px',
+    //   'font': '48px Arial',
+    //   'font-weight': 'bold',
+    //   'cursor':"pointer",
+    //   'z-index': '10000',
+    // };
+    // this.element = this.add.dom(400, 300, 'div', this.style, 'this');
   }
 
   createSounds() {

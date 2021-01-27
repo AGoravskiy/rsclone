@@ -12,8 +12,11 @@ const config = {
   type: Phaser.AUTO,
   width: 1280,
   height: 720,
-  scene: [
-    BootScene,
+  parent: 'CanvasDiv',
+  dom: {
+    createContainer: true,
+  },
+  scene: [BootScene,
     PreloadScene,
     StartScene,
     SettingsScene,

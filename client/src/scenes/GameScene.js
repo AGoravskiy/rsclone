@@ -5,7 +5,7 @@ import Stats from '../classes/Stats';
 import StatsPanel from '../classes/StatsPanel';
 import StatsPopup from '../classes/StatsPopup';
 
-const LAPS = 5;
+const LAPS = 1;
 const CARS = {
   BLUE: {
     sprite: 'car_blue_1',
@@ -40,6 +40,11 @@ export default class GameScene extends Phaser.Scene {
 
   // метод который вызывается в начале, при старте сцены
   init(data) {
+    if (data.laps) {
+      this.laps = data.laps;
+    } else {
+      this.laps = LAPS;
+    }
     this.mapa = data.map;
     if (data.client) {
       this.client = data.client;
@@ -82,6 +87,9 @@ export default class GameScene extends Phaser.Scene {
   }
 
   create() {
+    this.input.on('gameobjectdown', function () {
+      this.scene.launch('start');
+    });
     this.esc = this.input.keyboard.addKey('ESC');
     this.esc.on('down', function (event) {
       this.scene.pause();
@@ -126,7 +134,7 @@ export default class GameScene extends Phaser.Scene {
         this.enemy.car.setAngle(data.angle);
       });
     }
-    this.stats = new Stats(this, LAPS);
+    this.stats = new Stats(this, this.laps);
     this.StatsPanel = new StatsPanel(this, this.stats);
     this.cameras.main.setBounds(0, 0,
       this.map.tilemap.widthInPixels,
@@ -161,6 +169,8 @@ export default class GameScene extends Phaser.Scene {
     this.stats.onLapComplete();
     if (this.stats.complete) {
       this.StatsPopup = new StatsPopup(this, this.stats);
+      this.scene.pause();
+      this.motor.stop();
     }
   }
 
