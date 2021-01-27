@@ -8,7 +8,9 @@ export default class StartScene extends Phaser.Scene {
   }
   preload() {
     this.load.image('mainMenuBack', '../../assets/design/main-menu-back.png');
-    this.load.addFile(new WebFontFile(this.load, 'Racing Sans One'));
+    this.load.addFile(
+      new WebFontFile(this.load, ['Racing Sans One', 'Oswald'])
+    );
     // this.load.addFile(new WebFontFile(this.load, 'Oswald'));
   }
 
@@ -41,10 +43,52 @@ export default class StartScene extends Phaser.Scene {
   }
 
   createButtons() {
-    const mainMenuTitle = this.add.text(95, 110, 'Main menu', {
+    const menuTitleStyle = {
       fontFamily: '"racing sans one"',
       fontSize: '72px',
-    });
+      fill: '#F3C178',
+    };
+    // const shadow = {
+    //   0, 4, '#0B0500', 4
+    // };
+    const mainMenuTitle = this.add.text(96, 112, 'Main menu', menuTitleStyle);
+    mainMenuTitle.alpha = 0.8;
+    mainMenuTitle.setShadow(0, 4, '#0B0500', 4);
+
+    const menuItemsStyle = {
+      fontFamily: '"Oswald"',
+      fontSize: '36px',
+      fill: '#F3C178',
+      cursor: 'pointer',
+    };
+
+    const resumeBtn = this.add.text(96, 224, 'Resume', menuItemsStyle);
+    resumeBtn.setShadow(0, 4, '#0B0500', 4);
+    resumeBtn.setInteractive();
+
+    const onePlayerBtn = this.add.text(96, 284, 'One player', menuItemsStyle);
+    onePlayerBtn.setShadow(0, 4, '#0B0500', 4);
+    // this.onePlayerBtn.setInteractive();
+
+    const twoPlayerBtn = this.add.text(96, 344, 'Two players', menuItemsStyle);
+    twoPlayerBtn.setShadow(0, 4, '#0B0500', 4);
+    twoPlayerBtn.setInteractive();
+
+    const settingsBtn = this.add.text(96, 404, 'Setting', menuItemsStyle);
+    settingsBtn.setShadow(0, 4, '#0B0500', 4);
+    settingsBtn.setInteractive();
+
+    const statisticsBtn = this.add.text(96, 464, 'Statistics', menuItemsStyle);
+    statisticsBtn.setShadow(0, 4, '#0B0500', 4);
+    statisticsBtn.setInteractive();
+
+    const creditsBtn = this.add.text(96, 524, 'Credits', menuItemsStyle);
+    creditsBtn.setShadow(0, 4, '#0B0500', 4);
+    creditsBtn.setInteractive();
+
+    // resumeBtn.setInteractive();
+    // this.resumeBtn.inputEnabled;
+    // this.resumeBtn.useHandCursor = true;
 
     // const resumeBtn = this.add.text(95, 110, 'Resume', {
     //   fontFamily: '"Oswald"',
@@ -59,49 +103,49 @@ export default class StartScene extends Phaser.Scene {
     //     { font: 'bold 46px Arial', fill: '#FAFAD2', cursor: 'pointer' }
     //   )
     //   .setOrigin(0.5)
-    //   .setInteractive();
+    //
     // // eslint-disable-next-line no-unused-expressions
     // this.resumeBtn.inputEnabled;
     // this.resumeBtn.useHandCursor = true;
 
-    this.onePlayerBtn = this.add
-      .text(
-        this.cameras.main.centerX,
-        this.cameras.main.centerY - 100,
-        'ONE PLAYER',
-        { font: 'bold 46px Arial', fill: '#FAFAD2', cursor: 'pointer' }
-      )
-      .setOrigin(0.5)
-      .setInteractive();
+    // this.onePlayerBtn = this.add
+    //   .text(
+    //     this.cameras.main.centerX,
+    //     this.cameras.main.centerY - 100,
+    //     'ONE PLAYER',
+    //     { font: 'bold 46px Arial', fill: '#FAFAD2', cursor: 'pointer' }
+    //   )
+    //   .setOrigin(0.5)
+    //   .setInteractive();
 
-    this.twoPlayerBtn = this.add
-      .text(
-        this.cameras.main.centerX,
-        this.cameras.main.centerY - 50,
-        'TWO PLAYER',
-        { font: 'bold 46px Arial', fill: '#FAFAD2', cursor: 'pointer' }
-      )
-      .setOrigin(0.5)
-      .setInteractive();
+    // this.twoPlayerBtn = this.add
+    //   .text(
+    //     this.cameras.main.centerX,
+    //     this.cameras.main.centerY - 50,
+    //     'TWO PLAYER',
+    //     { font: 'bold 46px Arial', fill: '#FAFAD2', cursor: 'pointer' }
+    //   )
+    //   .setOrigin(0.5)
+    //   .setInteractive();
 
-    this.settingsBtn = this.add
-      .text(this.cameras.main.centerX, this.cameras.main.centerY, 'SETTINGS', {
-        font: 'bold 46px Arial',
-        fill: '#FAFAD2',
-        cursor: 'pointer',
-      })
-      .setOrigin(0.5)
-      .setInteractive();
+    // this.settingsBtn = this.add
+    //   .text(this.cameras.main.centerX, this.cameras.main.centerY, 'SETTINGS', {
+    //     font: 'bold 46px Arial',
+    //     fill: '#FAFAD2',
+    //     cursor: 'pointer',
+    //   })
+    //   .setOrigin(0.5)
+    //   .setInteractive();
 
-    this.statisticsBtn = this.add
-      .text(
-        this.cameras.main.centerX,
-        this.cameras.main.centerY + 50,
-        'STATISTICS',
-        { font: 'bold 46px Arial', fill: '#FAFAD2', cursor: 'pointer' }
-      )
-      .setOrigin(0.5)
-      .setInteractive();
+    // this.statisticsBtn = this.add
+    //   .text(
+    //     this.cameras.main.centerX,
+    //     this.cameras.main.centerY + 50,
+    //     'STATISTICS',
+    //     { font: 'bold 46px Arial', fill: '#FAFAD2', cursor: 'pointer' }
+    //   )
+    //   .setOrigin(0.5)
+    //   .setInteractive();
   }
 
   setEvents() {
