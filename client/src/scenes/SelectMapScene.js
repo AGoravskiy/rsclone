@@ -11,7 +11,42 @@ export default class SelectMapScene extends Phaser.Scene {
       this.carousel();
       this.quit();
       this.checkBtns();
+      this.createLapsSelectContainer();
     }
+    this.btnRight.addEventListener('click', (event) => {
+      this.lapsCount.textContent = +this.lapsCount.textContent + 1;
+      this.lapsCount.textContent += '';
+      this.laps = +this.lapsCount.textContent;
+    });
+    this.btnLeft.addEventListener('click', (event) => {
+      if (this.lapsCount.textContent > 1) {
+        this.lapsCount.textContent = +this.lapsCount.textContent - 1;
+        this.lapsCount.textContent += '';
+        this.laps = +this.lapsCount.textContent;
+      }
+    });
+  }
+
+  createLapsSelectContainer() {
+    this.lapsContainer = document.createElement('div');
+    this.lapsContainer.classList.add('lapsSelect__container');
+    document.body.style.position = 'relative';
+    document.body.append(this.lapsContainer);
+
+    function addDiv(parent, clas, text) {
+      const div = document.createElement('div');
+      if (text) {
+        div.textContent = text;
+      }
+      div.classList.add(clas);
+      parent.appendChild(div);
+      return div;
+    }
+    this.btnLeft = addDiv(this.lapsContainer, 'btnLeft', '-');
+    this.lapsBlock = addDiv(this.lapsContainer, 'lapsBlock');
+    this.lapsText = addDiv(this.lapsBlock, 'laps', 'Laps');
+    this.lapsCount = addDiv(this.lapsBlock, 'lapsCount', '3');
+    this.btnRight = addDiv(this.lapsContainer, 'btnRight', '+');
   }
 
   createMenu() {
@@ -132,6 +167,7 @@ export default class SelectMapScene extends Phaser.Scene {
   }
 
   startGame(map) {
+    this.lapsContainer.remove();
     this.mapsBg = document.querySelector('.maps-background');
     this.mapsBg.classList.remove('active');
 
@@ -140,6 +176,7 @@ export default class SelectMapScene extends Phaser.Scene {
 
     this.scene.start('SelectCar', {
       client: this.client,
+      laps: this.laps,
       map,
     });
     this.carsBg = document.querySelector('.cars-background');
