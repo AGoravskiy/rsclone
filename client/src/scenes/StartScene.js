@@ -88,6 +88,7 @@ export default class StartScene extends Phaser.Scene {
     this.twoPlayerBtn.on('pointerdown', this.requestGame, this);
     this.settingsBtn.on('pointerdown', this.selectSettings, this);
     this.statisticsBtn.on('pointerdown', this.viewStatistics, this);
+    this.creditsBtn.on('pointerdown', this.viewCredits, this);
   }
 
   viewStatistics() {
@@ -125,6 +126,10 @@ export default class StartScene extends Phaser.Scene {
 
     this.mapsSlider = document.querySelector('.maps-slider-wrapper');
     this.mapsSlider.classList.add('active-block');
+  }
+
+  viewCredits() {
+    this.scene.start('credits');
   }
 
   requestGame() {
