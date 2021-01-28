@@ -48,9 +48,7 @@ export default class StartScene extends Phaser.Scene {
       fontSize: '72px',
       fill: '#F3C178',
     };
-    // const shadow = {
-    //   0, 4, '#0B0500', 4
-    // };
+
     const mainMenuTitle = this.add.text(96, 112, 'Main menu', menuTitleStyle);
     mainMenuTitle.alpha = 0.8;
     mainMenuTitle.setShadow(0, 4, '#0B0500', 4);
