@@ -11,7 +11,6 @@ export default class SelectMapScene extends Phaser.Scene {
       this.carousel();
       this.quit();
       this.checkBtns();
-      console.log('start');
       if (!this.lapsContainer) {
         this.createLapsSelectContainer();
       } else {
@@ -176,10 +175,8 @@ export default class SelectMapScene extends Phaser.Scene {
     this.lapsContainer.style.visibility = 'hidden';
     this.mapsBg = document.querySelector('.maps-background');
     this.mapsBg.classList.remove('active');
-
     this.mapsSlider = document.querySelector('.maps-slider-wrapper');
     this.mapsSlider.classList.remove('active-block');
-
     this.scene.start('SelectCar', {
       client: this.client,
       laps: this.laps,

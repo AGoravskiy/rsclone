@@ -162,6 +162,12 @@ export default class GameScene extends Phaser.Scene {
   onLapComplete(lap) {
     this.stats.onLapComplete();
     if (this.stats.complete) {
+      const statistic = JSON.parse(localStorage.getItem('statistic'));
+      statistic.laps = this.stats.laps;
+      statistic.bestLap = this.stats.timeBestLap.toFixed(2);
+      statistic.averageLap = this.stats.averageLapTime.toFixed(2);
+      statistic.fullTime = this.stats.time.toFixed(2);
+      localStorage.setItem('statistic', JSON.stringify(statistic));
       this.StatsPopup = new StatsPopup(this, this.stats);
       this.scene.pause();
       this.motor.stop();

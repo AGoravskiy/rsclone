@@ -231,6 +231,10 @@ export default class SelectCarScene extends Phaser.Scene {
   }
 
   startGame(car, carProperty, map) {
+    const statistic = JSON.parse(localStorage.getItem('statistic'));
+    statistic.car = carProperty.NAME;
+    statistic.map = map;
+    localStorage.setItem('statistic', JSON.stringify(statistic));
     this.scene.start('Game', {
       client: this.client,
       car,
