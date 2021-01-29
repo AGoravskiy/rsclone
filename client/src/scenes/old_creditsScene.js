@@ -26,13 +26,6 @@ export default class creditsScene extends Phaser.Scene {
   }
 
   createLabels() {
-    const list = [
-      { name: 'Mikalai Kryshchanovich', login: 'ShvetsBy', event: openGithub },
-      { name: 'Aleksej Goravskij', login: 'ShvetsBy', event: openGithub },
-      { name: 'Maxim Andreev', login: 'ShvetsBy', event: openGithub },
-      { name: 'Ivan Shvets', login: 'ShvetsBy', event: openGithub },
-    ];
-
     const menuTitleStyle = {
       fontFamily: '"racing sans one"',
       fontSize: '72px',
@@ -46,41 +39,53 @@ export default class creditsScene extends Phaser.Scene {
       cursor: 'pointer',
     };
 
-    const styleOver = { fill: '#FE5E41' };
-    const spacing = 60;
-
     const mainMenuTitle = this.add.text(96, 112, 'Credits', menuTitleStyle);
     mainMenuTitle.alpha = 0.8;
     mainMenuTitle.setShadow(0, 4, '#0B0500', 4);
 
-    function openGithub(name) {
-      let url = `https://github.com/${name}`;
-      window.location.href = url;
-    }
+    const MikalaiLink = this.add.text(
+      96,
+      284,
+      'Mikalai Kryshchanovich',
+      menuItemsStyle
+    );
+    this.MikalaiLink = MikalaiLink;
+    MikalaiLink.setShadow(0, 4, '#0B0500', 4);
+    MikalaiLink.setInteractive();
+    // MikalaiLink.on('pointerdown', () => {
+    //   console.log('click');
+    // });
+    MikalaiLink.on('pointerover', () => enterButtonHoverState());
+    MikalaiLink.on('pointerout', () => enterButtonRestState());
 
-    let txt = { x: 96, y: 224 };
-    for (let i = 0; i < list.length; i++) {
-      (txt = this.add
-        .text(txt.x, txt.y + spacing, list[i].name, menuItemsStyle)
-        .setOrigin(0))
-        .setShadow(0, 4, '#0B0500', 4)
-        .setInteractive()
-        .on('pointerover', function () {
-          this.setStyle(styleOver);
-        })
-        .on('pointerout', function () {
-          this.setStyle(menuItemsStyle);
-        })
-        .on(
-          'pointerdown',
-          function () {
-            list[i].event(list[i].login);
-          },
-          this
-        );
-    }
+    // enterButtonHoverState() {
+    //   MikalaiLink.setStyle({ fill: 'FE5E41'});
+    // }
+
+    // enterButtonRestState() {
+    //   MikalaiLink.setStyle({ fill: '#F3C178' });
+    // }
+
+    const AleksejLink = this.add.text(
+      96,
+      344,
+      'Aleksej Goravskij',
+      menuItemsStyle
+    );
+    this.AleksejLink = AleksejLink;
+    AleksejLink.setShadow(0, 4, '#0B0500', 4);
+    AleksejLink.setInteractive();
+
+    const MaximLink = this.add.text(96, 404, 'Maxim Andreev', menuItemsStyle);
+    this.MaximLink = MaximLink;
+    MaximLink.setShadow(0, 4, '#0B0500', 4);
+    MaximLink.setInteractive();
+
+    const IvanLink = this.add.text(96, 464, 'Ivan Shvets', menuItemsStyle);
+    this.IvanLink = IvanLink;
+    IvanLink.setShadow(0, 4, '#0B0500', 4);
+    IvanLink.setInteractive();
   }
-
   createBackBtn() {
     // const menuItemsStyle = {
     //     fontFamily: '"Oswald"',
