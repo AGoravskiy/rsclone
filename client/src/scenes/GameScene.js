@@ -5,7 +5,7 @@ import Stats from '../classes/Stats';
 import StatsPanel from '../classes/StatsPanel';
 import StatsPopup from '../classes/StatsPopup';
 
-const LAPS = 1;
+const LAPS = 3;
 const CARS = {
   BLUE: {
     sprite: 'car_blue_1',

@@ -7,7 +7,6 @@ export default class StartScene extends Phaser.Scene {
   }
 
   create() {
-    
     this.createSounds();
     this.createBackground();
     this.createButtons();
@@ -112,6 +111,11 @@ export default class StartScene extends Phaser.Scene {
 
     this.mapsSlider = document.querySelector('.maps-slider-wrapper');
     this.mapsSlider.classList.add('active-block');
+
+    const lapsContainer = document.querySelector('.lapsSelect__container');
+    if (lapsContainer) {
+      lapsContainer.style.visibility = 'visible';
+    }
   }
 
   requestGame() {
