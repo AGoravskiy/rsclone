@@ -26,10 +26,19 @@ export default class creditsScene extends Phaser.Scene {
   }
 
   createLabels() {
+    function openGithub(name) {
+      const url = `https://github.com/${name}`;
+      window.open(url, '_blank');
+    }
+
     const list = [
-      { name: 'Mikalai Kryshchanovich', login: 'ShvetsBy', event: openGithub },
-      { name: 'Aleksej Goravskij', login: 'ShvetsBy', event: openGithub },
-      { name: 'Maxim Andreev', login: 'ShvetsBy', event: openGithub },
+      {
+        name: 'Mikalai Kryshchanovich',
+        login: 'Nicolay-kr',
+        event: openGithub,
+      },
+      { name: 'Aleksej Goravskij', login: 'AGoravskiy', event: openGithub },
+      { name: 'Maxim Andreev', login: 'nAzdAc', event: openGithub },
       { name: 'Ivan Shvets', login: 'ShvetsBy', event: openGithub },
     ];
 
@@ -53,12 +62,7 @@ export default class creditsScene extends Phaser.Scene {
     mainMenuTitle.alpha = 0.8;
     mainMenuTitle.setShadow(0, 4, '#0B0500', 4);
 
-    function openGithub(name) {
-      let url = `https://github.com/${name}`;
-      window.location.href = url;
-    }
-
-    let txt = { x: 96, y: 224 };
+    let txt = { x: 96, y: 192 };
     for (let i = 0; i < list.length; i++) {
       (txt = this.add
         .text(txt.x, txt.y + spacing, list[i].name, menuItemsStyle)
@@ -92,22 +96,39 @@ export default class creditsScene extends Phaser.Scene {
     const buttonBack = this.add.graphics();
     this.buttonBack = buttonBack;
     //shadow
-    buttonBack.fillRect(96, 554, 128, 52);
+    buttonBack.fillRect(96, 544, 128, 52);
     buttonBack.fillStyle(2042936);
     //button
-    buttonBack.fillRect(96, 554, 128, 48);
+    buttonBack.fillRect(96, 544, 128, 48);
     buttonBack.fillStyle(722176, 0.7);
 
-    this.add.text(130, 554, 'Back', {
-      fontFamily: '"Oswald"',
-      fontSize: '36px',
-      fill: '#F3C178',
-      cursor: 'pointer',
-    });
+    this.add
+      .text(130, 544, 'Back', {
+        fontFamily: '"Oswald"',
+        fontSize: '36px',
+        fill: '#F3C178',
+        cursor: 'pointer',
+      })
+      .setInteractive()
+      .on('pointerover', function () {
+        this.setStyle({ fill: '#FE5E41' });
+      })
+      .on('pointerout', function () {
+        this.setStyle({ fill: '#F3C178' });
+      })
+      .on('pointerdown', () => {
+        this.scene.start('Start');
+      });
   }
 
   createSchoolLink() {
-    this.add.image(76, 670, 'logo').setOrigin(0);
+    this.add
+      .image(76, 670, 'logo')
+      .setOrigin(0)
+      .setInteractive()
+      .on('pointerdown', () => {
+        window.open('https://rs.school/', '_blank');
+      });
     this.add.text(344, 680, '2020 Q3', {
       fontFamily: '"Oswald"',
       fontSize: '18px',

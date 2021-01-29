@@ -57,27 +57,27 @@ export default class StartScene extends Phaser.Scene {
     // resumeBtn.inputEnabled;
     // resumeBtn.useHandCursor = true;
 
-    const onePlayerBtn = this.add.text(96, 284, 'One player', menuItemsStyle);
+    const onePlayerBtn = this.add.text(96, 252, 'One player', menuItemsStyle);
     this.onePlayerBtn = onePlayerBtn;
     onePlayerBtn.setShadow(0, 4, '#0B0500', 4);
     onePlayerBtn.setInteractive();
 
-    const twoPlayerBtn = this.add.text(96, 344, 'Two players', menuItemsStyle);
+    const twoPlayerBtn = this.add.text(96, 312, 'Two players', menuItemsStyle);
     this.twoPlayerBtn = twoPlayerBtn;
     twoPlayerBtn.setShadow(0, 4, '#0B0500', 4);
     twoPlayerBtn.setInteractive();
 
-    const settingsBtn = this.add.text(96, 404, 'Settings', menuItemsStyle);
+    const settingsBtn = this.add.text(96, 372, 'Settings', menuItemsStyle);
     this.settingsBtn = settingsBtn;
     settingsBtn.setShadow(0, 4, '#0B0500', 4);
     settingsBtn.setInteractive();
 
-    const statisticsBtn = this.add.text(96, 464, 'Statistics', menuItemsStyle);
+    const statisticsBtn = this.add.text(96, 432, 'Statistics', menuItemsStyle);
     this.statisticsBtn = statisticsBtn;
     statisticsBtn.setShadow(0, 4, '#0B0500', 4);
     statisticsBtn.setInteractive();
 
-    const creditsBtn = this.add.text(96, 524, 'Credits', menuItemsStyle);
+    const creditsBtn = this.add.text(96, 492, 'Credits', menuItemsStyle);
     this.creditsBtn = creditsBtn;
     creditsBtn.setShadow(0, 4, '#0B0500', 4);
     creditsBtn.setInteractive();
