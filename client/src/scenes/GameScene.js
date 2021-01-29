@@ -5,7 +5,7 @@ import Stats from '../classes/Stats';
 import StatsPanel from '../classes/StatsPanel';
 import StatsPopup from '../classes/StatsPopup';
 
-const LAPS = 1;
+const LAPS = 3;
 const CARS = {
   BLUE: {
     sprite: 'car_blue_1',
@@ -159,8 +159,15 @@ export default class GameScene extends Phaser.Scene {
   onLapComplete(lap) {
     this.stats.onLapComplete();
     if (this.stats.complete) {
-      this.statsPopup = new StatsPopup(this, this.stats);
+      const statistic = JSON.parse(localStorage.getItem('statistic'));
+      statistic.laps = this.stats.laps;
+      statistic.bestLap = this.stats.timeBestLap.toFixed(2);
+      statistic.averageLap = this.stats.averageLapTime.toFixed(2);
+      statistic.fullTime = this.stats.time.toFixed(2);
+      localStorage.setItem('statistic', JSON.stringify(statistic));
+      this.StatsPopup = new StatsPopup(this, this.stats);
       this.motor.stop();
+      this.scene.pause();
     }
   }
 

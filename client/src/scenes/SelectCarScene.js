@@ -54,6 +54,7 @@ export default class SelectCarScene extends Phaser.Scene {
   init(data) {
     this.map = data.map;
     this.laps = data.laps;
+    this.lapsContainer = data.lapsContainer;
   }
 
   create() {
@@ -195,6 +196,7 @@ export default class SelectCarScene extends Phaser.Scene {
 
     this.btnPrev.addEventListener('click', () => {
       const carsLeft = Math.abs(this.position) / this.carsWidth;
+
       this.position += carsLeft >= this.sliderToScroll
         ? this.movePosition
         : this.carsLeft * this.carsWidth;
@@ -219,6 +221,7 @@ export default class SelectCarScene extends Phaser.Scene {
     this.quitBtn.textContent = 'QUIT';
     this.wrapper.appendChild(this.quitBtn);
     this.quitBtn.addEventListener('click', () => {
+      this.lapsContainer.style.visibility = 'visible';
       this.carsBg = document.querySelector('.cars-background');
       this.carsBg.classList.remove('active');
 
@@ -235,8 +238,15 @@ export default class SelectCarScene extends Phaser.Scene {
   }
 
   startGame(car, carProperty, map) {
+    const statistic = JSON.parse(localStorage.getItem('statistic'));
+    statistic.car = carProperty.NAME;
+    statistic.map = map;
+    localStorage.setItem('statistic', JSON.stringify(statistic));
     this.scene.start('Game', {
-      client: this.client, car, carProperty, map,
+      client: this.client,
+      car,
+      carProperty,
+      map,
       laps: this.laps,
     });
     localStorage.setItem('map', map);
