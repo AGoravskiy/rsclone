@@ -16,7 +16,8 @@ const config = {
   dom: {
     createContainer: true,
   },
-  scene: [BootScene,
+  scene: [
+    BootScene,
     PreloadScene,
     StartScene,
     SettingsScene,

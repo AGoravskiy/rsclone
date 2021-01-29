@@ -7,7 +7,6 @@ export default class StartScene extends Phaser.Scene {
   }
 
   create() {
-    
     this.createSounds();
     this.createBackground();
     this.createButtons();

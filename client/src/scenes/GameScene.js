@@ -135,7 +135,7 @@ export default class GameScene extends Phaser.Scene {
       });
     }
     this.stats = new Stats(this, this.laps);
-    this.StatsPanel = new StatsPanel(this, this.stats);
+    this.statsPanel = new StatsPanel(this, this.stats);
     this.cameras.main.setBounds(0, 0,
       this.map.tilemap.widthInPixels,
       this.map.tilemap.heightInPixels);
@@ -147,15 +147,6 @@ export default class GameScene extends Phaser.Scene {
         this.player.slide();
       }
     });
-    // setEvents() {
-    //   // this.onePlayerBtn.on('pointerdown', this.selectMap, this);
-    //   // this.twoPlayerBtn.on('pointerdown', this.requestGame, this);
-    //   // this.settingsBtn.on('pointerdown', this.selectSettings, this);
-    //   // this.statisticsBtn.on('pointerdown', this.viewStatistics, this);
-    //   this.scene.cursors.left.isDown{
-    //     console.log('press left');
-    //   }
-    // }
   }
 
   soundPlay() {
@@ -168,8 +159,7 @@ export default class GameScene extends Phaser.Scene {
   onLapComplete(lap) {
     this.stats.onLapComplete();
     if (this.stats.complete) {
-      this.StatsPopup = new StatsPopup(this, this.stats);
-      this.scene.pause();
+      this.statsPopup = new StatsPopup(this, this.stats);
       this.motor.stop();
     }
   }
@@ -177,7 +167,7 @@ export default class GameScene extends Phaser.Scene {
   // вызывается много раз в секунду обновляя состояние сцены
   update(time, dt) {
     this.stats.update(dt);
-    this.StatsPanel.render();
+    this.statsPanel.render();
     this.player.move();
     this.sync();
   }

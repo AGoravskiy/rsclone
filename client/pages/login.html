@@ -38,7 +38,7 @@
       border-radius: 5px;
       width: 500px;
       text-align: center;
-      color:white;
+      color: white;
     }
 
     .form__field {
@@ -107,29 +107,54 @@
       <p class="form-error email-error">There is no such email address</p>
     </div>
     <div class="form__field">
-      <input type="password" id="password" class="form-control"
-        placeholder="Password" required>
-        <p class="form-error password-error">Wrong password entered</p>
+      <input type="password" id="password" class="form-control" placeholder="Password" required>
+      <p class="form-error password-error">Wrong password entered</p>
     </div>
     <button type="submit" class="btn btn-lg btn-primary btn-block sign-in-btn">Sign in</button>
     <a href="signup.html" class="sign-up">You don't have an account? Register here.</a>
   </form>
 
   <script>
+localStorage.clear();
+    
+function getCookie(cname) {
+  const name = `${cname}=`;
+  const decodedCookie = decodeURIComponent(document.cookie);
+  const ca = decodedCookie.split(';');
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) === ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) === 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return '';
+}
+
+
     // const PORT = 3000;
 
     // const HOST = process.env.NODE_ENV === 'development' ? `http://localhost:${PORT}` :
     // 'https://crazyrace.herokuapp.com/';
     'https://nfs-jsu.herokuapp.com/statistics';
-/*
-    const map {
-      map: '',
-      car: '',
-      nickname: '',
-      'best lap': num,
-      'average laps': num
-    }
-    */
+    /*
+        const map {
+          map: '',
+          car: '',
+          nickname: '',
+          'best lap': num,
+          'average laps': num
+        }
+    console.log(form);
+          console.log(mail.validity);
+          console.log(mail.value);
+          console.log(password.value);
+          console.log(mail.value.length);
+          console.log(password.value.length);
+
+        */
     const HOST = 'https://nfs-jsu.herokuapp.com/user/login';
     const form = document.querySelector('.form-sign-in');
     const signInButton = document.querySelector('.sign-in-btn');
@@ -142,19 +167,16 @@
 
     form.addEventListener('submit', function (event) {
       event.preventDefault();
-
-      console.log(form);
-      console.log(mail.validity);
-      console.log(mail.value);
-      console.log(password.value);
-      console.log(mail.value.length);
-      console.log(password.value.length);
+      localStorage.setItem('email', document.forms[0].elements[0].value);
       postData(HOST, {
           email: document.forms[0].elements[0].value,
           password: document.forms[0].elements[1].value,
         })
         .then(data => {
-          if (data.status === 'ok') {
+          if (data.code === 200) {
+            console.log(data);
+            localStorage.setItem('refreshToken', data.refreshToken);
+            localStorage.setItem('token', data.token);
             window.location.href = 'game.html';
           } else if (data.status === 'fail email') {
             alert('There is no such email address')
@@ -167,7 +189,6 @@
             // emailErr.classList.add('active');
             alert(data.message);
           }
-
           console.log(data); // JSON data parsed by `data.json()` call
         });
     })

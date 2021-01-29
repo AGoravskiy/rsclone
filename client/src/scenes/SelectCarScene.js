@@ -1,3 +1,4 @@
+/* eslint-disable object-property-newline */
 import Phaser from 'phaser';
 import Client from '../classes/Client';
 
@@ -238,5 +239,8 @@ export default class SelectCarScene extends Phaser.Scene {
       client: this.client, car, carProperty, map,
       laps: this.laps,
     });
+    localStorage.setItem('map', map);
+    localStorage.setItem('car', car);
+    localStorage.setItem('laps', this.laps);
   }
 }

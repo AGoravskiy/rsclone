@@ -1,3 +1,20 @@
+async function postStat(url, data) {
+  const response = await fetch(url, {
+    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    mode: 'cors', // no-cors, *cors, same-origin
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+      'Content-Type': 'application/json',
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    redirect: 'follow', // manual, *follow, error
+    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    body: JSON.stringify(data), // body data type must match "Content-Type" header
+  });
+  return response.json(); // parses JSON response into native JavaScript objects
+}
+
 export default class StatsPopup {
   constructor(scene, stats) {
     this.scene = scene;
@@ -59,8 +76,23 @@ export default class StatsPopup {
       .setScrollFactor(0);
 
     this.scene.input.once('pointerdown', () => {
-      this.scene.scene.start('Game');
-      console.log('end');
+      this.scene.scene.start('Start');
     });
   }
 }
+
+/*
+postStatistics() {
+    this.statistics = {
+      map: localStorage.getItem('map'),
+      car: localStorage.getItem('car'),
+      laps: localStorage.getItem('laps'),
+      time: this.stats.time.toFixed(2),
+      bestLapTime: this.stats.timeBestLap,
+      date: new Date(),
+    };
+    console.log(this.statistics);
+    this.host = 'https://nfs-jsu.herokuapp.com/submit-game';
+    postStat(this.host, this.statistics).then((data) => console.log(data));
+  }
+  */
