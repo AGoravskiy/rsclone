@@ -50,6 +50,8 @@ export default class StartScene extends Phaser.Scene {
       cursor: 'pointer',
     };
 
+    const styleOver = { fill: '#FE5E41' };
+
     // const resumeBtn = this.add.text(96, 224, 'Resume', menuItemsStyle);
     // this.resumeBtn = resumeBtn;
     // resumeBtn.setShadow(0, 4, '#0B0500', 4);
@@ -60,27 +62,68 @@ export default class StartScene extends Phaser.Scene {
     const onePlayerBtn = this.add.text(96, 252, 'One player', menuItemsStyle);
     this.onePlayerBtn = onePlayerBtn;
     onePlayerBtn.setShadow(0, 4, '#0B0500', 4);
-    onePlayerBtn.setInteractive();
+    onePlayerBtn
+      .setInteractive()
+      .on('pointerover', function () {
+        this.setStyle(styleOver);
+      })
+      .on('pointerout', function () {
+        this.setStyle(menuItemsStyle);
+      });
 
     const twoPlayerBtn = this.add.text(96, 312, 'Two players', menuItemsStyle);
     this.twoPlayerBtn = twoPlayerBtn;
     twoPlayerBtn.setShadow(0, 4, '#0B0500', 4);
-    twoPlayerBtn.setInteractive();
+    twoPlayerBtn
+      .setInteractive()
+      .on('pointerover', function () {
+        this.setStyle(styleOver);
+      })
+      .on('pointerout', function () {
+        this.setStyle(menuItemsStyle)
+          .on('pointerover', function () {
+            this.setStyle(styleOver);
+          })
+          .on('pointerout', function () {
+            this.setStyle(menuItemsStyle);
+          });
+      });
 
     const settingsBtn = this.add.text(96, 372, 'Settings', menuItemsStyle);
     this.settingsBtn = settingsBtn;
     settingsBtn.setShadow(0, 4, '#0B0500', 4);
-    settingsBtn.setInteractive();
+    settingsBtn
+      .setInteractive()
+      .on('pointerover', function () {
+        this.setStyle(styleOver);
+      })
+      .on('pointerout', function () {
+        this.setStyle(menuItemsStyle);
+      });
 
     const statisticsBtn = this.add.text(96, 432, 'Statistics', menuItemsStyle);
     this.statisticsBtn = statisticsBtn;
     statisticsBtn.setShadow(0, 4, '#0B0500', 4);
-    statisticsBtn.setInteractive();
+    statisticsBtn
+      .setInteractive()
+      .on('pointerover', function () {
+        this.setStyle(styleOver);
+      })
+      .on('pointerout', function () {
+        this.setStyle(menuItemsStyle);
+      });
 
     const creditsBtn = this.add.text(96, 492, 'Credits', menuItemsStyle);
     this.creditsBtn = creditsBtn;
     creditsBtn.setShadow(0, 4, '#0B0500', 4);
-    creditsBtn.setInteractive();
+    creditsBtn
+      .setInteractive()
+      .on('pointerover', function () {
+        this.setStyle(styleOver);
+      })
+      .on('pointerout', function () {
+        this.setStyle(menuItemsStyle);
+      });
   }
 
   setEvents() {
