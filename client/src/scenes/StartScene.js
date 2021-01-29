@@ -93,13 +93,6 @@ export default class StartScene extends Phaser.Scene {
 
   viewStatistics() {
     this.scene.start('Statistics');
-    this.statOverlay = document.querySelector('.stat-overlay');
-    this.statOverlay.classList.add('active');
-
-    this.statBg = document.querySelector('.stat-background');
-    this.statBg.classList.add('active');
-    this.statTable = document.querySelector('.stat-table');
-    this.statTable.classList.add('active');
   }
 
   selectSettings() {
@@ -126,6 +119,11 @@ export default class StartScene extends Phaser.Scene {
 
     this.mapsSlider = document.querySelector('.maps-slider-wrapper');
     this.mapsSlider.classList.add('active-block');
+
+    const lapsContainer = document.querySelector('.lapsSelect__container');
+    if (lapsContainer) {
+      lapsContainer.style.visibility = 'visible';
+    }
   }
 
   viewCredits() {

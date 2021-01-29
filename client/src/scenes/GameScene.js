@@ -4,8 +4,29 @@ import Player from '../classes/Player';
 import Stats from '../classes/Stats';
 import StatsPanel from '../classes/StatsPanel';
 import StatsPopup from '../classes/StatsPopup';
+import getDate from '../../assets/sripts/functions';
 
-const LAPS = 1;
+async function postStat(url, email, data) {
+  const response = await fetch(url, {
+    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    mode: 'no-cors', // no-cors, *cors, same-origin
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+      'Content-Type': 'application/json',
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    redirect: 'follow', // manual, *follow, error
+    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    body: {
+      email,
+      game: JSON.stringify(data),
+    }, // body data type must match "Content-Type" header
+  });
+  return response.json(); // parses JSON response into native JavaScript objects
+}
+
+const LAPS = 3;
 const CARS = {
   BLUE: {
     sprite: 'car_blue_1',
@@ -56,6 +77,11 @@ export default class GameScene extends Phaser.Scene {
       this.carmodel = data.car;
     }
     this.cursors = this.input.keyboard.createCursorKeys();
+    this.w = this.input.keyboard.addKey('W');
+    this.s = this.input.keyboard.addKey('S');
+    this.a = this.input.keyboard.addKey('A');
+    this.d = this.input.keyboard.addKey('D');
+    this.link = 'https://nfs-jsu.herokuapp.com/submit-game';
   }
 
   /*
@@ -106,8 +132,11 @@ export default class GameScene extends Phaser.Scene {
     this.motor = this.sound.add('motor');
     this.motor.loop = true;
     this.keyUp = this.input.keyboard.addKey('up');
+    this.localVolume = +localStorage.getItem('volume');
     this.keyUp.on('down', function (event) {
-      this.motor.play();
+      this.motor.play({
+        volume: this.localVolume * 0.001,
+      });
     }, this);
     this.keyUp.on('up', function (event) {
       this.motor.stop();
@@ -128,7 +157,7 @@ export default class GameScene extends Phaser.Scene {
       });
     }
     this.stats = new Stats(this, this.laps);
-    this.StatsPanel = new StatsPanel(this, this.stats);
+    this.statsPanel = new StatsPanel(this, this.stats);
     this.cameras.main.setBounds(0, 0,
       this.map.tilemap.widthInPixels,
       this.map.tilemap.heightInPixels);
@@ -140,21 +169,11 @@ export default class GameScene extends Phaser.Scene {
         this.player.slide();
       }
     });
-    // setEvents() {
-    //   // this.onePlayerBtn.on('pointerdown', this.selectMap, this);
-    //   // this.twoPlayerBtn.on('pointerdown', this.requestGame, this);
-    //   // this.settingsBtn.on('pointerdown', this.selectSettings, this);
-    //   // this.statisticsBtn.on('pointerdown', this.viewStatistics, this);
-    //   this.scene.cursors.left.isDown{
-    //     console.log('press left');
-    //   }
-    // }
   }
 
   soundPlay() {
-    this.localVolume = +localStorage.getItem('volume');
     this.sound.play('game', {
-      volume: this.localVolume * 0.01,
+      volume: this.localVolume * 0.005,
       loop: true,
     });
   }
@@ -163,15 +182,19 @@ export default class GameScene extends Phaser.Scene {
     this.stats.onLapComplete();
     if (this.stats.complete) {
       this.StatsPopup = new StatsPopup(this, this.stats);
-      this.scene.pause();
       this.motor.stop();
+      console.log(this.getStat());
+      console.log(this.link);
+      this.email = localStorage.getItem('email');
+      console.log(this.email);
+      postStat(this.link, this.email, this.getStat()).then((data) => console.log(data));
     }
   }
 
   // вызывается много раз в секунду обновляя состояние сцены
   update(time, dt) {
     this.stats.update(dt);
-    this.StatsPanel.render();
+    this.statsPanel.render();
     this.player.move();
     this.sync();
   }
@@ -184,5 +207,16 @@ export default class GameScene extends Phaser.Scene {
         angle: this.player.car.angle,
       });
     }
+  }
+
+  getStat() {
+    const statistics = JSON.parse(localStorage.getItem('statistics'));
+    statistics.laps = `${this.stats.laps}`;
+    statistics.bestLap = this.stats.timeBestLap.toFixed(2);
+    statistics.averageLap = this.stats.averageLapTime.toFixed(2);
+    statistics.fullTime = this.stats.time.toFixed(2);
+    statistics.date = `${getDate()}`;
+    localStorage.setItem('statistics', JSON.stringify(statistics));
+    return statistics;
   }
 }

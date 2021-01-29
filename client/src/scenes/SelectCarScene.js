@@ -1,40 +1,46 @@
+/* eslint-disable object-property-newline */
 import Phaser from 'phaser';
 import Client from '../classes/Client';
 
 const carProperty = {
   car_black_1: {
-    MAXSPEED: 4,
-    ACCELERATION: 0.6,
-    SLIDE_ANGLE: 2.5,
-    NITROGEN: 1.4,
+    MAXSPEED: 12,
+    ACCELERATION: 0.05,
+    SLIDE_ANGLE: 3,
+    NITROGEN: 1.2,
+    SLOWDOWN: 10,
     NAME: 'Koenigsegg Agera RS',
   },
   car_blue_1: {
-    MAXSPEED: 5,
-    ACCELERATION: 0.9,
-    SLIDE_ANGLE: 3,
+    MAXSPEED: 10,
+    ACCELERATION: 0.1,
+    SLIDE_ANGLE: 4,
     NITROGEN: 1.5,
+    SLOWDOWN: 10,
     NAME: 'Bugatti Veyron Super Sport',
-  },
-  car_red_1: {
-    MAXSPEED: 6,
-    ACCELERATION: 1.2,
-    SLIDE_ANGLE: 3.5,
-    NITROGEN: 1.6,
-    NAME: 'Hennessey Venom GT',
   },
   car_green_1: {
     MAXSPEED: 7,
-    ACCELERATION: 1.5,
+    ACCELERATION: 0.2,
     SLIDE_ANGLE: 4,
-    NITROGEN: 1.7,
+    NITROGEN: 1.4,
+    SLOWDOWN: 10,
     NAME: 'SSC Ultimate Aero TT',
   },
+  car_red_1: {
+    MAXSPEED: 10,
+    ACCELERATION: 0.01,
+    SLIDE_ANGLE: 4,
+    NITROGEN: 1,
+    SLOWDOWN: 20,
+    NAME: 'Hennessey Venom GT',
+  },
   car_yellow_1: {
-    MAXSPEED: 8,
-    ACCELERATION: 1.8,
-    SLIDE_ANGLE: 4.5,
-    NITROGEN: 1.8,
+    MAXSPEED: 5,
+    ACCELERATION: 0.005,
+    SLIDE_ANGLE: 1,
+    NITROGEN: 3,
+    SLOWDOWN: 30,
     NAME: 'McLaren F1',
   },
 };
@@ -48,6 +54,7 @@ export default class SelectCarScene extends Phaser.Scene {
   init(data) {
     this.map = data.map;
     this.laps = data.laps;
+    this.lapsContainer = data.lapsContainer;
   }
 
   create() {
@@ -85,7 +92,7 @@ export default class SelectCarScene extends Phaser.Scene {
       carProps.classList.add('car-parameters');
 
       function createProp(mainDiv, prop, max, name) {
-        const propPercent = (prop / max) * 100;
+        const propPercent = Math.round((prop / max) * 100);
         const carProp = document.createElement('div');
         carProp.classList.add('car-parameter-container');
         const carPropName = document.createElement('p');
@@ -116,7 +123,8 @@ export default class SelectCarScene extends Phaser.Scene {
       createProp(carProps, carProperty[carModel].MAXSPEED, 10, 'MAX SPEED');
       createProp(carProps, carProperty[carModel].ACCELERATION, 2, 'ACCELERATION');
       createProp(carProps, carProperty[carModel].SLIDE_ANGLE, 5, 'ROTATION');
-      createProp(carProps, carProperty[carModel].NITROGEN, 2, 'NITROGEN OXIDE');
+      createProp(carProps, carProperty[carModel].NITROGEN, 3, 'NITROGEN OXIDE');
+      createProp(carProps, carProperty[carModel].SLOWDOWN, 100, 'SLOWDOWN');
 
       carItem.append(imageContainer);
       carItem.append(carProps);
@@ -188,6 +196,7 @@ export default class SelectCarScene extends Phaser.Scene {
 
     this.btnPrev.addEventListener('click', () => {
       const carsLeft = Math.abs(this.position) / this.carsWidth;
+
       this.position += carsLeft >= this.sliderToScroll
         ? this.movePosition
         : this.carsLeft * this.carsWidth;
@@ -212,6 +221,7 @@ export default class SelectCarScene extends Phaser.Scene {
     this.quitBtn.textContent = 'QUIT';
     this.wrapper.appendChild(this.quitBtn);
     this.quitBtn.addEventListener('click', () => {
+      this.lapsContainer.style.visibility = 'visible';
       this.carsBg = document.querySelector('.cars-background');
       this.carsBg.classList.remove('active');
 
@@ -228,8 +238,15 @@ export default class SelectCarScene extends Phaser.Scene {
   }
 
   startGame(car, carProperty, map) {
+    const statistics = JSON.parse(localStorage.getItem('statistics'));
+    statistics.car = carProperty.NAME;
+    statistics.map = map;
+    localStorage.setItem('statistics', JSON.stringify(statistics));
     this.scene.start('Game', {
-      client: this.client, car, carProperty, map,
+      client: this.client,
+      car,
+      carProperty,
+      map,
       laps: this.laps,
     });
   }

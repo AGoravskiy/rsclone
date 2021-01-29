@@ -11,20 +11,12 @@ export default class SelectMapScene extends Phaser.Scene {
       this.carousel();
       this.quit();
       this.checkBtns();
-      this.createLapsSelectContainer();
-    }
-    this.btnRight.addEventListener('click', (event) => {
-      this.lapsCount.textContent = +this.lapsCount.textContent + 1;
-      this.lapsCount.textContent += '';
-      this.laps = +this.lapsCount.textContent;
-    });
-    this.btnLeft.addEventListener('click', (event) => {
-      if (this.lapsCount.textContent > 1) {
-        this.lapsCount.textContent = +this.lapsCount.textContent - 1;
-        this.lapsCount.textContent += '';
-        this.laps = +this.lapsCount.textContent;
+      if (!this.lapsContainer) {
+        this.createLapsSelectContainer();
+      } else {
+        this.lapsContainer.style.visibility = 'visiable';
       }
-    });
+    }
   }
 
   createLapsSelectContainer() {
@@ -47,6 +39,18 @@ export default class SelectMapScene extends Phaser.Scene {
     this.lapsText = addDiv(this.lapsBlock, 'laps', 'Laps');
     this.lapsCount = addDiv(this.lapsBlock, 'lapsCount', '3');
     this.btnRight = addDiv(this.lapsContainer, 'btnRight', '+');
+    this.btnRight.addEventListener('click', (event) => {
+      this.lapsCount.textContent = +this.lapsCount.textContent + 1;
+      this.lapsCount.textContent += '';
+      this.laps = +this.lapsCount.textContent;
+    });
+    this.btnLeft.addEventListener('click', (event) => {
+      if (this.lapsCount.textContent > 1) {
+        this.lapsCount.textContent = +this.lapsCount.textContent - 1;
+        this.lapsCount.textContent += '';
+        this.laps = +this.lapsCount.textContent;
+      }
+    });
   }
 
   createMenu() {
@@ -157,6 +161,7 @@ export default class SelectMapScene extends Phaser.Scene {
     this.quitBtn.textContent = 'QUIT';
     this.wrapper.appendChild(this.quitBtn);
     this.quitBtn.addEventListener('click', () => {
+      this.lapsContainer.style.visibility = 'hidden';
       this.mapsBg = document.querySelector('.maps-background');
       this.mapsBg.classList.remove('active');
 
@@ -166,17 +171,16 @@ export default class SelectMapScene extends Phaser.Scene {
     });
   }
 
-  startGame(map) {
-    this.lapsContainer.remove();
+  startGame(map, container = this.lapsContainer) {
+    this.lapsContainer.style.visibility = 'hidden';
     this.mapsBg = document.querySelector('.maps-background');
     this.mapsBg.classList.remove('active');
-
     this.mapsSlider = document.querySelector('.maps-slider-wrapper');
     this.mapsSlider.classList.remove('active-block');
-
     this.scene.start('SelectCar', {
       client: this.client,
       laps: this.laps,
+      lapsContainer: container,
       map,
     });
     this.carsBg = document.querySelector('.cars-background');
