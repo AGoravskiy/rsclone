@@ -238,10 +238,10 @@ export default class SelectCarScene extends Phaser.Scene {
   }
 
   startGame(car, carProperty, map) {
-    const statistic = JSON.parse(localStorage.getItem('statistic'));
-    statistic.car = carProperty.NAME;
-    statistic.map = map;
-    localStorage.setItem('statistic', JSON.stringify(statistic));
+    const statistics = JSON.parse(localStorage.getItem('statistics'));
+    statistics.car = carProperty.NAME;
+    statistics.map = map;
+    localStorage.setItem('statistics', JSON.stringify(statistics));
     this.scene.start('Game', {
       client: this.client,
       car,
@@ -249,8 +249,5 @@ export default class SelectCarScene extends Phaser.Scene {
       map,
       laps: this.laps,
     });
-    localStorage.setItem('map', map);
-    localStorage.setItem('car', car);
-    localStorage.setItem('laps', this.laps);
   }
 }

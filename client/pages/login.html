@@ -176,7 +176,7 @@ function getCookie(cname) {
         .then(data => {
           if (data.code === 200) {
             console.log(data);
-            localStorage.setItem('statistic', JSON.stringify(statistics));
+            localStorage.setItem('statistics', JSON.stringify(statistics));
             localStorage.setItem('refreshToken', data.refreshToken);
             localStorage.setItem('token', data.token);
             window.location.href = 'game.html';

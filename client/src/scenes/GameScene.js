@@ -4,6 +4,27 @@ import Player from '../classes/Player';
 import Stats from '../classes/Stats';
 import StatsPanel from '../classes/StatsPanel';
 import StatsPopup from '../classes/StatsPopup';
+import getDate from '../../assets/sripts/functions';
+
+async function postStat(url, email, data) {
+  const response = await fetch(url, {
+    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    mode: 'no-cors', // no-cors, *cors, same-origin
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+      'Content-Type': 'application/json',
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    redirect: 'follow', // manual, *follow, error
+    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    body: {
+      email,
+      game: JSON.stringify(data),
+    }, // body data type must match "Content-Type" header
+  });
+  return response.json(); // parses JSON response into native JavaScript objects
+}
 
 const LAPS = 3;
 const CARS = {
@@ -60,6 +81,7 @@ export default class GameScene extends Phaser.Scene {
     this.s = this.input.keyboard.addKey('S');
     this.a = this.input.keyboard.addKey('A');
     this.d = this.input.keyboard.addKey('D');
+    this.link = 'https://nfs-jsu.herokuapp.com/submit-game';
   }
 
   /*
@@ -159,15 +181,13 @@ export default class GameScene extends Phaser.Scene {
   onLapComplete(lap) {
     this.stats.onLapComplete();
     if (this.stats.complete) {
-      const statistic = JSON.parse(localStorage.getItem('statistic'));
-      statistic.laps = this.stats.laps;
-      statistic.bestLap = this.stats.timeBestLap.toFixed(2);
-      statistic.averageLap = this.stats.averageLapTime.toFixed(2);
-      statistic.fullTime = this.stats.time.toFixed(2);
-      localStorage.setItem('statistic', JSON.stringify(statistic));
       this.StatsPopup = new StatsPopup(this, this.stats);
       this.motor.stop();
-      this.scene.pause();
+      console.log(this.getStat());
+      console.log(this.link);
+      this.email = localStorage.getItem('email');
+      console.log(this.email);
+      postStat(this.link, this.email, this.getStat()).then((data) => console.log(data));
     }
   }
 
@@ -187,5 +207,16 @@ export default class GameScene extends Phaser.Scene {
         angle: this.player.car.angle,
       });
     }
+  }
+
+  getStat() {
+    const statistics = JSON.parse(localStorage.getItem('statistics'));
+    statistics.laps = `${this.stats.laps}`;
+    statistics.bestLap = this.stats.timeBestLap.toFixed(2);
+    statistics.averageLap = this.stats.averageLapTime.toFixed(2);
+    statistics.fullTime = this.stats.time.toFixed(2);
+    statistics.date = `${getDate()}`;
+    localStorage.setItem('statistics', JSON.stringify(statistics));
+    return statistics;
   }
 }
