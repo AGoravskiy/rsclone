@@ -49,6 +49,13 @@ export default class StatsPopup {
     )
       .setOrigin(0.5)
       .setScrollFactor(0);
+    this.averageTime = this.scene.add.text(
+      this.scene.cameras.main.centerX,
+      this.scene.cameras.main.centerY + 100,
+      `Averege time of lap: ${this.stats.averageLapTime.toFixed(2)}`, style,
+    )
+      .setOrigin(0.5)
+      .setScrollFactor(0);
 
     this.text = this.scene.add.text(
       this.scene.cameras.main.centerX,

@@ -71,8 +71,14 @@ body {
   <script>
 
      const button = document.querySelector('.sign-up-btn');
+     const namePlayer = document.querySelector('#name');
+     const statistic = {};
      button.addEventListener('click', () => {
-        window.location.href = 'game.html'
+        window.location.href = 'game.html';
+        statistic.name = namePlayer.value;
+        localStorage.setItem('statistic', JSON.stringify(statistic));
+
+
      })
      
   </script>
