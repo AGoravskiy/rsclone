@@ -11,6 +11,7 @@
     integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
   </script>
   <link rel="stylesheet" href="../assets/styles/style.css">
+  <script src="../assets/sripts/refreshToken.js"></script>
 </head>
 
 <body>
@@ -89,48 +90,20 @@
 
   <!-- СТАТИСТИКА -->
 
-  <div class="stat-background">
+  <div class="list-statistics">
+    <div class="select-maps">
+    <select name="parameters" id="maps-names">
+       <option class="map-name" value="adelaidemap">Adelaide</option>
+       <option class="map-name" value="algarvemap">Algarve</option>
+       <option class="map-name" value="brandshatchmap">Brandshatch</option>
+       <option class="map-name" value="catalunyamap">Catalunya</option>
+       <option class="map-name" value="detroitmap">Detroit</option>
+    </select>
+ </div>
+ 
+ <div class="statistics-results"></div>
+</div>
 
-  </div>
-
-  <div class="stat-overlay">
-
-  </div>
-
-
-  <div class="stat-table">
-    <table class="table table-success table-striped">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Handle</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td colspan="2">Larry the Bird</td>
-          <td>@twitter</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <button type="button" class="btn btn-primary quit-btn">Quit</button>
-    </div>
 </body>
 
 </html>

@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-operators */
 /* eslint-disable no-underscore-dangle */
 const DIRECTIONS = Object.freeze({
   BACKWARD: -1,
@@ -28,9 +29,9 @@ export default class Player {
   get direction() {
     let direction = DIRECTIONS.NONE;
 
-    if (this.scene.cursors.up.isDown) {
+    if (this.scene.cursors.up.isDown || this.scene.w.isDown) {
       direction = DIRECTIONS.FORWARD;
-    } else if (this.scene.cursors.down.isDown) {
+    } else if (this.scene.cursors.down.isDown || this.scene.s.isDown) {
       direction = DIRECTIONS.BACKWARD;
     }
     return direction;
@@ -46,17 +47,37 @@ export default class Player {
     return nitro;
   }
 
+  get slowdown() {
+    let slowdown = 1;
+    if (this.scene.cursors.space.isDown) {
+      slowdown = this.carProperty.SLOWDOWN;
+    } else {
+      slowdown = 1;
+    }
+    // console.log(slowdown);
+    return slowdown;
+  }
+
   get velocity() {
     const speed = Math.abs(this._velocity);
     const max = this.getMaxSpeed();
     if (this.direction && speed < max) {
-      this._velocity += this.carProperty.ACCELERATION * this.nitro * Math.sign(this.direction);
-    } else if ((this.direction && speed > max)
-         || (!this.direction && speed > 0)) {
-      if (speed > 0.7) {
-        this._velocity -= this.carProperty.ACCELERATION * this.nitro * Math.sign(this._velocity);
-      } else {
+      this._velocity += this.carProperty.ACCELERATION
+      / this.slowdown
+      * this.nitro
+      * Math.sign(this.direction);
+    } else if (this.direction && speed > max) {
+      this._velocity -= this.carProperty.ACCELERATION
+      / this.slowdown
+      * this.nitro
+      * Math.sign(this.direction);
+    } else if (!this.direction && speed > 0) {
+      if (speed < 0.3) {
         this._velocity = 0;
+      } else {
+        this._velocity -= this.carProperty.ACCELERATION * 0.1
+        * this.slowdown
+        * Math.sign(this._velocity);
       }
     }
     return this._velocity;
@@ -64,18 +85,16 @@ export default class Player {
 
   get turn() {
     let turn = TURNS.NONE;
-    if (this.scene.cursors.left.isDown) {
+    if (this.scene.cursors.left.isDown || this.scene.a.isDown) {
       turn = TURNS.LEFT;
-    } else if (this.scene.cursors.right.isDown) {
+    } else if (this.scene.cursors.right.isDown || this.scene.d.isDown) {
       turn = TURNS.RIGHT;
     }
-
     return turn;
   }
 
   get angle() {
-    // eslint-disable-next-line no-mixed-operators
-    return this.car.angle + this.turn * this.nitro * this.carProperty.MAXSPEED / 2;
+    return this.car.angle + this.turn * this.nitro * this.carProperty.SLIDE_ANGLE;
   }
 
   getVelocityFromAngle() {

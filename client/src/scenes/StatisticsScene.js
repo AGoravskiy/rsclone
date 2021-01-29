@@ -8,70 +8,30 @@ export default class Statistics extends Phaser.Scene {
   }
 
   create() {
-    this.setEvents();
-    this.changeVolume();
-    this.changeLanguage();
-    this.changeText();
+    this.createModal();
+    this.quit();
   }
 
-  setEvents() {
-    this.quitBtn = document.querySelector('.quit-btn');
-    this.quitBtn.addEventListener('click', () => {
-      this.quit();
-    });
-  }
+  createModal() {
+    this.body = document.querySelector('body');
+    this.overlayModalStat = document.createElement('div');
+    this.overlayModalStat.classList.add('overlay-statistics');
+    this.body.appendChild(this.overlayModalStat);
 
-  changeVolume() {
-    this.slider = document.getElementById('myRange');
-    output.innerHTML = localStorage.getItem('volume') || '0';
-    this.slider.value = localStorage.getItem('volume') || '0';
-    this.slider.oninput = function () {
-      localStorage.setItem('volume', this.value);
-      output.innerHTML = this.value;
-    };
-  }
-
-  changeLanguage() {
-    this.selectLang = document.querySelector('.language-parameters');
-    this.selectLang.addEventListener('change', () => {
-      localStorage.setItem('language', this.selectLang.value);
-      this.changeText();
-    });
-  }
-
-  changeText() {
-    this.lang = localStorage.getItem('language');
-    this.firstOption = document.querySelector('.first-parameters-in-lang');
-    this.textLang = document.querySelector('.language-text');
-    this.textVolume = document.querySelector('.volume-text');
-    this.textBtn = document.querySelector('.quit-btn');
-    if (this.lang === 'russian') {
-      this.textLang.innerHTML = 'Язык:';
-      this.textVolume.innerHTML = 'Громкость:';
-      this.textBtn.innerHTML = 'Выйти:';
-      this.firstOption.text = 'Выберите ваш язык';
-    } else if (this.lang === 'belarusian') {
-      this.textLang.innerHTML = 'Мова:';
-      this.textVolume.innerHTML = 'Гучнасць:';
-      this.textBtn.innerHTML = 'Выйсці:';
-      this.firstOption.text = 'Выберыце вашу мову';
-    } else {
-      this.textLang.innerHTML = 'Language:';
-      this.textVolume.innerHTML = 'Volume:';
-      this.textBtn.innerHTML = 'Quit:';
-      this.firstOption.text = 'Choose your language';
-    }
+    this.modalStat = document.createElement('div');
+    this.modalStat.classList.add('list-statistics');
+    this.body.appendChild(this.modalStat);
   }
 
   quit() {
-    this.settingsOverlay = document.querySelector('.settings-overlay');
-    this.settingsOverlay.classList.remove('active');
-
-    this.settingsBg = document.querySelector('.settings-background');
-    this.settingsBg.classList.remove('active');
-
-    this.modal = document.querySelector('.settings-menu');
-    this.modal.classList.remove('active');
-    this.scene.start('Start');
+    this.quitBtn = document.createElement('button');
+    this.quitBtn.classList.add('btn', 'btn-primary', 'quit-from-statistics');
+    this.quitBtn.textContent = 'QUIT';
+    this.modalStat.appendChild(this.quitBtn);
+    this.quitBtn.addEventListener('click', () => {
+      this.overlayModalStat.style.display = 'none';
+      this.modalStat.style.display = 'none';
+      this.scene.start('Start');
+    });
   }
 }

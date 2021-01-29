@@ -16,7 +16,8 @@ const config = {
   dom: {
     createContainer: true,
   },
-  scene: [BootScene,
+  scene: [
+    BootScene,
     PreloadScene,
     StartScene,
     SettingsScene,
@@ -31,7 +32,6 @@ const config = {
   physics: {
     default: 'matter',
     matter: {
-      debug: true,
       gravity: { x: 0, y: 0 },
     },
   },
