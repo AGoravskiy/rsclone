@@ -7,6 +7,7 @@ import SettingsScene from './scenes/SettingsScene';
 import SelectMapScene from './scenes/SelectMapScene';
 import SelectCarScene from './scenes/SelectCarScene';
 import StatisticsScene from './scenes/StatisticsScene';
+import creditsScene from './scenes/creditsScene';
 
 const config = {
   type: Phaser.AUTO,
@@ -24,7 +25,9 @@ const config = {
     StatisticsScene,
     SelectMapScene,
     SelectCarScene,
-    GameScene],
+    GameScene,
+    creditsScene,
+  ],
   scale: {
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,

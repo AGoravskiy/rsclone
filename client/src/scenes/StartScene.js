@@ -1,9 +1,17 @@
 import Phaser from 'phaser';
 import Client from '../classes/Client';
+import WebFontFile from '../classes/WebFontFile';
 
 export default class StartScene extends Phaser.Scene {
   constructor() {
     super('Start');
+  }
+  preload() {
+    this.load.image('mainMenuBack', '../../assets/design/main-menu-back.png');
+    this.load.addFile(
+      new WebFontFile(this.load, ['Racing Sans One', 'Oswald'])
+    );
+    // this.load.addFile(new WebFontFile(this.load, 'Oswald'));
   }
 
   create() {
@@ -11,16 +19,6 @@ export default class StartScene extends Phaser.Scene {
     this.createBackground();
     this.createButtons();
     this.setEvents();
-    // this.style = {
-    //   'background-color': 'lime',
-    //   'width': '220px',
-    //   'height': '100px',
-    //   'font': '48px Arial',
-    //   'font-weight': 'bold',
-    //   'cursor':"pointer",
-    //   'z-index': '10000',
-    // };
-    // this.element = this.add.dom(400, 300, 'div', this.style, 'this');
   }
 
   createSounds() {
@@ -31,49 +29,66 @@ export default class StartScene extends Phaser.Scene {
   }
 
   createBackground() {
-    this.add.sprite(0, 0, 'bg').setOrigin(0);
+    this.add.image(0, 0, 'mainMenuBack').setOrigin(0);
   }
 
   createButtons() {
-    this.resumeBtn = this.add.text(this.cameras.main.centerX, this.cameras.main.centerY - 150, 'RESUME GAME',
-      { font: 'bold 46px Arial', fill: '#FAFAD2', cursor: 'pointer' })
-      .setOrigin(0.5)
-      .setInteractive();
-    // eslint-disable-next-line no-unused-expressions
-    this.resumeBtn.inputEnabled;
-    this.resumeBtn.useHandCursor = true;
+    const menuTitleStyle = {
+      fontFamily: '"racing sans one"',
+      fontSize: '72px',
+      fill: '#F3C178',
+    };
 
-    this.onePlayerBtn = this.add.text(this.cameras.main.centerX, this.cameras.main.centerY - 100, 'ONE PLAYER',
-      { font: 'bold 46px Arial', fill: '#FAFAD2', cursor: 'pointer' })
-      .setOrigin(0.5)
-      .setInteractive();
+    const mainMenuTitle = this.add.text(96, 112, 'Main menu', menuTitleStyle);
+    mainMenuTitle.alpha = 0.8;
+    mainMenuTitle.setShadow(0, 4, '#0B0500', 4);
 
-    this.twoPlayerBtn = this.add.text(this.cameras.main.centerX, this.cameras.main.centerY - 50, 'TWO PLAYER',
-      { font: 'bold 46px Arial', fill: '#FAFAD2', cursor: 'pointer' })
-      .setOrigin(0.5)
-      .setInteractive();
+    const menuItemsStyle = {
+      fontFamily: '"Oswald"',
+      fontSize: '36px',
+      fill: '#F3C178',
+      cursor: 'pointer',
+    };
 
-    this.settingsBtn = this.add.text(this.cameras.main.centerX, this.cameras.main.centerY, 'SETTINGS',
-      { font: 'bold 46px Arial', fill: '#FAFAD2', cursor: 'pointer' })
-      .setOrigin(0.5)
-      .setInteractive();
+    // const resumeBtn = this.add.text(96, 224, 'Resume', menuItemsStyle);
+    // this.resumeBtn = resumeBtn;
+    // resumeBtn.setShadow(0, 4, '#0B0500', 4);
+    // resumeBtn.setInteractive();
+    // resumeBtn.inputEnabled;
+    // resumeBtn.useHandCursor = true;
 
-    this.statisticsBtn = this.add.text(this.cameras.main.centerX, this.cameras.main.centerY + 50, 'STATISTICS',
-      { font: 'bold 46px Arial', fill: '#FAFAD2', cursor: 'pointer' })
-      .setOrigin(0.5)
-      .setInteractive();
+    const onePlayerBtn = this.add.text(96, 252, 'One player', menuItemsStyle);
+    this.onePlayerBtn = onePlayerBtn;
+    onePlayerBtn.setShadow(0, 4, '#0B0500', 4);
+    onePlayerBtn.setInteractive();
+
+    const twoPlayerBtn = this.add.text(96, 312, 'Two players', menuItemsStyle);
+    this.twoPlayerBtn = twoPlayerBtn;
+    twoPlayerBtn.setShadow(0, 4, '#0B0500', 4);
+    twoPlayerBtn.setInteractive();
+
+    const settingsBtn = this.add.text(96, 372, 'Settings', menuItemsStyle);
+    this.settingsBtn = settingsBtn;
+    settingsBtn.setShadow(0, 4, '#0B0500', 4);
+    settingsBtn.setInteractive();
+
+    const statisticsBtn = this.add.text(96, 432, 'Statistics', menuItemsStyle);
+    this.statisticsBtn = statisticsBtn;
+    statisticsBtn.setShadow(0, 4, '#0B0500', 4);
+    statisticsBtn.setInteractive();
+
+    const creditsBtn = this.add.text(96, 492, 'Credits', menuItemsStyle);
+    this.creditsBtn = creditsBtn;
+    creditsBtn.setShadow(0, 4, '#0B0500', 4);
+    creditsBtn.setInteractive();
   }
 
   setEvents() {
-    this.resumeBtn.on('pointerdown',
-      function (event) {
-        this.scene.resume('Game');
-      },
-      this);
     this.onePlayerBtn.on('pointerdown', this.selectMap, this);
     this.twoPlayerBtn.on('pointerdown', this.requestGame, this);
     this.settingsBtn.on('pointerdown', this.selectSettings, this);
     this.statisticsBtn.on('pointerdown', this.viewStatistics, this);
+    this.creditsBtn.on('pointerdown', this.viewCredits, this);
   }
 
   viewStatistics() {
@@ -111,6 +126,10 @@ export default class StartScene extends Phaser.Scene {
     }
   }
 
+  viewCredits() {
+    this.scene.start('credits');
+  }
+
   requestGame() {
     // инициализируем клиента
     this.client = new Client();
@@ -122,7 +141,10 @@ export default class StartScene extends Phaser.Scene {
 
   startGame(car, carProperty, map) {
     this.scene.start('Game', {
-      client: this.client, car, carProperty, map,
+      client: this.client,
+      car,
+      carProperty,
+      map,
     });
   }
 }
