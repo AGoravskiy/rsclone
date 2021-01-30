@@ -4,7 +4,7 @@ import Player from '../classes/Player';
 import Stats from '../classes/Stats';
 import StatsPanel from '../classes/StatsPanel';
 import StatsPopup from '../classes/StatsPopup';
-import getDate from '../../assets/sripts/functions';
+import getDate from '../../assets/sripts/dateFunc';
 
 async function postStat(url, data) {
   const response = await fetch(url, {

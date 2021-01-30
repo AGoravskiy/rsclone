@@ -10,7 +10,7 @@ export default class creditsScene extends Phaser.Scene {
     this.load.image('backGround', '../../assets/design/credits-back.png');
     this.load.image('logo', '../../assets/design/logo_rs.png');
     this.load.addFile(
-      new WebFontFile(this.load, ['Racing Sans One', 'Oswald'])
+      new WebFontFile(this.load, ['Racing Sans One', 'Oswald']),
     );
   }
 
@@ -77,10 +77,10 @@ export default class creditsScene extends Phaser.Scene {
         })
         .on(
           'pointerdown',
-          function () {
+          () => {
             list[i].event(list[i].login);
           },
-          this
+          this,
         );
     }
   }
@@ -95,10 +95,10 @@ export default class creditsScene extends Phaser.Scene {
 
     const buttonBack = this.add.graphics();
     this.buttonBack = buttonBack;
-    //shadow
+    // shadow
     buttonBack.fillRect(96, 544, 128, 52);
     buttonBack.fillStyle(2042936);
-    //button
+    // button
     buttonBack.fillRect(96, 544, 128, 48);
     buttonBack.fillStyle(722176, 0.7);
 

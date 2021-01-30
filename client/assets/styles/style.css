@@ -437,15 +437,6 @@ progress[value]::-webkit-progress-value {
   justify-content: center;
 }
 
-.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-.active-block {
-  display: block;
-  opacity: 1;
-}
 
 /* intro */
 
@@ -784,6 +775,8 @@ progress[value]::-webkit-progress-value {
   background-image: url('../design/track.png');
   background-size: cover;
   background-repeat: no-repeat;
+  opacity: 0;
+  visibility: hidden;
 }
 
 .section-wrapper {
@@ -794,6 +787,8 @@ progress[value]::-webkit-progress-value {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  opacity: 0;
+  visibility: hidden;
 }
 
 .section-title {
@@ -872,4 +867,16 @@ progress[value]::-webkit-progress-value {
 
 .table-row:hover {
   background-color: #0b0500;
+}
+
+
+
+.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.active-block {
+  display: block;
+  opacity: 1;
 }
