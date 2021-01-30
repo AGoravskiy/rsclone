@@ -388,53 +388,22 @@ progress[value]::-webkit-progress-value {
 
 /* Стили для сцены СТАТИСТИКИ */
 
-.stat-background {
-  opacity: 0;
-  visibility: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url(../images/maps.jpg) no-repeat;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  z-index: 2;
+.statistics-results {
+  width: 100%;
+  height: 500px;
+}
+.statistics-list {
+  width: 100%;
+  list-style: none;
+  height: 500px;
+  overflow: auto;
 }
 
-.stat-overlay {
-  opacity: 0;
-  visibility: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.4);
-  z-index: 3;
-}
-
-.stat-table {
-  opacity: 0;
-  visibility: hidden;
-  width: 90%;
-  height: 80%;
-  max-width: 1000px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 4;
+.statistics-list>[data-scroll] {
+  cursor: pointer;
   text-align: center;
-  padding: 10px;
-  border-radius: 3px;
-  background-color: rgb(109, 109, 109, 0.5);
-  transition: 0.3s all;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
+  display: block;
+  background-color: rgba(0, 0, 0, .05);
 }
 
 
@@ -781,8 +750,8 @@ progress[value]::-webkit-progress-value {
 
 .section-wrapper {
   background-image: url(../);
-  padding-top: 15%;
-  width: 80%;
+  padding-top: 10%;
+  width: 90%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -804,7 +773,23 @@ progress[value]::-webkit-progress-value {
   margin-bottom: 5%;
 }
 
-.table-title {
+.statistics-results {
+  width: 100%;
+  height: 500px;
+}
+
+.stat-title {
+  height: 60px;
+  width: 100%;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.stat-title-elem {
+  width: 200px;
+  height: 100%;
   font-family: Racing Sans One;
   font-style: normal;
   font-weight: normal;
@@ -814,17 +799,25 @@ progress[value]::-webkit-progress-value {
   text-shadow: 0px 4px 4px #0b0500;
   border-bottom: solid 1px #f3c178;
   margin-bottom: 15px;
-}
-
-.table-align-center {
   text-align: center;
 }
 
-.table-head {
-  margin-bottom: 15px;
+.stat-result {
+  height: 440px;
+  overflow-y: scroll;
 }
 
-.table-item {
+.stat-row {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.stat-row-elem {
+  width: 200px;
+  height: 100%;
   font-family: Oswald;
   font-style: normal;
   font-weight: normal;
@@ -832,7 +825,7 @@ progress[value]::-webkit-progress-value {
   line-height: 40px;
   color: #f3c178;
   text-shadow: 0px 4px 4px #0b0500;
-  text-align: left;
+  text-align: center;
 }
 
 .row-number {
@@ -865,7 +858,7 @@ progress[value]::-webkit-progress-value {
   color: #fe5e41;
 }
 
-.table-row:hover {
+.stat-row:hover {
   background-color: #0b0500;
 }
 

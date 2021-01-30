@@ -1,7 +1,6 @@
 import Phaser from 'phaser';
 import Client from '../classes/Client';
 import WebFontFile from '../classes/WebFontFile';
-import { LOCAL_STORAGE_KEY } from '../utils';
 
 export default class StartScene extends Phaser.Scene {
   constructor() {
@@ -143,19 +142,6 @@ export default class StartScene extends Phaser.Scene {
 
     this.statisticsBg = document.querySelector('.body-background');
     this.statisticsBg.classList.add('active');
-  }
-
-  getStat() {
-    this.email = localStorage.getItem(LOCAL_STORAGE_KEY.email);
-    const options = {
-      method: 'GET',
-      body: JSON.stringify({
-        email: this.email,
-        game: this.getStat(),
-      }),
-    };
-    console.log(options);
-    sendRequest(routes.scores, options);
   }
 
   selectSettings() {

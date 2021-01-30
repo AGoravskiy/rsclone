@@ -1,4 +1,6 @@
 import Phaser from 'phaser';
+import { changeGameResultByMap, createGameResult, createTitle } from '../utils/simpleFunc/tableFunc';
+import { LOCAL_STORAGE_KEY, routes, sendRequest } from '../utils';
 
 export default class Statistics extends Phaser.Scene {
   constructor() {
@@ -7,7 +9,7 @@ export default class Statistics extends Phaser.Scene {
 
   create() {
     this.quit();
-    this.getStat();
+    this.showStat();
   }
 
   createModal() {
@@ -24,8 +26,8 @@ export default class Statistics extends Phaser.Scene {
   quit() {
     this.quitBtn = document.querySelector('.back-button');
     this.quitBtn.addEventListener('click', () => {
-      this.statisticsOverlay = document.querySelector('.section-wrapper');
-      this.statisticsOverlay.classList.remove('active');
+      this.statisticsWrapper = document.querySelector('.section-wrapper');
+      this.statisticsWrapper.classList.remove('active');
 
       this.statisticsBg = document.querySelector('.body-background');
       this.statisticsBg.classList.remove('active');
@@ -33,8 +35,33 @@ export default class Statistics extends Phaser.Scene {
     });
   }
 
+  showStat() {
+    this.getStatBtn = document.querySelector('.get-stat-btn');
+    this.getStatBtn.addEventListener('click', () => {
+      this.getStat();
+    });
+  }
+
   getStat() {
-    this.str = 'zalupa';
-    console.log(this.str);
+    this.statWrapper = document.querySelector('.statistics-results');
+    this.statWrapper.innerHTML = '';
+    createTitle(this.statWrapper);
+    this.statResult = document.createElement('div');
+    this.statResult.classList.add('stat-result');
+    this.email = localStorage.getItem(LOCAL_STORAGE_KEY.email);
+    const options = {
+      method: 'GET',
+    };
+    sendRequest(routes.scores, options).then((data) => {
+      const filteredData = data.filter((user) => user.games.length > 0);
+      console.log(filteredData);
+      filteredData.forEach((user) => {
+        const nickname = user.name;
+        const { games } = user;
+        createGameResult(nickname, games, this.statResult);
+      });
+    });
+    this.statWrapper.appendChild(this.statResult);
+    changeGameResultByMap();
   }
 }
