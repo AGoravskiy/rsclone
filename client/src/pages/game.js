@@ -8,6 +8,7 @@ import SelectMapScene from '../scenes/SelectMapScene';
 import SelectCarScene from '../scenes/SelectCarScene';
 import StatisticsScene from '../scenes/StatisticsScene';
 import creditsScene from '../scenes/creditsScene';
+import { routes, sendRequest } from '../utils';
 
 const config = {
   type: Phaser.AUTO,
@@ -39,4 +40,9 @@ const config = {
     },
   },
 };
-const game = new Phaser.Game(config);
+
+document.addEventListener('DOMContentLoaded', () => {
+  sendRequest(routes.user.checkToken, { method: 'GET' }).then(() => {
+    const game = new Phaser.Game(config);
+  });
+});

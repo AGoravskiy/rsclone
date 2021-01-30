@@ -198,13 +198,13 @@ export default class GameScene extends Phaser.Scene {
   }
 
   getStat() {
-    const statistics = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY.staistics));
+    const statistics = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY.statistics));
     statistics.laps = `${this.stats.laps}`;
     statistics.bestLap = this.stats.timeBestLap.toFixed(2);
     statistics.averageLap = this.stats.averageLapTime.toFixed(2);
     statistics.fullTime = this.stats.time.toFixed(2);
     statistics.date = `${getDate()}`;
-    localStorage.setItem(LOCAL_STORAGE_KEY.staistics, JSON.stringify(statistics));
+    localStorage.setItem(LOCAL_STORAGE_KEY.statistics, JSON.stringify(statistics));
     return statistics;
   }
 }
