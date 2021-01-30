@@ -6,10 +6,11 @@ export default class StartScene extends Phaser.Scene {
   constructor() {
     super('Start');
   }
+
   preload() {
     this.load.image('mainMenuBack', '../../assets/design/main-menu-back.png');
     this.load.addFile(
-      new WebFontFile(this.load, ['Racing Sans One', 'Oswald'])
+      new WebFontFile(this.load, ['Racing Sans One', 'Oswald']),
     );
     // this.load.addFile(new WebFontFile(this.load, 'Oswald'));
   }
@@ -136,6 +137,11 @@ export default class StartScene extends Phaser.Scene {
 
   viewStatistics() {
     this.scene.start('Statistics');
+    this.statisticsOverlay = document.querySelector('.section-wrapper');
+    this.statisticsOverlay.classList.add('active');
+
+    this.statisticsBg = document.querySelector('.body-background');
+    this.statisticsBg.classList.add('active');
   }
 
   selectSettings() {

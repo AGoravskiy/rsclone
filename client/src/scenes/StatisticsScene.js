@@ -1,15 +1,15 @@
 import Phaser from 'phaser';
+import fetchStat from '../../assets/sripts/statFunc';
 
-const output = document.querySelector('.output-value');
-
+console.log(fetchStat());
 export default class Statistics extends Phaser.Scene {
   constructor() {
     super('Statistics');
   }
 
   create() {
-    this.createModal();
     this.quit();
+    this.getStat();
   }
 
   createModal() {
@@ -24,14 +24,19 @@ export default class Statistics extends Phaser.Scene {
   }
 
   quit() {
-    this.quitBtn = document.createElement('button');
-    this.quitBtn.classList.add('btn', 'btn-primary', 'quit-from-statistics');
-    this.quitBtn.textContent = 'QUIT';
-    this.modalStat.appendChild(this.quitBtn);
+    this.quitBtn = document.querySelector('.back-button');
     this.quitBtn.addEventListener('click', () => {
-      this.overlayModalStat.style.display = 'none';
-      this.modalStat.style.display = 'none';
+      this.statisticsOverlay = document.querySelector('.section-wrapper');
+      this.statisticsOverlay.classList.remove('active');
+
+      this.statisticsBg = document.querySelector('.body-background');
+      this.statisticsBg.classList.remove('active');
       this.scene.start('Start');
     });
+  }
+
+  getStat() {
+    this.str = 'zalupa';
+    console.log(this.str);
   }
 }

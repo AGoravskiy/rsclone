@@ -4,7 +4,7 @@ import io from 'socket.io-client';
 
 const PORT = 8080;
 
-const HOST = process.env.NODE_ENV === 'development' ? `http://localhost:${PORT}` : 'https://crazyrace.herokuapp.com/';
+const HOST = 'https://nfs-jsu.herokuapp.com/';
 
 export default class extends Phaser.Events.EventEmitter {
   init() {
