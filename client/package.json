@@ -48,8 +48,8 @@
     "webpack": "^5.10.1",
     "webpack-cli": "^4.2.0",
     "webpack-dev-server": "^3.11.0",
-    "xml-loader": "^1.2.1",
-    "webpack-merge": "^4.2.1"
+    "webpack-merge": "^4.2.1",
+    "xml-loader": "^1.2.1"
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
