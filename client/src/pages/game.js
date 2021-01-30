@@ -1,13 +1,13 @@
 import Phaser from 'phaser';
-import BootScene from './scenes/BootScene';
-import PreloadScene from './scenes/PreloadScene';
-import GameScene from './scenes/GameScene';
-import StartScene from './scenes/StartScene';
-import SettingsScene from './scenes/SettingsScene';
-import SelectMapScene from './scenes/SelectMapScene';
-import SelectCarScene from './scenes/SelectCarScene';
-import StatisticsScene from './scenes/StatisticsScene';
-import creditsScene from './scenes/creditsScene';
+import BootScene from '../scenes/BootScene';
+import PreloadScene from '../scenes/PreloadScene';
+import GameScene from '../scenes/GameScene';
+import StartScene from '../scenes/StartScene';
+import SettingsScene from '../scenes/SettingsScene';
+import SelectMapScene from '../scenes/SelectMapScene';
+import SelectCarScene from '../scenes/SelectCarScene';
+import StatisticsScene from '../scenes/StatisticsScene';
+import creditsScene from '../scenes/creditsScene';
 
 const config = {
   type: Phaser.AUTO,

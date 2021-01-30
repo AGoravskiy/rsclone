@@ -50,6 +50,7 @@ const loadPlugins = () => {
       template: path.resolve(__dirname, './pages/game.html'),
       filename: 'game.html',
       favicon: './assets/images/icons/favicon.png',
+      chunks: ['game', 'main'],
       minify: {
         collapseWhitespace: isProd,
       },
@@ -67,7 +68,7 @@ const loadPlugins = () => {
       template: path.resolve(__dirname, './pages/login.html'),
       filename: 'login.html',
       favicon: './assets/images/icons/favicon.png',
-      chunks: [],
+      chunks: ['login', 'main'],
       minify: {
         collapseWhitespace: isProd,
       },
@@ -76,18 +77,14 @@ const loadPlugins = () => {
       template: path.resolve(__dirname, './pages/signup.html'),
       filename: 'signup.html',
       favicon: './assets/images/icons/favicon.png',
-      chunks: [],
+      chunks: ['signup', 'main'],
       minify: {
         collapseWhitespace: isProd,
       },
     }),
-    new CopyWebpackPlugin(
-      {
-        patterns: [
-          { from: './assets', to: './assets' },
-        ],
-      },
-    ),
+    new CopyWebpackPlugin({
+      patterns: [{ from: './assets', to: './assets' }],
+    }),
     new MiniCssExtractPlugin({
       filename: filename('css'),
     }),
@@ -105,12 +102,8 @@ const loadPlugins = () => {
 
 const babelOptions = (preset) => {
   const opts = {
-    presets: [
-      '@babel/preset-env',
-    ],
-    plugins: [
-      '@babel/plugin-proposal-class-properties',
-    ],
+    presets: ['@babel/preset-env'],
+    plugins: ['@babel/plugin-proposal-class-properties'],
   };
 
   if (preset) {
@@ -121,10 +114,12 @@ const babelOptions = (preset) => {
 };
 
 const jsLoaders = () => {
-  const loaders = [{
-    loader: 'babel-loader',
-    options: babelOptions(),
-  }];
+  const loaders = [
+    {
+      loader: 'babel-loader',
+      options: babelOptions(),
+    },
+  ];
 
   if (isDev) {
     loaders.push('eslint-loader');
@@ -134,8 +129,10 @@ const jsLoaders = () => {
 
 module.exports = {
   entry: {
-    main: ['@babel/polyfill'],
-    game: './src/game.js',
+    main: ['@babel/polyfill', './src/utils/index.js'],
+    game: ['./src/pages/game.js'],
+    login: ['./src/pages/login.js'],
+    signup: ['./src/pages/signup.js'],
   },
   mode: 'development',
   output: {
