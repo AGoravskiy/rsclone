@@ -30,7 +30,6 @@ export const sendRequest = async (url, options) => {
     );
   }
   const response = await fetch(url, {
-    mode: 'cors',
     headers: {
       'Content-Type': 'application/json',
       // 'Content-Type': 'application/x-www-form-urlencoded',
@@ -42,5 +41,6 @@ export const sendRequest = async (url, options) => {
     localStorage.setItem(LOCAL_STORAGE_KEY.accessToken, null);
     sendRequest(url, options);
   }
+  // eslint-disable-next-line consistent-return
   return response.json();
 };
