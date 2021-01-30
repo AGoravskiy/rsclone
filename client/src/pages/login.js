@@ -62,7 +62,7 @@ form.addEventListener('submit', (event) => {
       console.log(data);
       localStorage.setItem(
         LOCAL_STORAGE_KEY.staistics,
-        JSON.stringify(statistics)
+        JSON.stringify(statistics),
       );
       localStorage.setItem(LOCAL_STORAGE_KEY.refreshToken, data.refreshToken);
       localStorage.setItem(LOCAL_STORAGE_KEY.accessToken, data.token);

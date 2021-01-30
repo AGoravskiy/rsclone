@@ -42,5 +42,6 @@ export const sendRequest = async (url, options) => {
     localStorage.setItem(LOCAL_STORAGE_KEY.accessToken, null);
     sendRequest(url, options);
   }
+  // eslint-disable-next-line consistent-return
   return response.json();
 };

@@ -4,24 +4,9 @@ import Player from '../classes/Player';
 import Stats from '../classes/Stats';
 import StatsPanel from '../classes/StatsPanel';
 import StatsPopup from '../classes/StatsPopup';
-import getDate from '../../assets/sripts/dateFunc';
-
-async function postStat(url, data) {
-  const response = await fetch(url, {
-    method: 'POST', // *GET, POST, PUT, DELETE, etc.
-    mode: 'no-cors', // no-cors, *cors, same-origin
-    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-    credentials: 'same-origin', // include, *same-origin, omit
-    headers: {
-      'Content-Type': 'application/json',
-      // 'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    redirect: 'follow', // manual, *follow, error
-    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-    body: JSON.stringify(data), // body data type must match "Content-Type" header
-  });
-  return response.json(); // parses JSON response into native JavaScript objects
-}
+import { sendRequest } from '../utils/ajax/sendRequest';
+import { LOCAL_STORAGE_KEY } from '../utils/localStorage';
+import { routes } from '../utils/routes';
 
 const LAPS = 3;
 const CARS = {
@@ -180,14 +165,15 @@ export default class GameScene extends Phaser.Scene {
     if (this.stats.complete) {
       this.StatsPopup = new StatsPopup(this, this.stats);
       this.motor.stop();
-      console.log(this.link);
-      this.email = localStorage.getItem('email');
-      const data = {
-        email: this.email,
-        game: this.getStat(),
+      this.email = localStorage.getItem(LOCAL_STORAGE_KEY.email);
+      const options = {
+        method: 'POST',
+        body: {
+          email: this.email,
+          game: this.getStat(),
+        },
       };
-      console.log(data);
-      postStat(this.link, data).then((data) => console.log(data));
+      sendRequest(routes.submitGame, options);
     }
   }
 
@@ -210,13 +196,13 @@ export default class GameScene extends Phaser.Scene {
   }
 
   getStat() {
-    const statistics = JSON.parse(localStorage.getItem('statistics'));
+    const statistics = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY.staistics));
     statistics.laps = `${this.stats.laps}`;
     statistics.bestLap = this.stats.timeBestLap.toFixed(2);
     statistics.averageLap = this.stats.averageLapTime.toFixed(2);
     statistics.fullTime = this.stats.time.toFixed(2);
     statistics.date = `${getDate()}`;
-    localStorage.setItem('statistics', JSON.stringify(statistics));
+    localStorage.setItem(LOCAL_STORAGE_KEY.staistics, JSON.stringify(statistics));
     return statistics;
   }
 }

@@ -1,7 +1,5 @@
 import Phaser from 'phaser';
-import fetchStat from '../../assets/sripts/statFunc';
 
-console.log(fetchStat());
 export default class Statistics extends Phaser.Scene {
   constructor() {
     super('Statistics');
