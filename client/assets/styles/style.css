@@ -775,9 +775,6 @@ progress[value]::-webkit-progress-value {
 }
 
 /* ! stats style */
-.body-background {
-  background-color: #1f2c38;
-}
 
 .body-background {
   background-color: #1f2c38;
@@ -789,7 +786,7 @@ progress[value]::-webkit-progress-value {
 .section-wrapper {
   background-image: url(../);
   padding-top: 15%;
-  width: 80%;
+  width: 60%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -872,4 +869,118 @@ progress[value]::-webkit-progress-value {
 
 .table-row:hover {
   background-color: #0b0500;
+}
+
+/* !login & registration */
+
+.section-button {
+  background: #1f2c38;
+  box-shadow: 0px 4px 4px #0b0500;
+  border: none;
+  width: 128px;
+  height: 48;
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  text-align: center;
+  color: #f3c178;
+  margin: 5% auto 0 auto;
+}
+
+.section-button:hover {
+  color: #fe5e41;
+}
+
+.form-sign-up {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 60%;
+  margin: auto;
+}
+
+.form__field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  margin-bottom: 2%;
+}
+
+.section-text-form {
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  color: #f3c178;
+  text-shadow: 0px 4px 4px #0b0500;
+}
+
+.section-text-button {
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  color: #f3c178;
+  text-shadow: 0px 4px 4px #0b0500;
+  margin: 3% auto 0 auto;
+}
+.section-text-button:hover {
+  color: #fe5e41;
+}
+
+.section-text-error {
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  color: #fe5e41;
+  text-shadow: 0px 4px 4px #0b0500;
+}
+
+.form-title {
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 53px;
+  text-align: right;
+  color: #f3c178;
+  text-shadow: 0px 4px 4px #0b0500;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.section-form {
+  border-radius: 5px;
+  border: solid 1px #fe5e41;
+  background-color: #1f2c38;
+  width: 320px;
+  height: 36px;
+  padding-left: 10px;
+  padding-bottom: 1%;
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  color: #f3c178;
+}
+
+.section-form::placeholder {
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 36px;
+  color: #f3c178;
+}
+
+.form-description {
+  width: 320px;
+  margin-bottom: 5%;
 }

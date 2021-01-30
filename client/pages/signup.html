@@ -5,61 +5,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SIGNUP HTML</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="../assets/styles/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&family=Racing+Sans+One&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <style>
-    html,
-    body {
-      height: 100%;
-    }
-
-    body {
-      display: -ms-flexbox;
-      display: -webkit-box;
-      display: flex;
-      -ms-flex-align: center;
-      -ms-flex-pack: center;
-      -webkit-box-align: center;
-      align-items: center;
-      -webkit-box-pack: center;
-      justify-content: center;
-      padding-top: 40px;
-      padding-bottom: 40px;
-      background-color: #534292;
-    }
-
-    .form-signin {
-      width: 100%;
-      max-width: 330px;
-      padding: 15px;
-      margin: 0 auto;
-    }
-
-    .form-signin .checkbox {
-      font-weight: 400;
-    }
-
-    .form-signin .form-control {
-      position: relative;
-      box-sizing: border-box;
-      height: auto;
-      padding: 10px;
-      font-size: 16px;
-    }
-
-    .form-signin .form-control:focus {
-      z-index: 2;
-    }
-
-    .form-signin input {
-      margin-bottom: 10px;
-      border-bottom-right-radius: 0;
-      border-bottom-left-radius: 0;
-    }
-  </style>
+  
 
   <!-- LOGIN 
 
@@ -75,34 +29,56 @@ pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
     <a class="btn btn-lg btn-primary btn-block sign-up">Sign up</a>
   </form>
 -->
-  <form action="#" class="form-sign-up">
-    <h1 class="h3 mb-3 font-weight-normal">Sign Up</h1>
-    <div class="form__field">
-      <input placeholder="E-Mail" class="form-control">
-      <span class="form-info">This field must contain an E-mail in the format example@site.com</span>
-      <span class="form-error">There is no such email address.</span>
-    </div>
-    <div class="form__field">
-      <input type="password" id="password" class="form-control"
-        placeholder="Password" required>
-      <span class="form-info">At least one number and one uppercase and lowercase letter, and at least 8 or more
-        characters.</span>
-    </div>
-    <div class="form__field">
-      <input type="text" id="nickname" class="form-control"
-        placeholder="Nickname" required>
-      <span class="form-info">At least one number and one uppercase and lowercase letter, and at least 8 or more
-        characters.</span>
-        <span class="form-error">Wrong password entered.</span>
-    </div>
-    <button type="submit" class="btn btn-lg btn-primary btn-block sign-up-btn">Sign up</button>
-    <a href="login.html" class="sign-up">Already have an account? Login here.</a>
-  </form>
+<body class="body-background">      
+  <div class="section-wrapper">
+    <h1 class="section-title">Register</h1>
+    <form action="#" class="form-sign-up">
+      <div class="form__field">
+        <label class="form-title"> Nickname
+          <input type="text" id="nickname" class="form-control section-form"
+            placeholder="Nickname" required>
+            </label>    
+      </div>
+
+      <div class="form-description">
+        <span class="section-text-form ">At least one number and one uppercase and lowercase letter, and at least 8 or more
+          characters.</span>
+      </div>
+
+      <div class="form__field">
+        <label class="form-title"> E-Mail
+          <input placeholder="E-Mail" class="form-control section-form">
+        </label>
+      </div>
+
+      <div class="form-description">
+        <span class="section-text-form ">This field must contain an E-mail in the format example@site.com</span>
+        <span class="form-error section-text-error">There is no such email address.</span>
+      </div>
+
+      <div class="form__field">
+        <label class="form-title"> Password
+          <input type="password" id="password" class="form-control section-form"
+            placeholder="Password" required> 
+          </label>        
+      </div>
+
+      <div class="form-description">
+        <span class="section-text-form ">At least one number and one uppercase and lowercase letter, and at least 8 or more
+          characters.</span>
+          <span class="form-error section-text-error">Wrong password entered.</span>
+      </div>
+
+      <button type="submit" class="section-button">Go 🏁</button>
+      <a href="login.html" class="section-text-button">Already have an account? Login here.</a>
+    </form>
+  </div>
+  
 
   <script>
     localStorage.clear();
     const HOST = 'https://nfs-jsu.herokuapp.com/user/signup';
-    const button = document.querySelector('.sign-up-btn');
+    const button = document.querySelector('.section-button');
     const form = document.querySelector('.form-sign-up');
 
 
