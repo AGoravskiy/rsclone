@@ -30,7 +30,6 @@ export const sendRequest = async (url, options) => {
     );
   }
   const response = await fetch(url, {
-    mode: 'cors',
     headers: {
       'Content-Type': 'application/json',
       // 'Content-Type': 'application/x-www-form-urlencoded',

@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import getDate from '../../assets/sripts/dateFunc';
 import Map from '../classes/Map';
 import Player from '../classes/Player';
 import Stats from '../classes/Stats';
@@ -168,11 +169,12 @@ export default class GameScene extends Phaser.Scene {
       this.email = localStorage.getItem(LOCAL_STORAGE_KEY.email);
       const options = {
         method: 'POST',
-        body: {
+        body: JSON.stringify({
           email: this.email,
           game: this.getStat(),
-        },
+        }),
       };
+      console.log(options);
       sendRequest(routes.submitGame, options);
     }
   }
