@@ -1,20 +1,7 @@
-const LINK = 'https://nfs-jsu.herokuapp.com/user/token';
+import { routes } from '../utils';
 
-function getCookie(cname) {
-  const name = `${cname}=`;
-  const decodedCookie = decodeURIComponent(document.cookie);
-  const ca = decodedCookie.split(';');
-  for (let i = 0; i < ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) === ' ') {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) === 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return '';
-}
+localStorage.clear();
+
 async function postData(url, data) {
   const response = await fetch(url, {
     method: 'POST', // *GET, POST, PUT, DELETE, etc.
@@ -32,18 +19,21 @@ async function postData(url, data) {
   return response.json(); // parses JSON response into native JavaScript objects
 }
 
-const mail = localStorage.getItem('email');
-const token = localStorage.getItem('refreshToken');
+const button = document.querySelector('.sign-up-btn');
+const form = document.querySelector('.form-sign-up');
 
-const data = {
-  email: mail,
-  refreshToken: token,
-};
-
-postData(LINK, data).then((data) => {
-  console.log(data);
-  console.log(data.status);
-  if (data.status !== 'ok') {
-    window.location.href = 'login.html';
-  }
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  postData(routes.user.signup, {
+    email: document.forms[0].elements[0].value,
+    password: document.forms[0].elements[1].value,
+    name: document.forms[0].elements[2].value,
+  }).then((data) => {
+    if (data.code === 200) {
+      alert('Now you are logged in');
+      window.location.href = 'login.html';
+    } else {
+      alert('Ooops! something wrong :(');
+    }
+  });
 });
