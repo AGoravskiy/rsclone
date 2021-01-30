@@ -10,5 +10,5 @@ export default function getDate() {
   const day = date.getDate();
   const hours = date.getHours();
   const minutes = date.getMinutes();
-  return ` ${day} ${showMonth(month)} ${year} - ${hours}:${minutes} `;
+  return ` ${day} ${showMonth(month)} ${year} ; ${hours}:${minutes}`;
 }

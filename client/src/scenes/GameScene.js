@@ -4,9 +4,9 @@ import Player from '../classes/Player';
 import Stats from '../classes/Stats';
 import StatsPanel from '../classes/StatsPanel';
 import StatsPopup from '../classes/StatsPopup';
-import getDate from '../../assets/sripts/functions';
+import getDate from '../../assets/sripts/dateFunc';
 
-async function postStat(url, email, data) {
+async function postStat(url, data) {
   const response = await fetch(url, {
     method: 'POST', // *GET, POST, PUT, DELETE, etc.
     mode: 'no-cors', // no-cors, *cors, same-origin
@@ -18,10 +18,7 @@ async function postStat(url, email, data) {
     },
     redirect: 'follow', // manual, *follow, error
     referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-    body: {
-      email,
-      game: JSON.stringify(data),
-    }, // body data type must match "Content-Type" header
+    body: JSON.stringify(data), // body data type must match "Content-Type" header
   });
   return response.json(); // parses JSON response into native JavaScript objects
 }
@@ -183,11 +180,14 @@ export default class GameScene extends Phaser.Scene {
     if (this.stats.complete) {
       this.StatsPopup = new StatsPopup(this, this.stats);
       this.motor.stop();
-      console.log(this.getStat());
       console.log(this.link);
       this.email = localStorage.getItem('email');
-      console.log(this.email);
-      postStat(this.link, this.email, this.getStat()).then((data) => console.log(data));
+      const data = {
+        email: this.email,
+        game: this.getStat(),
+      };
+      console.log(data);
+      postStat(this.link, data).then((data) => console.log(data));
     }
   }
 
