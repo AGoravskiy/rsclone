@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import getDate from '../../assets/sripts/dateFunc';
+import getDate from '../utils/simpleFunc/dateFunc';
 import Map from '../classes/Map';
 import Player from '../classes/Player';
 import Stats from '../classes/Stats';
@@ -200,9 +200,9 @@ export default class GameScene extends Phaser.Scene {
   getStat() {
     const statistics = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY.staistics));
     statistics.laps = `${this.stats.laps}`;
-    statistics.bestLap = this.stats.timeBestLap.toFixed(2);
+    statistics.bestLapTime = this.stats.timeBestLap.toFixed(2);
     statistics.averageLap = this.stats.averageLapTime.toFixed(2);
-    statistics.fullTime = this.stats.time.toFixed(2);
+    statistics.time = this.stats.time.toFixed(2);
     statistics.date = `${getDate()}`;
     localStorage.setItem(LOCAL_STORAGE_KEY.staistics, JSON.stringify(statistics));
     return statistics;
