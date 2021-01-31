@@ -399,13 +399,12 @@ progress[value]::-webkit-progress-value {
   overflow: auto;
 }
 
-.statistics-list>[data-scroll] {
+.statistics-list > [data-scroll] {
   cursor: pointer;
   text-align: center;
   display: block;
-  background-color: rgba(0, 0, 0, .05);
+  background-color: rgba(0, 0, 0, 0.05);
 }
-
 
 /* intro */
 
@@ -881,7 +880,7 @@ progress[value]::-webkit-progress-value {
   flex-direction: column;
   align-items: flex-end;
   width: 60%;
-  margin: auto;
+  margin: 0 auto;
 }
 
 .form__field {
@@ -969,7 +968,6 @@ progress[value]::-webkit-progress-value {
   width: 320px;
   margin-bottom: 2%;
 }
-
 
 .active {
   opacity: 1;
