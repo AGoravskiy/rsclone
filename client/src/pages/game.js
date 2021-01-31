@@ -9,34 +9,36 @@ import SelectCarScene from '../scenes/SelectCarScene';
 import StatisticsScene from '../scenes/StatisticsScene';
 import creditsScene from '../scenes/creditsScene';
 
-const config = {
-  type: Phaser.AUTO,
-  width: 1280,
-  height: 720,
-  parent: 'CanvasDiv',
-  dom: {
-    createContainer: true,
-  },
-  scene: [
-    BootScene,
-    PreloadScene,
-    StartScene,
-    SettingsScene,
-    StatisticsScene,
-    SelectMapScene,
-    SelectCarScene,
-    GameScene,
-    creditsScene,
-  ],
-  scale: {
-    mode: Phaser.Scale.FIT,
-    autoCenter: Phaser.Scale.CENTER_BOTH,
-  },
-  physics: {
-    default: 'matter',
-    matter: {
-      gravity: { x: 0, y: 0 },
+export default function gameScript() {
+  const config = {
+    type: Phaser.AUTO,
+    width: 1280,
+    height: 720,
+    parent: 'CanvasDiv',
+    dom: {
+      createContainer: true,
     },
-  },
-};
-const game = new Phaser.Game(config);
+    scene: [
+      BootScene,
+      PreloadScene,
+      StartScene,
+      SettingsScene,
+      StatisticsScene,
+      SelectMapScene,
+      SelectCarScene,
+      GameScene,
+      creditsScene,
+    ],
+    scale: {
+      mode: Phaser.Scale.FIT,
+      autoCenter: Phaser.Scale.CENTER_BOTH,
+    },
+    physics: {
+      default: 'matter',
+      matter: {
+        gravity: { x: 0, y: 0 },
+      },
+    },
+  };
+  const game = new Phaser.Game(config);
+}
