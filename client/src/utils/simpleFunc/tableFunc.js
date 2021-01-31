@@ -9,6 +9,11 @@ const dropDownMap = `
             </select>
             `;
 
+// сортировка массива в листе по убыванию в зависимости от выбранного показателя
+function sortArrByField(field) {
+  return (a, b) => (a[field] > b[field] ? 1 : -1);
+}
+
 function createDivElem(mainDiv, content, style) {
   const elem = document.createElement('div');
   elem.classList.add(style);
@@ -49,6 +54,7 @@ export function createGameResult(name, array, mainDiv, parameter, value) {
   } else {
     filteredArrByMap = filterArr(array, parameter, value);
   }
+  filteredArrByMap.sort(sortArrByField('bestLapTime'));
   filteredArrByMap.forEach((game, index) => {
     const date = `${getDay(game.date)} ${getMinutes(game.date)}`;
     const row = document.createElement('div');
