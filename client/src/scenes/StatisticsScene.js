@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
-import { changeGameResultByMap, createGameResult, createTitle } from '../utils/simpleFunc/tableFunc';
-import { LOCAL_STORAGE_KEY, routes, sendRequest } from '../utils';
+import { createGameResult, createTitle } from '../utils/simpleFunc/tableFunc';
+import { routes, sendRequest } from '../utils';
 
 export default class Statistics extends Phaser.Scene {
   constructor() {
@@ -8,19 +8,19 @@ export default class Statistics extends Phaser.Scene {
   }
 
   create() {
-    this.quit();
+    this.createTable();
+    this.getStat('all');
     this.showStat();
+    this.quit();
   }
 
-  createModal() {
-    this.body = document.querySelector('body');
-    this.overlayModalStat = document.createElement('div');
-    this.overlayModalStat.classList.add('overlay-statistics');
-    this.body.appendChild(this.overlayModalStat);
-
-    this.modalStat = document.createElement('div');
-    this.modalStat.classList.add('list-statistics');
-    this.body.appendChild(this.modalStat);
+  createTable() {
+    this.statWrapper = document.querySelector('.statistics-results');
+    this.statWrapper.innerHTML = '';
+    createTitle(this.statWrapper);
+    this.statResult = document.createElement('div');
+    this.statResult.classList.add('stat-result');
+    this.statWrapper.appendChild(this.statResult);
   }
 
   quit() {
@@ -40,28 +40,24 @@ export default class Statistics extends Phaser.Scene {
     this.getStatBtn.addEventListener('click', () => {
       this.getStat();
     });
+    this.select = document.getElementById('select-map');
+    this.select.addEventListener('change', (event) => {
+      this.getStat(event.target.value);
+    });
   }
 
-  getStat() {
-    this.statWrapper = document.querySelector('.statistics-results');
-    this.statWrapper.innerHTML = '';
-    createTitle(this.statWrapper);
-    this.statResult = document.createElement('div');
-    this.statResult.classList.add('stat-result');
-    this.email = localStorage.getItem(LOCAL_STORAGE_KEY.email);
+  getStat(selectedMap) {
+    this.statResult.innerHTML = '';
     const options = {
       method: 'GET',
     };
     sendRequest(routes.scores, options).then((data) => {
       const filteredData = data.filter((user) => user.games.length > 0);
-      console.log(filteredData);
       filteredData.forEach((user) => {
         const nickname = user.name;
         const { games } = user;
-        createGameResult(nickname, games, this.statResult);
+        createGameResult(nickname, games, this.statResult, 'map', selectedMap);
       });
     });
-    this.statWrapper.appendChild(this.statResult);
-    changeGameResultByMap();
   }
 }
