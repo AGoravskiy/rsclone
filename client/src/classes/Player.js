@@ -28,7 +28,6 @@ export default class Player {
 
   get direction() {
     let direction = DIRECTIONS.NONE;
-
     if (this.scene.cursors.up.isDown || this.scene.w.isDown) {
       direction = DIRECTIONS.FORWARD;
     } else if (this.scene.cursors.down.isDown || this.scene.s.isDown) {
@@ -47,39 +46,22 @@ export default class Player {
     return nitro;
   }
 
-  get slowdown() {
-    let slowdown = 1;
-    if (this.scene.cursors.space.isDown) {
-      slowdown = this.carProperty.SLOWDOWN;
-    } else {
-      slowdown = 1;
-    }
-    // console.log(slowdown);
-    return slowdown;
-  }
-
   get velocity() {
     const speed = Math.abs(this._velocity);
     const max = this.getMaxSpeed();
     if (this.direction && speed < max) {
       this._velocity += this.carProperty.ACCELERATION
-      / this.slowdown
       * this.nitro
       * Math.sign(this.direction);
-    } else if (this.direction && speed > max) {
-      this._velocity -= this.carProperty.ACCELERATION
-      / this.slowdown
-      * this.nitro
-      * Math.sign(this.direction);
-    } else if (!this.direction && speed > 0) {
-      if (speed < 0.3) {
-        this._velocity = 0;
+    } else if ((this.direction && speed > max)
+    || (!this.direction && speed > 0)) {
+      if (speed > 0.2) {
+        this._velocity -= this.carProperty.ACCELERATION * this.nitro * Math.sign(this._velocity);
       } else {
-        this._velocity -= this.carProperty.ACCELERATION * 0.1
-        * this.slowdown
-        * Math.sign(this._velocity);
+        this._velocity = 0;
       }
     }
+    console.log(this._velocity);
     return this._velocity;
   }
 
@@ -94,7 +76,7 @@ export default class Player {
   }
 
   get angle() {
-    return this.car.angle + this.turn * this.nitro * this.carProperty.SLIDE_ANGLE;
+    return this.car.angle + this.turn * this.nitro * this.carProperty.MAXSPEED / 2.5;
   }
 
   getVelocityFromAngle() {
