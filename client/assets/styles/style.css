@@ -880,7 +880,7 @@ progress[value]::-webkit-progress-value {
   flex-direction: column;
   align-items: flex-end;
   width: 60%;
-  margin: 0 auto;
+  margin: auto;
 }
 
 .form__field {
