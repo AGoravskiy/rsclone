@@ -1,4 +1,4 @@
-import Phaser from 'phaser';
+import Phaser, { Data } from 'phaser';
 import Client from '../classes/Client';
 import WebFontFile from '../classes/WebFontFile';
 import { LOCAL_STORAGE_KEY } from '../utils';
@@ -7,7 +7,6 @@ export default class StartScene extends Phaser.Scene {
   constructor() {
     super('Start');
   }
-
   preload() {
     this.load.image('mainMenuBack', '../../assets/design/main-menu-back.png');
     this.load.addFile(
@@ -21,6 +20,14 @@ export default class StartScene extends Phaser.Scene {
     this.createBackground();
     this.createButtons();
     this.setEvents();
+    this.esc = this.input.keyboard.addKey('ESC');
+    this.esc.on('down', function (event) {
+      if (window.isPause) {
+        this.scene.wake('Game');
+        this.scene.sleep('Start');
+        window.isPause = false;
+      }
+    }, this);
   }
 
   createSounds() {
@@ -175,7 +182,12 @@ export default class StartScene extends Phaser.Scene {
   }
 
   selectMap() {
-    this.scene.start('SelectMapScene');
+    if (window.isPause) {
+      console.log('Game stop');
+      this.scene.stop('Game');
+      window.isPause = false;
+    }
+    this.scene.switch('SelectMapScene');
 
     this.mapsBg = document.querySelector('.maps-background');
     this.mapsBg.classList.add('active');
