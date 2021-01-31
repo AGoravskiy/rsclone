@@ -10,7 +10,7 @@ export default class creditsScene extends Phaser.Scene {
     this.load.image('backGround', '../../assets/design/credits-back.png');
     this.load.image('logo', '../../assets/design/logo_rs.png');
     this.load.addFile(
-      new WebFontFile(this.load, ['Racing Sans One', 'Oswald'])
+      new WebFontFile(this.load, ['Racing Sans One', 'Oswald']),
     );
   }
 
@@ -47,7 +47,7 @@ export default class creditsScene extends Phaser.Scene {
       96,
       284,
       'Mikalai Kryshchanovich',
-      menuItemsStyle
+      menuItemsStyle,
     );
     this.MikalaiLink = MikalaiLink;
     MikalaiLink.setShadow(0, 4, '#0B0500', 4);
@@ -70,7 +70,7 @@ export default class creditsScene extends Phaser.Scene {
       96,
       344,
       'Aleksej Goravskij',
-      menuItemsStyle
+      menuItemsStyle,
     );
     this.AleksejLink = AleksejLink;
     AleksejLink.setShadow(0, 4, '#0B0500', 4);
@@ -86,6 +86,7 @@ export default class creditsScene extends Phaser.Scene {
     IvanLink.setShadow(0, 4, '#0B0500', 4);
     IvanLink.setInteractive();
   }
+
   createBackBtn() {
     // const menuItemsStyle = {
     //     fontFamily: '"Oswald"',
@@ -96,10 +97,10 @@ export default class creditsScene extends Phaser.Scene {
 
     const buttonBack = this.add.graphics();
     this.buttonBack = buttonBack;
-    //shadow
+    // shadow
     buttonBack.fillRect(96, 554, 128, 52);
     buttonBack.fillStyle(2042936);
-    //button
+    // button
     buttonBack.fillRect(96, 554, 128, 48);
     buttonBack.fillStyle(722176, 0.7);
 

@@ -7,34 +7,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function postData(url, data) {
     const response = await fetch(url, {
-      method: 'POST', // *GET, POST, PUT, DELETE, etc.
-      mode: 'cors', // no-cors, *cors, same-origin
-      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-      credentials: 'same-origin', // include, *same-origin, omit
+      method: 'POST',
+      mode: 'cors',
+      cache: 'no-cache',
+      credentials: 'same-origin',
       headers: {
         'Content-Type': 'application/json',
-        // 'Content-Type': 'application/x-www-form-urlencoded',
       },
-      redirect: 'follow', // manual, *follow, error
-      referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-      body: JSON.stringify(data), // body data type must match "Content-Type" header
+      redirect: 'follow',
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(data),
     });
-    return response.json(); // parses JSON response into native JavaScript objects
+    return response.json();
   }
-
-  // const PORT = 3000;
-
-  // const HOST = process.env.NODE_ENV === 'development' ? `http://localhost:${PORT}` :
-  // 'https://crazyrace.herokuapp.com/';
-  // 'https://nfs-jsu.herokuapp.com/statistics';
   /*
-          const map {
-            map: '',
-            car: '',
-            nickname: '',
-            'best lap': num,
-            'average laps': num
-          }
       console.log(form);
             console.log(mail.validity);
             console.log(mail.value);
@@ -79,37 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
         passwordErr.classList.add('active');
         alert('Wrong password entered');
       } else {
-        // passwordErr.classList.add('active');
-        // emailErr.classList.add('active');
         alert(data.message);
       }
-      console.log(data); // JSON data parsed by `data.json()` call
+      console.log(data);
     });
   });
-
-  /*
-          function signIn() {
-            let data = {
-              email: document.forms[0].elements[0].value,
-              password: document.forms[0].elements[1].value,
-            };
-            console.log(data);
-            let sendData = JSON.stringify(data);
-            console.log(sendData);
-            fetch(`${HOST}`, {
-              headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-              },
-              method: 'POST',
-              body: sendData,
-            }).then((response => response.json()).then(data => console.log(data)));
-
-            => {
-
-              console.log('всё работает');
-              window.location.href = 'game.html';
-
-            });
-          } */
 });
