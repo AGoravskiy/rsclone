@@ -741,8 +741,6 @@ progress[value]::-webkit-progress-value {
   background-image: url('../design/track.png');
   background-size: cover;
   background-repeat: no-repeat;
-  opacity: 0;
-  visibility: hidden;
 }
 
 .section-wrapper {
@@ -753,8 +751,6 @@ progress[value]::-webkit-progress-value {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  opacity: 0;
-  visibility: hidden;
 }
 
 .section-title {

@@ -176,7 +176,7 @@ export default class StartScene extends Phaser.Scene {
   }
 
   viewCredits() {
-    this.scene.start('credits');
+    this.scene.start('Credits');
   }
 
   requestGame() {

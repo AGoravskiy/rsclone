@@ -2,8 +2,6 @@
 import Phaser from 'phaser';
 import io from 'socket.io-client';
 
-const PORT = 8080;
-
 const HOST = 'https://nfs-jsu.herokuapp.com/';
 
 export default class extends Phaser.Events.EventEmitter {

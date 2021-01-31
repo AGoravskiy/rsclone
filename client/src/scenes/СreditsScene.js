@@ -1,9 +1,9 @@
 import Phaser from 'phaser';
 import WebFontFile from '../classes/WebFontFile';
 
-export default class creditsScene extends Phaser.Scene {
+export default class CreditsScene extends Phaser.Scene {
   constructor() {
-    super('credits');
+    super('Credits');
   }
 
   preload() {
