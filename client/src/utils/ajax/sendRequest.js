@@ -1,38 +1,63 @@
 import { LOCAL_STORAGE_KEY } from '../localStorage';
+import { routes } from '../routes';
+
+const parseToken = (token) => {
+  if (typeof token !== 'string') {
+    return token;
+  }
+
+  try {
+    const parsedToken = JSON.parse(token);
+    return parsedToken;
+  } catch (e) {
+    return token;
+  }
+};
 
 export const sendRequest = async (url, options) => {
-  const accessToken = localStorage.getItem(LOCAL_STORAGE_KEY.accessToken);
-  const refreshToken = localStorage.getItem(LOCAL_STORAGE_KEY.refreshToken);
+  let accessToken = parseToken(
+    localStorage.getItem(LOCAL_STORAGE_KEY.accessToken),
+  );
+  let refreshToken = parseToken(
+    localStorage.getItem(LOCAL_STORAGE_KEY.refreshToken),
+  );
 
   if (!refreshToken) {
     window.location.href = '/login.html';
     return;
   }
   if (!accessToken && refreshToken) {
-    const response = await fetch(routes.user.refreshToken, {
-      method: 'POST',
-      body: JSON.stringify({ refreshToken }),
-    });
-    if (response.status === 401) {
+    try {
+      const response = await fetch(routes.user.refreshToken, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ refreshToken }),
+      });
+      if (!response.ok) {
+        throw new Error('Refresh token failed', response);
+      }
+      const responseJson = await response.json();
+      localStorage.setItem(
+        LOCAL_STORAGE_KEY.accessToken,
+        responseJson.accessToken,
+      );
+      localStorage.setItem(
+        LOCAL_STORAGE_KEY.refreshToken,
+        responseJson.refreshToken,
+      );
+      accessToken = responseJson.accessToken;
+      refreshToken = responseJson.refreshToken;
+    } catch (e) {
+      console.error(JSON.stringify(e));
       localStorage.setItem(LOCAL_STORAGE_KEY.refreshToken, null);
-      window.location.href = 'login.html';
-      return;
+      window.location.href = '/login.html';
     }
-    const responseJson = await response.json();
-
-    localStorage.setItem(
-      LOCAL_STORAGE_KEY.accessToken,
-      responseJson.accessToken,
-    );
-    localStorage.setItem(
-      LOCAL_STORAGE_KEY.refreshToken,
-      responseJson.refreshToken,
-    );
   }
   const response = await fetch(url, {
     headers: {
       'Content-Type': 'application/json',
-      // 'Content-Type': 'application/x-www-form-urlencoded',
       Authorization: `Bearer ${accessToken}`,
     },
     ...options,
