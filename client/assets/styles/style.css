@@ -735,6 +735,9 @@ progress[value]::-webkit-progress-value {
     width: 40px;
   }
 }
+
+/* ! laps */
+
 .lapsSelect__container {
   position: absolute;
   top: 10px;
@@ -865,6 +868,7 @@ progress[value]::-webkit-progress-value {
 
 .back-button:hover {
   color: #fe5e41;
+  cursor: pointer;
 }
 
 .table-row:hover {
@@ -877,7 +881,7 @@ progress[value]::-webkit-progress-value {
   background: #1f2c38;
   box-shadow: 0px 4px 4px #0b0500;
   border: none;
-  width: 128px;
+  width: 144px;
   height: 48;
   font-family: Oswald;
   font-style: normal;
@@ -890,6 +894,7 @@ progress[value]::-webkit-progress-value {
 
 .section-button:hover {
   color: #fe5e41;
+  cursor: pointer;
 }
 
 .form-sign-up {
@@ -984,4 +989,255 @@ progress[value]::-webkit-progress-value {
 .form-description {
   width: 320px;
   margin-bottom: 2%;
+}
+
+/* !maps select */
+.page-wrapper {
+  background-color: #1f2c38;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.map-wrapper {
+  width: 70%;
+  padding-left: 3%;
+}
+.map-info-container {
+  display: flex;
+}
+
+.illustration-wrapper {
+  width: 20%;
+  height: 100%;
+  margin-left: -3%;
+  background-image: url('../design/map-illustratiom.png');
+  background-position: left center;
+  background-repeat: no-repeat;
+}
+
+.track-title {
+  font-family: Racing Sans One;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 72px;
+  line-height: 91px;
+  color: #f3c178;
+  opacity: 0.8;
+  text-shadow: 0px 4px 4px #0b0500;
+  margin-bottom: 5%;
+}
+
+.track-header {
+  display: flex;
+  gap: 1rem;
+}
+
+.track-header-title {
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 53px;
+  color: #fe5e41;
+  text-shadow: 0px 4px 4px #0b0500;
+}
+
+.lap-number-title {
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 53px;
+  text-align: right;
+  color: #f3c178;
+  text-shadow: 0px 4px 4px #0b0500;
+}
+
+.lap-number-title-control {
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 53px;
+  text-align: right;
+  color: #f3c178;
+  text-shadow: 0px 4px 4px #0b0500;
+}
+
+.lap-number-title-control:hover {
+  color: #fe5e41;
+  cursor: pointer;
+}
+
+.map-description {
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 29px;
+  color: #f3c178;
+}
+
+.track-illustration {
+  width: 50%;
+  padding-left: 3%;
+  /* background-image: url('../images/adelaidemap.png');
+  background-position: cover;
+  height: 256px; */
+}
+
+.track-block {
+  display: flex;
+}
+
+.buttons-block {
+  display: flex;
+  justify-content: space-between;
+}
+
+.track-info {
+  width: 50%;
+}
+
+.arrow {
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 96px;
+  line-height: 142px;
+  text-align: right;
+  color: #f3c178;
+  text-shadow: 0px 4px 4px #0b0500;
+  width: 5%;
+}
+
+.arrow:hover {
+  color: #fe5e41;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1200px) {
+  .illustration-wrapper {
+    display: none;
+  }
+
+  .track-block {
+    flex-direction: column;
+  }
+
+  .track-info {
+    width: 100%;
+  }
+
+  .track-illustration {
+    width: 100%;
+    padding: 0;
+  }
+
+  .track-title {
+    font-size: 48px;
+  }
+
+  .map-wrapper {
+    width: 90%;
+  }
+
+  .arrow {
+    margin: 1%;
+    font-size: 64px;
+  }
+  .page-wrapper {
+    background-image: url('../design/track.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+}
+
+/* !car select */
+
+.car-illustarion-wrapper {
+  width: 60%;
+  height: 100%;
+  margin-left: -3%;
+  background-image: url('../design/car-select-back.png');
+  background-position: left center;
+  background-repeat: no-repeat;
+}
+
+.car-select-wrapper {
+  width: 30%;
+  padding-left: 3%;
+}
+
+.car-img {
+  transform: rotate(90deg);
+  width: 50px;
+}
+
+.car-header {
+  display: flex;
+  gap: 3rem;
+}
+
+.car-description-block {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.car-description {
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 36px;
+  margin: 0;
+  padding: 0;
+  color: #f3c178;
+  text-shadow: 0px 4px 4px #0b0500;
+  width: 180px;
+}
+
+.rating-full {
+  width: 8px;
+  height: 24px;
+  background: #fe5e41;
+  box-shadow: 0px 4px 4px #0b0500;
+}
+
+.rating-empty {
+  width: 8px;
+  height: 24px;
+  background: #1f2c38;
+  box-shadow: 0px 4px 4px #0b0500;
+}
+
+.car-rating {
+  display: flex;
+  gap: 8px;
+  margin-left: 24px;
+}
+
+.car-wrapper {
+  width: 30%;
+  padding: 3%;
+}
+
+@media screen and (max-width: 767px) {
+  .car-illustarion-wrapper {
+    display: none;
+  }
+  .car-wrapper {
+    width: 100%;
+  }
+
+  .page-wrapper {
+    background-image: url('../design/track.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
 }
