@@ -49,7 +49,7 @@ const loadPlugins = () => {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './pages/game.html'),
       filename: 'game.html',
-      favicon: './assets/images/icons/favicon.png',
+      favicon: './assets/images/icons/car-sport.svg',
       chunks: ['game', 'main'],
       minify: {
         collapseWhitespace: isProd,
@@ -58,7 +58,7 @@ const loadPlugins = () => {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './index.html'),
       filename: 'index.html',
-      favicon: './assets/images/icons/favicon.png',
+      favicon: './assets/images/icons/car-sport.svg',
       chunks: [],
       minify: {
         collapseWhitespace: isProd,
@@ -67,7 +67,7 @@ const loadPlugins = () => {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './pages/login.html'),
       filename: 'login.html',
-      favicon: './assets/images/icons/favicon.png',
+      favicon: './assets/images/icons/car-sport.svg',
       chunks: ['login', 'main'],
       minify: {
         collapseWhitespace: isProd,
@@ -76,7 +76,7 @@ const loadPlugins = () => {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './pages/signup.html'),
       filename: 'signup.html',
-      favicon: './assets/images/icons/favicon.png',
+      favicon: './assets/images/icons/car-sport.svg',
       chunks: ['signup', 'main'],
       minify: {
         collapseWhitespace: isProd,

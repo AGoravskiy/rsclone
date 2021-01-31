@@ -7,7 +7,8 @@ import SettingsScene from '../scenes/SettingsScene';
 import SelectMapScene from '../scenes/SelectMapScene';
 import SelectCarScene from '../scenes/SelectCarScene';
 import StatisticsScene from '../scenes/StatisticsScene';
-import creditsScene from '../scenes/creditsScene';
+import CreditsScene from '../scenes/СreditsScene';
+import { routes, sendRequest } from '../utils';
 
 const config = {
   type: Phaser.AUTO,
@@ -26,7 +27,7 @@ const config = {
     SelectMapScene,
     SelectCarScene,
     GameScene,
-    creditsScene,
+    CreditsScene,
   ],
   scale: {
     mode: Phaser.Scale.FIT,
@@ -39,4 +40,9 @@ const config = {
     },
   },
 };
-const game = new Phaser.Game(config);
+
+document.addEventListener('DOMContentLoaded', () => {
+  sendRequest(routes.user.checkToken, { method: 'GET' }).then(() => {
+    const game = new Phaser.Game(config);
+  });
+});

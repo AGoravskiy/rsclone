@@ -70,19 +70,3 @@ export default class StatsPopup {
     });
   }
 }
-
-/*
-postStatistics() {
-    this.statistics = {
-      map: localStorage.getItem('map'),
-      car: localStorage.getItem('car'),
-      laps: localStorage.getItem('laps'),
-      time: this.stats.time.toFixed(2),
-      bestLapTime: this.stats.timeBestLap,
-      date: new Date(),
-    };
-    console.log(this.statistics);
-    this.host = 'https://nfs-jsu.herokuapp.com/submit-game';
-    postStat(this.host, this.statistics).then((data) => console.log(data));
-  }
-  */

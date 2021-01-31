@@ -1,8 +1,8 @@
 import Phaser from 'phaser';
 
-export default class introScene extends Phaser.Scene {
+export default class IntroScene extends Phaser.Scene {
   constructor() {
-    super('intro');
+    super('Intro');
   }
 
   preload() {
@@ -11,7 +11,7 @@ export default class introScene extends Phaser.Scene {
       '../../assets/video/welcome.mp4',
       'loadeddata',
       false,
-      true
+      true,
     );
     this.load.image('logo', '../../assets/images/rss.png');
   }
