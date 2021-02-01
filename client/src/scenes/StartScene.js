@@ -10,7 +10,7 @@ export default class StartScene extends Phaser.Scene {
   preload() {
     this.load.image('mainMenuBack', '../../assets/design/main-menu-back.png');
     this.load.addFile(
-      new WebFontFile(this.load, ['Racing Sans One', 'Oswald']),
+      new WebFontFile(this.load, ['Racing Sans One', 'Oswald'])
     );
     // this.load.addFile(new WebFontFile(this.load, 'Oswald'));
   }
@@ -21,13 +21,17 @@ export default class StartScene extends Phaser.Scene {
     this.createButtons();
     this.setEvents();
     this.esc = this.input.keyboard.addKey('ESC');
-    this.esc.on('down', function (event) {
-      if (window.isPause) {
-        this.scene.wake('Game');
-        this.scene.sleep('Start');
-        window.isPause = false;
-      }
-    }, this);
+    this.esc.on(
+      'down',
+      function (event) {
+        if (window.isPause) {
+          this.scene.wake('Game');
+          this.scene.sleep('Start');
+          window.isPause = false;
+        }
+      },
+      this
+    );
   }
 
   createSounds() {
@@ -148,7 +152,7 @@ export default class StartScene extends Phaser.Scene {
     this.statisticsOverlay = document.querySelector('.section-wrapper');
     this.statisticsOverlay.classList.add('active');
 
-    this.statisticsBg = document.querySelector('.body-background');
+    this.statisticsBg = document.querySelector('.stats-background');
     this.statisticsBg.classList.add('active');
   }
 
