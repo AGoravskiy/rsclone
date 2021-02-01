@@ -6,6 +6,7 @@ export default class StartScene extends Phaser.Scene {
   constructor() {
     super('Start');
   }
+
   preload() {
     this.load.image('mainMenuBack', '../../assets/design/main-menu-back.png');
     this.load.addFile(

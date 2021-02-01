@@ -4,7 +4,7 @@ export default class StatsPopup {
     this.stats = stats;
     this.create();
   }
-
+  
   create() {
     const style = {
       font: '30px Arial',

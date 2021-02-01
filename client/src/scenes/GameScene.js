@@ -163,7 +163,7 @@ export default class GameScene extends Phaser.Scene {
   onLapComplete(lap) {
     this.stats.onLapComplete();
     if (this.stats.complete) {
-      this.StatsPopup = new StatsPopup(this, this.stats);
+      // this.StatsPopup = new StatsPopup(this, this.stats);
       this.motor.stop();
       this.email = localStorage.getItem(LOCAL_STORAGE_KEY.email);
       const options = {
@@ -175,6 +175,8 @@ export default class GameScene extends Phaser.Scene {
       };
       console.log(options);
       sendRequest(routes.submitGame, options);
+      this.gameSound.stop();
+      this.scene.start('Finish', { stats: this.stats });
     }
   }
 
