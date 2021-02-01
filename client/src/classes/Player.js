@@ -61,7 +61,7 @@ export default class Player {
         this._velocity = 0;
       }
     }
-    console.log(this._velocity);
+    // console.log(this._velocity);
     return this._velocity;
   }
 

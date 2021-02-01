@@ -121,7 +121,7 @@ export default class SelectCarScene extends Phaser.Scene {
         carProps,
         carProperty[carModel].ACCELERATION,
         0.8,
-        'ACCELERATION'
+        'ACCELERATION',
       );
       createProp(carProps, carProperty[carModel].SLIDE_ANGLE, 5, 'ROTATION');
       createProp(carProps, carProperty[carModel].NITROGEN, 3, 'NITROGEN OXIDE');
@@ -142,7 +142,7 @@ export default class SelectCarScene extends Phaser.Scene {
         this.startGame(
           item.getAttribute('data-car'),
           this.carProperty[item.getAttribute('data-car')],
-          this.map
+          this.map,
         );
         this.carsBg = document.querySelector('.cars-background');
         this.carsBg.classList.remove('active');
@@ -187,12 +187,11 @@ export default class SelectCarScene extends Phaser.Scene {
     }
 
     this.btnNext.addEventListener('click', () => {
-      const carsLeft =
-        this.carsCount -
-        (Math.abs(this.position) + this.sliderToShow * this.carsWidth) /
-          this.carsWidth;
-      this.position -=
-        carsLeft >= this.sliderToScroll
+      const carsLeft = this.carsCount
+        - (Math.abs(this.position) + this.sliderToShow * this.carsWidth)
+          / this.carsWidth;
+      this.position
+        -= carsLeft >= this.sliderToScroll
           ? this.movePosition
           : this.carsLeft * this.carsWidth;
 
@@ -203,8 +202,8 @@ export default class SelectCarScene extends Phaser.Scene {
     this.btnPrev.addEventListener('click', () => {
       const carsLeft = Math.abs(this.position) / this.carsWidth;
 
-      this.position +=
-        carsLeft >= this.sliderToScroll
+      this.position
+        += carsLeft >= this.sliderToScroll
           ? this.movePosition
           : this.carsLeft * this.carsWidth;
 
@@ -219,8 +218,7 @@ export default class SelectCarScene extends Phaser.Scene {
 
   checkBtns() {
     this.btnPrev.disabled = this.position === 0;
-    this.btnNext.disabled =
-      this.position <= -(this.carsCount - this.sliderToShow) * this.carsWidth;
+    this.btnNext.disabled = this.position <= -(this.carsCount - this.sliderToShow) * this.carsWidth;
   }
 
   quit() {
