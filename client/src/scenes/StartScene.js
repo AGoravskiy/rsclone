@@ -10,7 +10,7 @@ export default class StartScene extends Phaser.Scene {
   preload() {
     this.load.image('mainMenuBack', '../../assets/design/main-menu-back.png');
     this.load.addFile(
-      new WebFontFile(this.load, ['Racing Sans One', 'Oswald'])
+      new WebFontFile(this.load, ['Racing Sans One', 'Oswald']),
     );
     // this.load.addFile(new WebFontFile(this.load, 'Oswald'));
   }
@@ -30,7 +30,7 @@ export default class StartScene extends Phaser.Scene {
           window.isPause = false;
         }
       },
-      this
+      this,
     );
   }
 
