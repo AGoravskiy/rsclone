@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import BootScene from '../scenes/BootScene';
+// import BootScene from '../scenes/BootScene';
 import PreloadScene from '../scenes/PreloadScene';
 import GameScene from '../scenes/GameScene';
 import StartScene from '../scenes/StartScene';
@@ -20,7 +20,7 @@ const config = {
     createContainer: true,
   },
   scene: [
-    BootScene,
+    // BootScene,
     PreloadScene,
     StartScene,
     SettingsScene,
