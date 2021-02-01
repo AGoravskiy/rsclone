@@ -3,6 +3,8 @@ body {
   padding: 0;
   width: 100vw;
   height: 100vh;
+  background-color: #1f2c38;
+  scroll
 }
 
 /* Стили для сцены НАСТРОЕК */
@@ -735,17 +737,23 @@ progress[value]::-webkit-progress-value {
 
 /* ! stats style */
 
-.body-background {
+.stats-background {
   background-color: #1f2c38;
-  background-image: url('../design/track.png');
+  /* background-image: url('../design/track.png'); */
   background-size: cover;
   background-repeat: no-repeat;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
 }
 
 .section-wrapper {
-  background-image: url(../);
+  /* background-image: url(../); */
   padding-top: 15%;
-  width: 60%;
+  width: 80%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -777,6 +785,7 @@ progress[value]::-webkit-progress-value {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  
 }
 
 .stat-title-elem {
@@ -785,18 +794,56 @@ progress[value]::-webkit-progress-value {
   font-family: Racing Sans One;
   font-style: normal;
   font-weight: normal;
-  font-size: 36px;
-  line-height: 45px;
+  font-size: 24px;
+  line-height: 36px;
   color: #f3c178;
   text-shadow: 0px 4px 4px #0b0500;
   border-bottom: solid 1px #f3c178;
-  margin-bottom: 15px;
+  
   text-align: center;
 }
 
+.maps-parameters {
+  width: 200px;
+  height: 100%;
+  font-family: Racing Sans One;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 36px;
+  background-color: #1f2c38;
+  color: #f3c178;
+  border: none;
+  text-shadow: 0px 4px 4px #0b0500;
+  border-bottom: solid 1px #f3c178;
+  margin: 0;
+  padding-bottom: 20px;
+  
+  /* text-align: center; */
+}
+
+.parameter {
+  background-color: #1f2c38;
+  color: #f3c178;
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+}
 .stat-result {
   height: 440px;
   overflow-y: scroll;
+}
+
+.stat-result::-webkit-scrollbar {
+  width: 2px;
+  height: 2px; /* ширина для вертикального скролла */
+  color: #f3c178;
+}
+
+.stat-result::-webkit-scrollbar-thumb {
+  background: #fe5e41;
+  border-radius: 5px; /* Закругление углов ползунка скроллбара */
 }
 
 .stat-row {
@@ -814,7 +861,7 @@ progress[value]::-webkit-progress-value {
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
-  line-height: 40px;
+  /* line-height: 40px; */
   color: #f3c178;
   text-shadow: 0px 4px 4px #0b0500;
   text-align: center;
@@ -836,11 +883,12 @@ progress[value]::-webkit-progress-value {
   box-shadow: 0px 4px 4px #0b0500;
   border: none;
   width: 128px;
-  height: 48;
+  height: 48px;
   font-family: Oswald;
   font-style: normal;
   font-weight: normal;
   font-size: 36px;
+  line-height: 48px;
   text-align: center;
   color: #f3c178;
   margin: 10% auto 0 auto;
@@ -852,6 +900,60 @@ progress[value]::-webkit-progress-value {
 
 .stat-row:hover {
   background-color: #0b0500;
+}
+
+.button-block {
+  margin: 5% auto 0 auto;
+  display: flex;
+  gap: 1rem;
+}
+
+@media screen and (max-width: 1200px) {
+  .stat-title-elem {
+    font-size: 18px;
+  }
+  .stat-row-elem {
+    font-size: 14px;
+  }
+  .section-wrapper {
+    width: 90%;
+  }
+
+  .stat-title {
+    font-size: 18px;
+  }
+
+  .maps-parameters {
+    font-size: 18px;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .stat-title-elem {
+    font-size: 16px;
+  }
+  .stat-row-elem {
+    font-size: 14px;
+  }
+  .stat-title {
+    font-size: 16px !important;
+  }
+  .maps-parameters {
+    font-size: 16px;
+    width: 100px;
+  }
+
+  .stat-title {
+    font-size: 48px;
+  }
+
+  .back-button {
+    width: 72px;
+    height: 36px;
+    font-size: 18px;
+    line-height: 36px;
+  }
 }
 
 /* !login & registration */

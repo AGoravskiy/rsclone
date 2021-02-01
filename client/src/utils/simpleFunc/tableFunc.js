@@ -1,6 +1,6 @@
 const dropDownMap = `
 <select id="select-map" class="maps-parameters">
-<option class="parameter" value="all">All track</option>
+<option class="parameter" value="all">All tracks</option>
 <option class="parameter" value="adelaidemap">Adelaide</option>
 <option class="parameter" value="algarvemap">Algarve</option>
 <option class="parameter" value="brandshatchmap">Brandshatch</option>
@@ -38,10 +38,10 @@ function filterArr(arr, parameter, value) {
 export function createTitle(mainDiv) {
   const title = document.createElement('div');
   title.classList.add('stat-title');
-  createDivElem(title, 'Position', 'stat-title-elem');
-  createDivElem(title, 'Nickname', 'stat-title-elem');
+  createDivElem(title, '#', 'stat-title-elem');
+  createDivElem(title, 'Driver', 'stat-title-elem');
   createDivElem(title, 'Date', 'stat-title-elem');
-  createDivElem(title, dropDownMap, 'stat-title-elem');
+  createDivElem(title, dropDownMap, 'stats-dropdown');
   createDivElem(title, 'Car', 'stat-title-elem');
   createDivElem(title, 'Best Lap', 'stat-title-elem');
   mainDiv.appendChild(title);
