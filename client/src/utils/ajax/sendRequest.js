@@ -23,7 +23,7 @@ export const sendRequest = async (url, options) => {
   );
 
   if (!refreshToken) {
-    window.location.href = '/login.html';
+    window.location.href = '/';
     return;
   }
   if (!accessToken && refreshToken) {
@@ -52,7 +52,7 @@ export const sendRequest = async (url, options) => {
     } catch (e) {
       console.error(JSON.stringify(e));
       localStorage.setItem(LOCAL_STORAGE_KEY.refreshToken, null);
-      window.location.href = '/login.html';
+      window.location.href = '/login';
     }
   }
   const response = await fetch(url, {

@@ -18,10 +18,9 @@ export default function introScript(cb) {
     start.addEventListener('click', proceedToLogin);
   }
 
-  if (window.location.href.substr(window.location.href.length - 1, window.location.href.length - 1) === '/') {
-    window.addEventListener('keydown', proceedToLogin);
-    setTimeout(() => {
-      window.removeEventListener('keydown', proceedToLogin);
-    }, 1000);
-  }
+window.addEventListener('keydown', () => {
+    if (window.location.href.substr(window.location.href.length - 1, window.location.href.length - 1) === '/') {
+      proceedToLogin();
+    }
+  });
 }
