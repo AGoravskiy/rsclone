@@ -9,7 +9,6 @@ const carProperty = {
     SLIDE_ANGLE: 4,
     NITROGEN: 1.2,
     NAME: 'Black beast',
-
   },
   car_blue_1: {
     MAXSPEED: 6,
@@ -22,7 +21,7 @@ const carProperty = {
     MAXSPEED: 10,
     ACCELERATION: 0.5,
     SLIDE_ANGLE: 4,
-    NITROGEN: 1.4,
+    NITROGEN: 1.5,
     NAME: 'Green death',
   },
 
@@ -31,8 +30,7 @@ const carProperty = {
     ACCELERATION: 0.25,
     SLIDE_ANGLE: 2.3,
     NITROGEN: 2.3,
-   NAME: 'Red devil',
-
+    NAME: 'Red devil',
   },
   car_yellow_1: {
     MAXSPEED: 3,
@@ -119,7 +117,12 @@ export default class SelectCarScene extends Phaser.Scene {
         mainDiv.appendChild(carProp);
       }
       createProp(carProps, carProperty[carModel].MAXSPEED, 10, 'MAX SPEED');
-      createProp(carProps, carProperty[carModel].ACCELERATION, 0.8, 'ACCELERATION');
+      createProp(
+        carProps,
+        carProperty[carModel].ACCELERATION,
+        0.8,
+        'ACCELERATION'
+      );
       createProp(carProps, carProperty[carModel].SLIDE_ANGLE, 5, 'ROTATION');
       createProp(carProps, carProperty[carModel].NITROGEN, 3, 'NITROGEN OXIDE');
 
