@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import getDate from '../../assets/sripts/dateFunc';
+import getDate from '../utils/simpleFunc/dateFunc';
 import Map from '../classes/Map';
 import Player from '../classes/Player';
 import Stats from '../classes/Stats';
@@ -95,25 +95,24 @@ export default class GameScene extends Phaser.Scene {
     this.input.on('gameobjectdown', function () {
       this.scene.launch('start');
     });
-    this.esc = this.input.keyboard.addKey('ESC');
-    this.esc.on('down', function (event) {
-      this.scene.pause();
-      this.scene.launch('Start');
-      // if(this.isPause){
-      //   console.log("resume")
-      //   this.scene.resume();
-      //   this.isPause = false;
-      // }
-      // else{
-      //   console.log("pause")
-      //   this.scene.pause();
-      //   this.scene.start('Start');
-      //   this.isPause = true;
-      // }
-    }, this);
-
     this.motor = this.sound.add('motor');
     this.motor.loop = true;
+    this.gameSound = this.sound.add('game');
+    this.gameSound.loop = true;
+    this.gameSound.play();
+
+    this.scene.scene.events.on('wake', () => {
+      this.gameSound.play();
+    });
+
+    this.esc = this.input.keyboard.addKey('ESC');
+    this.esc.on('down', function (event) {
+      this.scene.wake('Start');
+      this.scene.sleep('Game');
+      this.motor.stop();
+      this.gameSound.stop();
+      window.isPause = true;
+    }, this);
     this.keyUp = this.input.keyboard.addKey('up');
     this.localVolume = +localStorage.getItem('volume');
     this.keyUp.on('down', function (event) {
@@ -125,7 +124,7 @@ export default class GameScene extends Phaser.Scene {
       this.motor.stop();
     }, this);
 
-    this.soundPlay();
+    // this.soundPlay();
     this.map = new Map(this, this.mapa);
 
     const car = this.getCarsConfig();
@@ -164,7 +163,7 @@ export default class GameScene extends Phaser.Scene {
   onLapComplete(lap) {
     this.stats.onLapComplete();
     if (this.stats.complete) {
-      this.StatsPopup = new StatsPopup(this, this.stats);
+      // this.StatsPopup = new StatsPopup(this, this.stats);
       this.motor.stop();
       this.email = localStorage.getItem(LOCAL_STORAGE_KEY.email);
       const options = {
@@ -176,6 +175,8 @@ export default class GameScene extends Phaser.Scene {
       };
       console.log(options);
       sendRequest(routes.submitGame, options);
+      this.gameSound.stop();
+      this.scene.start('Finish', { stats: this.stats });
     }
   }
 
@@ -198,13 +199,13 @@ export default class GameScene extends Phaser.Scene {
   }
 
   getStat() {
-    const statistics = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY.staistics));
+    const statistics = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY.statistics));
     statistics.laps = `${this.stats.laps}`;
-    statistics.bestLap = this.stats.timeBestLap.toFixed(2);
+    statistics.bestLapTime = this.stats.timeBestLap.toFixed(2);
     statistics.averageLap = this.stats.averageLapTime.toFixed(2);
-    statistics.fullTime = this.stats.time.toFixed(2);
+    statistics.time = this.stats.time.toFixed(2);
     statistics.date = `${getDate()}`;
-    localStorage.setItem(LOCAL_STORAGE_KEY.staistics, JSON.stringify(statistics));
+    localStorage.setItem(LOCAL_STORAGE_KEY.statistics, JSON.stringify(statistics));
     return statistics;
   }
 }

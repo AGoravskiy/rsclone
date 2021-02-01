@@ -13,7 +13,7 @@ module.exports = {
     'func-names': 'off',
     'new-cap': 'off',
     'no-shadow': 'off',
-    'no-unused-vars': 'off',
+    'no-unused-vars': 'warn',
     'no-restricted-syntax': 'off',
     'linebreak-style': 'off',
     'global-require': 0,

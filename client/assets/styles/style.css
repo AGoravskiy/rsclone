@@ -3,6 +3,8 @@ body {
   padding: 0;
   width: 100vw;
   height: 100vh;
+  background-color: #1f2c38;
+  scroll
 }
 
 /* Стили для сцены НАСТРОЕК */
@@ -388,55 +390,23 @@ progress[value]::-webkit-progress-value {
 
 /* Стили для сцены СТАТИСТИКИ */
 
-.stat-background {
-  opacity: 0;
-  visibility: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url(../images/maps.jpg) no-repeat;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  z-index: 2;
+.statistics-results {
+  width: 100%;
+  height: 500px;
+}
+.statistics-list {
+  width: 100%;
+  list-style: none;
+  height: 500px;
+  overflow: auto;
 }
 
-.stat-overlay {
-  opacity: 0;
-  visibility: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.4);
-  z-index: 3;
-}
-
-.stat-table {
-  opacity: 0;
-  visibility: hidden;
-  width: 90%;
-  height: 80%;
-  max-width: 1000px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 4;
+.statistics-list > [data-scroll] {
+  cursor: pointer;
   text-align: center;
-  padding: 10px;
-  border-radius: 3px;
-  background-color: rgb(109, 109, 109, 0.5);
-  transition: 0.3s all;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
+  display: block;
+  background-color: rgba(0, 0, 0, 0.05);
 }
-
 
 /* intro */
 
@@ -766,29 +736,28 @@ progress[value]::-webkit-progress-value {
 }
 
 /* ! stats style */
-.body-background {
-  background-color: #1f2c38;
-}
 
-.body-background {
+.stats-background {
   background-color: #1f2c38;
-  background-image: url('../design/track.png');
+  /* background-image: url('../design/track.png'); */
   background-size: cover;
   background-repeat: no-repeat;
   opacity: 0;
   visibility: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
 }
 
 .section-wrapper {
-  background-image: url(../);
+  /* background-image: url(../); */
   padding-top: 15%;
   width: 80%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  opacity: 0;
-  visibility: hidden;
 }
 
 .section-title {
@@ -804,35 +773,98 @@ progress[value]::-webkit-progress-value {
   margin-bottom: 5%;
 }
 
-.table-title {
+.statistics-results {
+  width: 100%;
+  height: 500px;
+}
+
+.stat-title {
+  height: 60px;
+  width: 100%;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  
+}
+
+.stat-title-elem {
+  width: 200px;
+  height: 100%;
   font-family: Racing Sans One;
   font-style: normal;
   font-weight: normal;
-  font-size: 36px;
-  line-height: 45px;
+  font-size: 24px;
+  line-height: 36px;
   color: #f3c178;
   text-shadow: 0px 4px 4px #0b0500;
   border-bottom: solid 1px #f3c178;
-  margin-bottom: 15px;
-}
-
-.table-align-center {
+  
   text-align: center;
 }
 
-.table-head {
-  margin-bottom: 15px;
+.maps-parameters {
+  width: 200px;
+  height: 100%;
+  font-family: Racing Sans One;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 36px;
+  background-color: #1f2c38;
+  color: #f3c178;
+  border: none;
+  text-shadow: 0px 4px 4px #0b0500;
+  border-bottom: solid 1px #f3c178;
+  margin: 0;
+  padding-bottom: 20px;
+  
+  /* text-align: center; */
 }
 
-.table-item {
+.parameter {
+  background-color: #1f2c38;
+  color: #f3c178;
   font-family: Oswald;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
-  line-height: 40px;
+}
+.stat-result {
+  height: 440px;
+  overflow-y: scroll;
+}
+
+.stat-result::-webkit-scrollbar {
+  width: 2px;
+  height: 2px; /* ширина для вертикального скролла */
+  color: #f3c178;
+}
+
+.stat-result::-webkit-scrollbar-thumb {
+  background: #fe5e41;
+  border-radius: 5px; /* Закругление углов ползунка скроллбара */
+}
+
+.stat-row {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.stat-row-elem {
+  width: 200px;
+  height: 100%;
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  /* line-height: 40px; */
   color: #f3c178;
   text-shadow: 0px 4px 4px #0b0500;
-  text-align: left;
+  text-align: center;
 }
 
 .row-number {
@@ -851,11 +883,12 @@ progress[value]::-webkit-progress-value {
   box-shadow: 0px 4px 4px #0b0500;
   border: none;
   width: 128px;
-  height: 48;
+  height: 48px;
   font-family: Oswald;
   font-style: normal;
   font-weight: normal;
   font-size: 36px;
+  line-height: 48px;
   text-align: center;
   color: #f3c178;
   margin: 10% auto 0 auto;
@@ -865,11 +898,178 @@ progress[value]::-webkit-progress-value {
   color: #fe5e41;
 }
 
-.table-row:hover {
+.stat-row:hover {
   background-color: #0b0500;
 }
 
+.button-block {
+  margin: 5% auto 0 auto;
+  display: flex;
+  gap: 1rem;
+}
 
+@media screen and (max-width: 1200px) {
+  .stat-title-elem {
+    font-size: 18px;
+  }
+  .stat-row-elem {
+    font-size: 14px;
+  }
+  .section-wrapper {
+    width: 90%;
+  }
+
+  .stat-title {
+    font-size: 18px;
+  }
+
+  .maps-parameters {
+    font-size: 18px;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .stat-title-elem {
+    font-size: 16px;
+  }
+  .stat-row-elem {
+    font-size: 14px;
+  }
+  .stat-title {
+    font-size: 16px !important;
+  }
+  .maps-parameters {
+    font-size: 16px;
+    width: 100px;
+  }
+
+  .stat-title {
+    font-size: 48px;
+  }
+
+  .back-button {
+    width: 72px;
+    height: 36px;
+    font-size: 18px;
+    line-height: 36px;
+  }
+}
+
+/* !login & registration */
+
+.section-button {
+  background: #1f2c38;
+  box-shadow: 0px 4px 4px #0b0500;
+  border: none;
+  width: 128px;
+  height: 48;
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  text-align: center;
+  color: #f3c178;
+  margin: 5% auto 0 auto;
+}
+
+.section-button:hover {
+  color: #fe5e41;
+}
+
+.form-sign-up {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 60%;
+  margin: auto;
+}
+
+.form__field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  margin-bottom: 1%;
+}
+
+.section-text-form {
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  color: #f3c178;
+  text-shadow: 0px 4px 4px #0b0500;
+}
+
+.section-text-button {
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  color: #f3c178;
+  text-shadow: 0px 4px 4px #0b0500;
+  margin: 3% auto 0 auto;
+}
+.section-text-button:hover {
+  color: #fe5e41;
+}
+
+.section-text-error {
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  color: #fe5e41;
+  text-shadow: 0px 4px 4px #0b0500;
+}
+
+.form-title {
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 53px;
+  text-align: right;
+  color: #f3c178;
+  text-shadow: 0px 4px 4px #0b0500;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.section-form {
+  border-radius: 5px;
+  border: solid 1px #fe5e41;
+  background-color: #1f2c38;
+  width: 320px;
+  height: 36px;
+  padding-left: 10px;
+  padding-bottom: 1%;
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  color: #f3c178;
+  margin: 0;
+}
+
+.section-form::placeholder {
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 36px;
+  color: #f3c178;
+}
+
+.form-description {
+  width: 320px;
+  margin-bottom: 2%;
+}
 
 .active {
   opacity: 1;

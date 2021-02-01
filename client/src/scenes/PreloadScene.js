@@ -1,15 +1,13 @@
 import Phaser from 'phaser';
 import LoadingBar from '../classes/LoadingBar';
 import tilesetPng from '../../assets/images/spritesheet_tiles.png';
-// import tilemapJson from '../../assets/images/adelaidemap.json';
 import adelaidemap from '../../assets/images/adelaidemap.json';
 import algarvemap from '../../assets/images/algarvemap.json';
 import catalunyamap from '../../assets/images/catalunyamap.json';
 import brandshatchmap from '../../assets/images/brandshatchmap.json';
 import detroitmap from '../../assets/images/detroitmap.json';
-
-import objectsPng from '../../assets/images/objects2.png';
-import objectsJson from '../../assets/images/objects2.json';
+import objectsPng from '../../assets/images/objects.png';
+import objectsJson from '../../assets/images/objects.json';
 
 export default class PreloadScene extends Phaser.Scene {
   constructor() {
@@ -17,7 +15,6 @@ export default class PreloadScene extends Phaser.Scene {
   }
 
   preload() {
-    this.add.sprite(0, 0, 'bg').setOrigin(0);
     this.LoadingBar = new LoadingBar(this);
     // this.load.audio('game', '../../assets/sounds/galvanize.mp3');
     this.load.audio('game', '../../assets/sounds/theme.mp3');

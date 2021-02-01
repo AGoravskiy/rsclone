@@ -1,8 +1,8 @@
 import { LOCAL_STORAGE_KEY } from './constants';
 
 export const initLocalStorage = () => {
-  localStorage.setItem(LOCAL_STORAGE_KEY.accessToken, null);
-  localStorage.setItem(LOCAL_STORAGE_KEY.accessToken, null);
-  localStorage.setItem(LOCAL_STORAGE_KEY.email, null);
-  localStorage.setItem(LOCAL_STORAGE_KEY.staistics, null);
+  console.log('init local storage');
+  Object.keys(LOCAL_STORAGE_KEY).forEach((key) => {
+    localStorage.setItem(LOCAL_STORAGE_KEY[key], null);
+  });
 };

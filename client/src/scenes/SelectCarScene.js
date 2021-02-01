@@ -4,44 +4,40 @@ import Client from '../classes/Client';
 
 const carProperty = {
   car_black_1: {
-    MAXSPEED: 12,
-    ACCELERATION: 0.05,
-    SLIDE_ANGLE: 3,
+    MAXSPEED: 6,
+    ACCELERATION: 0.8,
+    SLIDE_ANGLE: 4,
     NITROGEN: 1.2,
-    SLOWDOWN: 10,
-    NAME: 'Koenigsegg Agera RS',
+    NAME: 'Black beast',
   },
   car_blue_1: {
-    MAXSPEED: 10,
+    MAXSPEED: 6,
     ACCELERATION: 0.1,
-    SLIDE_ANGLE: 4,
+    SLIDE_ANGLE: 3,
     NITROGEN: 1.5,
-    SLOWDOWN: 10,
-    NAME: 'Bugatti Veyron Super Sport',
+    NAME: 'Blue viper',
   },
   car_green_1: {
-    MAXSPEED: 7,
-    ACCELERATION: 0.2,
-    SLIDE_ANGLE: 4,
-    NITROGEN: 1.4,
-    SLOWDOWN: 10,
-    NAME: 'SSC Ultimate Aero TT',
-  },
-  car_red_1: {
     MAXSPEED: 10,
-    ACCELERATION: 0.01,
+    ACCELERATION: 0.5,
     SLIDE_ANGLE: 4,
-    NITROGEN: 1,
-    SLOWDOWN: 20,
-    NAME: 'Hennessey Venom GT',
+    NITROGEN: 1.5,
+    NAME: 'Green death',
+  },
+
+  car_red_1: {
+    MAXSPEED: 4,
+    ACCELERATION: 0.25,
+    SLIDE_ANGLE: 2.3,
+    NITROGEN: 2.3,
+    NAME: 'Red devil',
   },
   car_yellow_1: {
-    MAXSPEED: 5,
-    ACCELERATION: 0.005,
-    SLIDE_ANGLE: 1,
+    MAXSPEED: 3,
+    ACCELERATION: 0.1,
+    SLIDE_ANGLE: 1.7,
     NITROGEN: 3,
-    SLOWDOWN: 30,
-    NAME: 'McLaren F1',
+    NAME: 'Yellow punch',
   },
 };
 
@@ -121,10 +117,14 @@ export default class SelectCarScene extends Phaser.Scene {
         mainDiv.appendChild(carProp);
       }
       createProp(carProps, carProperty[carModel].MAXSPEED, 10, 'MAX SPEED');
-      createProp(carProps, carProperty[carModel].ACCELERATION, 2, 'ACCELERATION');
+      createProp(
+        carProps,
+        carProperty[carModel].ACCELERATION,
+        0.8,
+        'ACCELERATION',
+      );
       createProp(carProps, carProperty[carModel].SLIDE_ANGLE, 5, 'ROTATION');
       createProp(carProps, carProperty[carModel].NITROGEN, 3, 'NITROGEN OXIDE');
-      createProp(carProps, carProperty[carModel].SLOWDOWN, 100, 'SLOWDOWN');
 
       carItem.append(imageContainer);
       carItem.append(carProps);
@@ -139,7 +139,11 @@ export default class SelectCarScene extends Phaser.Scene {
     this.container.appendChild(this.track);
     for (const item of this.track.childNodes) {
       item.addEventListener('click', (event) => {
-        this.startGame(item.getAttribute('data-car'), this.carProperty[item.getAttribute('data-car')], this.map);
+        this.startGame(
+          item.getAttribute('data-car'),
+          this.carProperty[item.getAttribute('data-car')],
+          this.map,
+        );
         this.carsBg = document.querySelector('.cars-background');
         this.carsBg.classList.remove('active');
 
@@ -184,11 +188,12 @@ export default class SelectCarScene extends Phaser.Scene {
 
     this.btnNext.addEventListener('click', () => {
       const carsLeft = this.carsCount
-      - (Math.abs(this.position) + this.sliderToShow * this.carsWidth)
-      / this.carsWidth;
-      this.position -= carsLeft >= this.sliderToScroll
-        ? this.movePosition
-        : this.carsLeft * this.carsWidth;
+        - (Math.abs(this.position) + this.sliderToShow * this.carsWidth)
+          / this.carsWidth;
+      this.position
+        -= carsLeft >= this.sliderToScroll
+          ? this.movePosition
+          : this.carsLeft * this.carsWidth;
 
       this.setPosition();
       this.checkBtns();
@@ -197,9 +202,10 @@ export default class SelectCarScene extends Phaser.Scene {
     this.btnPrev.addEventListener('click', () => {
       const carsLeft = Math.abs(this.position) / this.carsWidth;
 
-      this.position += carsLeft >= this.sliderToScroll
-        ? this.movePosition
-        : this.carsLeft * this.carsWidth;
+      this.position
+        += carsLeft >= this.sliderToScroll
+          ? this.movePosition
+          : this.carsLeft * this.carsWidth;
 
       this.setPosition();
       this.checkBtns();
