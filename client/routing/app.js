@@ -5,6 +5,11 @@ import gameScript from '../src/pages/game';
 import Route from './route';
 import Router from './router';
 
+document.addEventListener('DOMContentLoaded', () => {
+  const mainDiv = document.querySelector('.loading');
+  mainDiv.classList.remove('loading');
+});
+
 (function () {
   function init() {
     const router = new Router([
