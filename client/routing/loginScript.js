@@ -1,4 +1,6 @@
 export default function loginScript() {
+
+  // gamecanvas = document.querySelector('canvas');
   console.log('load loginScript.js');
   localStorage.clear();
   const statistics = {};
@@ -18,6 +20,7 @@ export default function loginScript() {
     }
     return '';
   }
+  
 
   const HOST = 'https://nfs-jsu.herokuapp.com/user/login';
   const form = document.querySelector('.form-sign-in');

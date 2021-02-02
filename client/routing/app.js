@@ -16,15 +16,19 @@ import Router from './router';
   }
   init();
 }());
+
 window.addEventListener('load', () => {
   introScript();
 });
-
 window.onhashchange = function () {
   if (window.location.href.substr(window.location.href.length - 2, window.location.href.length - 1) === 'up') {
     setTimeout(signupScript, 100);
   } else if (window.location.href.substr(window.location.href.length - 2, window.location.href.length - 1) === 'in') {
     setTimeout(loginScript, 100);
+    if (document.body.childNodes.length > 5) {
+      document.body.lastChild.remove();
+      document.body.lastChild.remove();
+    }
   } else if (window.location.href.substr(window.location.href.length - 1, window.location.href.length - 1) === '/') {
     setTimeout(introScript, 100);
   } else if (window.location.href.substr(window.location.href.length - 2, window.location.href.length - 1) === 'me') {

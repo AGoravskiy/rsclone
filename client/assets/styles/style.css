@@ -3,8 +3,7 @@ body {
   padding: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #1f2c38;
-  scroll
+  background-color: #1f2c38 !important ;
 }
 
 /* Стили для сцены НАСТРОЕК */
