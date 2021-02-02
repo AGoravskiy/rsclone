@@ -9,7 +9,7 @@ import { sendRequest } from '../utils/ajax/sendRequest';
 import { LOCAL_STORAGE_KEY } from '../utils/localStorage';
 import { routes } from '../utils/routes';
 
-const LAPS = 3;
+const LAPS = 5;
 const CARS = {
   BLUE: {
     sprite: 'car_blue_1',
@@ -42,22 +42,34 @@ export default class GameScene extends Phaser.Scene {
     super('Game');
   }
 
-  // метод который вызывается в начале, при старте сцены
   init(data) {
+    console.log(data);
+
     if (data.laps) {
       this.laps = data.laps;
     } else {
       this.laps = LAPS;
     }
-    this.mapa = data.map;
+
+    if (data.map) {
+      this.mapa = data.map;
+    } else {
+      this.mapa = 'adelaidemap';
+    }
+
     if (data.client) {
       this.client = data.client;
     }
     if (data.carProperty) {
       this.carProperty = data.carProperty;
+    } else {
+      this.carProperty = CARS.BLUE.carProperty;
     }
+
     if (data.car) {
       this.carmodel = data.car;
+    } else {
+      this.carmodel = CARS.BLUE.sprite;
     }
     this.cursors = this.input.keyboard.createCursorKeys();
     this.w = this.input.keyboard.addKey('W');
@@ -67,11 +79,6 @@ export default class GameScene extends Phaser.Scene {
     this.link = 'https://nfs-jsu.herokuapp.com/submit-game';
   }
 
-  /*
-  preload() {
-    this.add.sprite(0, 0, 'bg').setOrigin(0);
-  }
-*/
   getCarsConfig() {
     if (this.carmodel) {
       CARS.BLUE.sprite = this.carmodel;

@@ -17,6 +17,8 @@ export default class Player {
     this.scene = scene;
     this.map = map;
     const position = this.map.getPlayerPosition(config.position);
+    console.log(config);
+    console.log(carProperty);
     this.car = this.scene.matter.add.sprite(position.x, position.y, 'objects', config.sprite);
     this.car.angle = position.type;
     this.car.setFixedRotation(false);
