@@ -12,6 +12,7 @@ import FinishScene from '../scenes/FinishScene';
 import { routes, sendRequest } from '../utils';
 
 export default function gameScript() {
+  window.value = document.querySelector('.output-value');
   const config = {
     type: Phaser.AUTO,
     width: 1280,
