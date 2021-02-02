@@ -50,7 +50,6 @@ const loadPlugins = () => {
       template: path.resolve(__dirname, './index.html'),
       filename: 'index.html',
       favicon: './assets/images/icons/car-sport.svg',
-      chunks: [],
       minify: {
         collapseWhitespace: isProd,
       },
