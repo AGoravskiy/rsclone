@@ -1248,3 +1248,84 @@ progress[value]::-webkit-progress-value {
     background-position: center center;
   }
 }
+
+/* !settings */
+.settings-illustarion-wrapper {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.settings-wrapper {
+  background-color: #1f2c38;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.setting-content {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 10%;
+}
+
+.settings-button {
+  background: #1f2c38;
+  box-shadow: 0px 4px 4px #0b0500;
+  border: none;
+  width: 144px;
+  height: 48;
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  text-align: center;
+  color: #f3c178;
+  margin-top: 36px;
+}
+
+.settings-description-block {
+  margin-bottom: 36px;
+  display: flex;
+  gap: 1rem;
+}
+
+.setting-description {
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 36px;
+  margin: 0;
+  padding: 0;
+  color: #f3c178;
+  text-shadow: 0px 4px 4px #0b0500;
+  width: 180px;
+}
+
+.select-option {
+}
+
+.volume-option {
+}
+
+@media screen and (max-width: 767px) {
+  .settings-illustarion-wrapper {
+    display: none;
+  }
+
+  .settings-wrapper {
+    background-image: url('../design/track.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  .setting-content {
+    width: 100%;
+  }
+}
