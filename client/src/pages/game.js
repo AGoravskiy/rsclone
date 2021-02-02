@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import BootScene from '../scenes/BootScene';
+// import BootScene from '../scenes/BootScene';
 import PreloadScene from '../scenes/PreloadScene';
 import GameScene from '../scenes/GameScene';
 import StartScene from '../scenes/StartScene';
@@ -8,6 +8,7 @@ import SelectMapScene from '../scenes/SelectMapScene';
 import SelectCarScene from '../scenes/SelectCarScene';
 import StatisticsScene from '../scenes/StatisticsScene';
 import CreditsScene from '../scenes/СreditsScene';
+import FinishScene from '../scenes/FinishScene';
 import { routes, sendRequest } from '../utils';
 
 const config = {
@@ -19,7 +20,7 @@ const config = {
     createContainer: true,
   },
   scene: [
-    BootScene,
+    // BootScene,
     PreloadScene,
     StartScene,
     SettingsScene,
@@ -28,6 +29,7 @@ const config = {
     SelectCarScene,
     GameScene,
     CreditsScene,
+    FinishScene,
   ],
   scale: {
     mode: Phaser.Scale.FIT,

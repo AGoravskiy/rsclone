@@ -102,25 +102,24 @@ export default class GameScene extends Phaser.Scene {
     this.input.on('gameobjectdown', function () {
       this.scene.launch('start');
     });
-    this.esc = this.input.keyboard.addKey('ESC');
-    this.esc.on('down', function (event) {
-      this.scene.pause();
-      this.scene.launch('Start');
-      // if(this.isPause){
-      //   console.log("resume")
-      //   this.scene.resume();
-      //   this.isPause = false;
-      // }
-      // else{
-      //   console.log("pause")
-      //   this.scene.pause();
-      //   this.scene.start('Start');
-      //   this.isPause = true;
-      // }
-    }, this);
-
     this.motor = this.sound.add('motor');
     this.motor.loop = true;
+    this.gameSound = this.sound.add('game');
+    this.gameSound.loop = true;
+    this.gameSound.play();
+
+    this.scene.scene.events.on('wake', () => {
+      this.gameSound.play();
+    });
+
+    this.esc = this.input.keyboard.addKey('ESC');
+    this.esc.on('down', function (event) {
+      this.scene.wake('Start');
+      this.scene.sleep('Game');
+      this.motor.stop();
+      this.gameSound.stop();
+      window.isPause = true;
+    }, this);
     this.keyUp = this.input.keyboard.addKey('up');
     this.localVolume = +localStorage.getItem('volume');
     this.keyUp.on('down', function (event) {
@@ -132,7 +131,7 @@ export default class GameScene extends Phaser.Scene {
       this.motor.stop();
     }, this);
 
-    this.soundPlay();
+    // this.soundPlay();
     this.map = new Map(this, this.mapa);
 
     const car = this.getCarsConfig();
@@ -171,7 +170,7 @@ export default class GameScene extends Phaser.Scene {
   onLapComplete(lap) {
     this.stats.onLapComplete();
     if (this.stats.complete) {
-      this.StatsPopup = new StatsPopup(this, this.stats);
+      // this.StatsPopup = new StatsPopup(this, this.stats);
       this.motor.stop();
       this.email = localStorage.getItem(LOCAL_STORAGE_KEY.email);
       const options = {
@@ -183,6 +182,8 @@ export default class GameScene extends Phaser.Scene {
       };
       console.log(options);
       sendRequest(routes.submitGame, options);
+      this.gameSound.stop();
+      this.scene.start('Finish', { stats: this.stats });
     }
   }
 

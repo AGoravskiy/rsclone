@@ -29,7 +29,7 @@ export default class Statistics extends Phaser.Scene {
       this.statisticsWrapper = document.querySelector('.section-wrapper');
       this.statisticsWrapper.classList.remove('active');
 
-      this.statisticsBg = document.querySelector('.body-background');
+      this.statisticsBg = document.querySelector('.stats-background');
       this.statisticsBg.classList.remove('active');
       this.scene.start('Start');
     });
