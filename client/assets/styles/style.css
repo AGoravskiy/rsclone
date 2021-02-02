@@ -1329,3 +1329,140 @@ progress[value]::-webkit-progress-value {
     width: 100%;
   }
 }
+
+/* !finish screen */
+
+.finish-wrapper {
+  background-color: #1f2c38;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding-top: 15%;
+}
+
+.finish-title {
+  font-family: Racing Sans One;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 72px;
+  line-height: 91px;
+  text-align: center;
+  color: #f3c178;
+  opacity: 0.8;
+  text-shadow: 0px 4px 4px #0b0500;
+  margin-bottom: 5%;
+}
+
+.race-result-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  justify-content: center;
+}
+
+.result {
+  display: flex;
+}
+
+.result-name {
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 36px;
+  margin: 0;
+  padding: 0;
+  color: #f3c178;
+  text-shadow: 0px 4px 4px #0b0500;
+  width: 240px;
+  text-align: right;
+  padding-right: 16px;
+  margin-bottom: 20px;
+}
+
+.result-number {
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 36px;
+  margin: 0;
+  padding: 0;
+  color: #fe5e41;
+  text-shadow: 0px 4px 4px #0b0500;
+}
+
+/* .flag-animation {
+  font-size: 192px;
+  line-height: 0;
+  animation: rotate linear 4s infinite alternate;
+  transform-origin: 640px 480px;
+} */
+
+.menu-button {
+  background: #1f2c38;
+  box-shadow: 0px 4px 4px #0b0500;
+  border: none;
+  width: 128px;
+  height: 48;
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  text-align: center;
+  color: #f3c178;
+  margin: 5% auto 0 auto;
+}
+
+.flag-animation {
+  font-size: 192px;
+  margin-top: -24px;
+  animation: rotate linear 1s infinite alternate;
+  transform-origin: 0 200px;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(10deg);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .finish-title {
+    font-size: 48px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .race-result-wrapper {
+    display: block;
+  }
+  .finish-title {
+    font-size: 36px;
+  }
+
+  .result-name,
+  .result-number {
+    font-size: 18px;
+  }
+
+  .menu-button {
+    background: #1f2c38;
+    box-shadow: 0px 4px 4px #0b0500;
+    border: none;
+    width: 72px;
+    height: 48px;
+    font-family: Oswald;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    text-align: center;
+    color: #f3c178;
+    margin: 5% auto 0 auto;
+  }
+}
