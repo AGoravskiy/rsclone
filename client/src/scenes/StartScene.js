@@ -180,11 +180,8 @@ export default class StartScene extends Phaser.Scene {
     }
     this.scene.switch('SelectMapScene');
 
-    this.mapsBg = document.querySelector('.maps-background');
-    this.mapsBg.classList.add('active');
-
-    this.mapsSlider = document.querySelector('.maps-slider-wrapper');
-    this.mapsSlider.classList.add('active-block');
+    this.mapPageWrapper = document.querySelector('.map-page-wrapper');
+    this.mapPageWrapper.classList.add('active');
 
     const lapsContainer = document.querySelector('.lapsSelect__container');
     if (lapsContainer) {
