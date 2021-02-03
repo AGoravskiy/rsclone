@@ -20,7 +20,6 @@ body {
   }
 }
 
-
 /* Стили для сцены СТАТИСТИКИ */
 
 .statistics-results {
@@ -388,7 +387,7 @@ body {
 
 .section-wrapper {
   /* background-image: url(../); */
-  padding-top: 15%;
+  padding-top: 5%;
   width: 80%;
   margin: 0 auto;
   display: flex;
@@ -421,7 +420,6 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  
 }
 
 .stat-title-elem {
@@ -435,7 +433,7 @@ body {
   color: #f3c178;
   text-shadow: 0px 4px 4px #0b0500;
   border-bottom: solid 1px #f3c178;
-  
+
   text-align: center;
 }
 
@@ -454,7 +452,7 @@ body {
   border-bottom: solid 1px #f3c178;
   margin: 0;
   padding-bottom: 20px;
-  
+
   /* text-align: center; */
 }
 
@@ -623,7 +621,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  width: 60%;
+  /* width: 60%; */
   margin: auto;
 }
 
@@ -723,7 +721,7 @@ body {
   width: 100%;
   height: 100%;
   display: flex;
-  align-items: center;  
+  align-items: center;
   opacity: 0;
   visibility: hidden;
 }
@@ -781,10 +779,28 @@ body {
   gap: 1rem;
 }
 
+.lap-track-header {
+  display: flex;
+  gap: 1rem;
+  padding: 2%;
+}
+
+.lap-number-title-control {
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 53px;
+  text-align: right;
+  color: #fe5e41;
+  text-shadow: 0px 4px 4px #0b0500;
+}
+
 .track-header-title {
   font-family: Oswald;
   font-style: normal;
   font-weight: normal;
+  text-align: left;
   font-size: 36px;
   line-height: 53px;
   color: #fe5e41;
@@ -854,10 +870,12 @@ body {
   font-weight: normal;
   font-size: 96px;
   line-height: 142px;
-  text-align: right;
+  /* text-align: right; */
   color: #f3c178;
   text-shadow: 0px 4px 4px #0b0500;
   width: 5%;
+  background-color: #1f2c38;
+  border: none;
 }
 
 .arrow:hover {
@@ -878,7 +896,7 @@ body {
   }
 
   .track-illustration {
-    width: 100%;
+    /* width: 100%; */
     padding: 0;
   }
 
@@ -902,7 +920,7 @@ body {
     position: absolute;
     z-index: 2;
     opacity: 0;
-  visibility: hidden;
+    visibility: hidden;
   }
 }
 
@@ -916,7 +934,7 @@ body {
   width: 100%;
   height: 100%;
   display: flex;
-  align-items: center;  
+  align-items: center;
   opacity: 0;
   visibility: hidden;
 }
@@ -934,7 +952,6 @@ body {
   background-position: left center;
   background-repeat: no-repeat;
 }
-
 
 .cars-slider-container {
   overflow: hidden;
@@ -954,7 +971,7 @@ body {
 .car-header {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  gap: 3rem;
   align-items: center;
   width: 90%;
 }
@@ -1029,7 +1046,7 @@ body {
   width: 100%;
   height: 100%;
   display: flex;
-  align-items: center;  
+  align-items: center;
   opacity: 0;
   visibility: hidden;
 }
@@ -1067,6 +1084,10 @@ body {
   margin-top: 36px;
 }
 
+.settings-button:hover {
+  color: #fe5e41;
+}
+
 .settings-description-block {
   font-family: Oswald;
   font-style: normal;
@@ -1101,9 +1122,9 @@ body {
 }
 
 .language-parameters {
-  width: 200px;
+  /* width: 200px; */
   height: 100%;
-  font-family: Racing Sans One;
+  font-family: Oswald;
   font-style: normal;
   font-weight: normal;
   font-size: 24px;
@@ -1112,9 +1133,9 @@ body {
   color: #f3c178;
   border: none;
   text-shadow: 0px 4px 4px #0b0500;
-  border-bottom: solid 1px #f3c178;
+  /* border-bottom: solid 1px #f3c178; */
   margin: 0;
-  padding-bottom: 20px;
+  /* padding-bottom: 20px; */
   cursor: pointer;
   text-align: center;
 }
@@ -1129,7 +1150,7 @@ body {
   max-width: 160px;
   height: 20px;
   border-radius: 5px;
-  background:#f3c178;
+  background: #f3c178;
   outline: none;
   opacity: 0.7;
   -webkit-transition: 0.2s;
