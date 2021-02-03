@@ -167,8 +167,128 @@ export const selectButtonLang = {
   belarusian: 'Выбраць',
 };
 
+export const refreshButtonLang = {
+  english: 'Refresh',
+  russian: 'Освежить',
+  belarusian: 'Асвяжыць',
+};
+
 export const wordLaps = {
   english: 'Laps: ',
   russian: 'Круги: ',
   belarusian: 'Кругі: ',
 };
+
+export const wordChoose = {
+  english: 'Choose your language',
+  russian: 'Выберите свой язык',
+  belarusian: 'Выберыце сваю мову',
+};
+
+export const startSceneLang = {
+  main: {
+    english: 'Main menu',
+    russian: 'Главное меню',
+    belarusian: 'Галоўнае меню',
+  },
+  one: {
+    english: 'One player',
+    russian: 'Один игрок',
+    belarusian: 'Адзін гулец',
+  },
+  two: {
+    english: 'Two players',
+    russian: 'Два игрока',
+    belarusian: 'Два гульца',
+  },
+  settings: {
+    english: 'Settings',
+    russian: 'Настройки',
+    belarusian: 'Налады',
+  },
+  statistics: {
+    english: 'Statistics',
+    russian: 'Статистика',
+    belarusian: 'Статыстыка',
+  },
+  credits: {
+    english: 'Credits',
+    russian: 'Разработчики',
+    belarusian: 'Распрацоўшчыкі',
+  },
+};
+
+export const statisticsSceneLang = {
+  driver: {
+    english: 'Driver',
+    russian: 'Водитель',
+    belarusian: 'Вадзіцель',
+  },
+  date: {
+    english: 'Date',
+    russian: 'Дата',
+    belarusian: 'Дата',
+  },
+  allTracks: {
+    english: 'All tracks',
+    russian: 'Все трассы',
+    belarusian: 'Усе трасы',
+  },
+  car: {
+    english: 'Car',
+    russian: 'Машина',
+    belarusian: 'Машына',
+  },
+  bestLap: {
+    english: 'Best lap',
+    russian: 'Лучший круг',
+    belarusian: 'Лепшы круг',
+  },
+};
+
+export const settingsSceneLang = {
+  language: {
+    english: 'Language',
+    russian: 'Язык',
+    belarusian: 'Мова',
+  },
+  volume: {
+    english: 'Volume: ',
+    russian: 'Громкость: ',
+    belarusian: 'Гучнасць: ',
+  },
+};
+
+export const brothersLang = {
+  Alexey: {
+    english: 'Aleksej Goravskij',
+    russian: 'Алексей Горавский',
+    belarusian: 'Аляксей Гараўскі',
+  },
+  Nicolay: {
+    english: 'Nicolay Kryshchanovich',
+    russian: 'Николай Крищенович',
+    belarusian: 'Мiкалай Крышчановiч',
+  },
+  Max: {
+    english: 'Max Andreev',
+    russian: 'Максим Андреев',
+    belarusian: 'Максім Андрэеў',
+  },
+  Ivan: {
+    english: 'Ivan Shvets',
+    russian: 'Иван Швец',
+    belarusian: 'Іван Швец',
+  },
+};
+
+export const dropDownLang = `<select name="parameters" class="language-parameters">
+<option value="" hidden disabled selected class="first-parameters-in-lang">Choose your language</option>
+<option class="lang-parameter" value="english">English</option>
+<option class="lang-parameter" value="russian">Russian</option>
+<option class="lang-parameter" value="belarusian">Belarusian</option>
+</select>`;
+
+export const sliderVolume = `<span class="volume-value-min">0</span>
+<input type="range" min="0" max="100" step="1" class="slider" id="myRange">
+<span class="volume-value-max">100</span>`;

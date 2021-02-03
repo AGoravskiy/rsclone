@@ -22,7 +22,6 @@ export default function gameScript() {
       createContainer: true,
     },
     scene: [
-      // BootScene,
       PreloadScene,
       StartScene,
       SettingsScene,

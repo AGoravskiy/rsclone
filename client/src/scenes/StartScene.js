@@ -1,6 +1,7 @@
-import Phaser, { Data } from 'phaser';
+import Phaser from 'phaser';
 import Client from '../classes/Client';
 import WebFontFile from '../classes/WebFontFile';
+import { startSceneLang } from '../utils/itemDescription';
 
 export default class StartScene extends Phaser.Scene {
   constructor() {
@@ -16,6 +17,11 @@ export default class StartScene extends Phaser.Scene {
   }
 
   create() {
+    if (localStorage.getItem('language')) {
+      this.lang = localStorage.getItem('language');
+    } else {
+      this.lang = 'english';
+    }
     this.createSounds();
     this.createBackground();
     this.createButtons();
@@ -52,7 +58,7 @@ export default class StartScene extends Phaser.Scene {
       fill: '#F3C178',
     };
 
-    const mainMenuTitle = this.add.text(96, 112, 'Main menu', menuTitleStyle);
+    const mainMenuTitle = this.add.text(96, 112, `${startSceneLang.main[this.lang]}`, menuTitleStyle);
     mainMenuTitle.alpha = 0.8;
     mainMenuTitle.setShadow(0, 4, '#0B0500', 4);
 
@@ -72,7 +78,7 @@ export default class StartScene extends Phaser.Scene {
     // resumeBtn.inputEnabled;
     // resumeBtn.useHandCursor = true;
 
-    const onePlayerBtn = this.add.text(96, 252, 'One player', menuItemsStyle);
+    const onePlayerBtn = this.add.text(96, 252, `${startSceneLang.one[this.lang]}`, menuItemsStyle);
     this.onePlayerBtn = onePlayerBtn;
     onePlayerBtn.setShadow(0, 4, '#0B0500', 4);
     onePlayerBtn
@@ -84,7 +90,7 @@ export default class StartScene extends Phaser.Scene {
         this.setStyle(menuItemsStyle);
       });
 
-    const twoPlayerBtn = this.add.text(96, 312, 'Two players', menuItemsStyle);
+    const twoPlayerBtn = this.add.text(96, 312, `${startSceneLang.two[this.lang]}`, menuItemsStyle);
     this.twoPlayerBtn = twoPlayerBtn;
     twoPlayerBtn.setShadow(0, 4, '#0B0500', 4);
     twoPlayerBtn
@@ -102,7 +108,7 @@ export default class StartScene extends Phaser.Scene {
           });
       });
 
-    const settingsBtn = this.add.text(96, 372, 'Settings', menuItemsStyle);
+    const settingsBtn = this.add.text(96, 372, `${startSceneLang.settings[this.lang]}`, menuItemsStyle);
     this.settingsBtn = settingsBtn;
     settingsBtn.setShadow(0, 4, '#0B0500', 4);
     settingsBtn
@@ -114,7 +120,7 @@ export default class StartScene extends Phaser.Scene {
         this.setStyle(menuItemsStyle);
       });
 
-    const statisticsBtn = this.add.text(96, 432, 'Statistics', menuItemsStyle);
+    const statisticsBtn = this.add.text(96, 432, `${startSceneLang.statistics[this.lang]}`, menuItemsStyle);
     this.statisticsBtn = statisticsBtn;
     statisticsBtn.setShadow(0, 4, '#0B0500', 4);
     statisticsBtn
@@ -126,7 +132,7 @@ export default class StartScene extends Phaser.Scene {
         this.setStyle(menuItemsStyle);
       });
 
-    const creditsBtn = this.add.text(96, 492, 'Credits', menuItemsStyle);
+    const creditsBtn = this.add.text(96, 492, `${startSceneLang.credits[this.lang]}`, menuItemsStyle);
     this.creditsBtn = creditsBtn;
     creditsBtn.setShadow(0, 4, '#0B0500', 4);
     creditsBtn
@@ -158,14 +164,8 @@ export default class StartScene extends Phaser.Scene {
 
   selectSettings() {
     this.scene.start('Settings');
-    this.settingsOverlay = document.querySelector('.settings-overlay');
-    this.settingsOverlay.classList.add('active');
-
-    this.settingsBg = document.querySelector('.settings-background');
-    this.settingsBg.classList.add('active');
-
-    this.settingsMenu = document.querySelector('.settings-menu');
-    this.settingsMenu.classList.add('active');
+    this.settingsPageWrapper = document.querySelector('.settings-page-wrapper');
+    this.settingsPageWrapper.classList.add('active');
   }
 
   playMusic() {
@@ -178,15 +178,10 @@ export default class StartScene extends Phaser.Scene {
       this.scene.stop('Game');
       window.isPause = false;
     }
-    this.scene.switch('SelectMapScene');
-
+    // this.scene.switch('SelectMap');
+    this.scene.start('SelectMap');
     this.mapPageWrapper = document.querySelector('.map-page-wrapper');
     this.mapPageWrapper.classList.add('active');
-
-    const lapsContainer = document.querySelector('.lapsSelect__container');
-    if (lapsContainer) {
-      lapsContainer.style.visibility = 'visible';
-    }
   }
 
   viewCredits() {
@@ -196,7 +191,7 @@ export default class StartScene extends Phaser.Scene {
   requestGame() {
     this.client = new Client();
     this.client.init();
-    this.client.on('game', this.startGame(), this);
+    this.client.on('game', this.startGame, this);
   }
 
   startGame(car, carProperty, map) {

@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import WebFontFile from '../classes/WebFontFile';
+import { backButtonLang, brothersLang, startSceneLang } from '../utils/itemDescription';
 
 export default class CreditsScene extends Phaser.Scene {
   constructor() {
@@ -15,6 +16,11 @@ export default class CreditsScene extends Phaser.Scene {
   }
 
   create() {
+    if (localStorage.getItem('language')) {
+      this.lang = localStorage.getItem('language');
+    } else {
+      this.lang = 'english';
+    }
     this.createBackground();
     this.createLabels();
     this.createBackBtn();
@@ -33,13 +39,13 @@ export default class CreditsScene extends Phaser.Scene {
 
     const list = [
       {
-        name: 'Mikalai Kryshchanovich',
+        name: `${brothersLang.Nicolay[this.lang]}`,
         login: 'Nicolay-kr',
         event: openGithub,
       },
-      { name: 'Aleksej Goravskij', login: 'AGoravskiy', event: openGithub },
-      { name: 'Maxim Andreev', login: 'nAzdAc', event: openGithub },
-      { name: 'Ivan Shvets', login: 'ShvetsBy', event: openGithub },
+      { name: `${brothersLang.Alexey[this.lang]}`, login: 'AGoravskiy', event: openGithub },
+      { name: `${brothersLang.Max[this.lang]}`, login: 'nAzdAc', event: openGithub },
+      { name: `${brothersLang.Ivan[this.lang]}`, login: 'ShvetsBy', event: openGithub },
     ];
 
     const menuTitleStyle = {
@@ -58,7 +64,7 @@ export default class CreditsScene extends Phaser.Scene {
     const styleOver = { fill: '#FE5E41' };
     const spacing = 60;
 
-    const mainMenuTitle = this.add.text(96, 112, 'Credits', menuTitleStyle);
+    const mainMenuTitle = this.add.text(96, 112, `${startSceneLang.credits[this.lang]}`, menuTitleStyle);
     mainMenuTitle.alpha = 0.8;
     mainMenuTitle.setShadow(0, 4, '#0B0500', 4);
 
@@ -103,7 +109,7 @@ export default class CreditsScene extends Phaser.Scene {
     buttonBack.fillStyle(722176, 0.7);
 
     this.add
-      .text(130, 544, 'Back', {
+      .text(130, 544, `${backButtonLang[this.lang]}`, {
         fontFamily: '"Oswald"',
         fontSize: '36px',
         fill: '#F3C178',
@@ -137,18 +143,3 @@ export default class CreditsScene extends Phaser.Scene {
     });
   }
 }
-
-// quit() {
-//     this.quitBtn = document.createElement('button');
-//     this.quitBtn.classList.add('btn', 'btn-primary', 'quit-from-select-map');
-//     this.quitBtn.textContent = 'QUIT';
-//     this.wrapper.appendChild(this.quitBtn);
-//     this.quitBtn.addEventListener('click', () => {
-//       this.mapsBg = document.querySelector('.maps-background');
-//       this.mapsBg.classList.remove('active');
-
-//       this.mapsSlider = document.querySelector('.maps-slider-wrapper');
-//       this.mapsSlider.classList.remove('active-block');
-//       this.scene.start('Start');
-//     });
-//   }

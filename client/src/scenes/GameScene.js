@@ -12,28 +12,31 @@ import { routes } from '../utils/routes';
 const LAPS = 5;
 const CARS = {
   BLUE: {
-    sprite: 'car_blue_1',
+    sprite: 'car_black_1',
     position: 'player',
     carProperty: {
-      MAXSPEED: 5,
-      ACCELERATION: 0.9,
-      SLIDE_ANGLE: 3,
+      MAXSPEED: 9,
+      ACCELERATION: 0.5,
+      SLIDE_ANGLE: 3.6,
       NITROGEN: 1.5,
-      NAME: 'Bugatti Veyron Super Sport',
+      english: 'Black death',
+      russian: 'Чёрная смерть',
+      belarusian: 'Чорная смерць',
     },
 
   },
   RED: {
-    sprite: 'car_red_1',
+    sprite: 'car_yellow_1',
     position: 'enemy',
     carProperty: {
-      MAXSPEED: 6,
-      ACCELERATION: 1.2,
-      SLIDE_ANGLE: 3.5,
-      NITROGEN: 1.6,
-      NAME: 'Hennessey Venom GT',
+      MAXSPEED: 9,
+      ACCELERATION: 0.5,
+      SLIDE_ANGLE: 3.6,
+      NITROGEN: 1.5,
+      english: 'Yellow punch',
+      russian: 'Жёлтый удар',
+      belarusian: 'Жоўты ўдар',
     },
-
   },
 };
 
@@ -43,8 +46,6 @@ export default class GameScene extends Phaser.Scene {
   }
 
   init(data) {
-    console.log(data);
-
     if (data.laps) {
       this.laps = data.laps;
     } else {
@@ -99,14 +100,17 @@ export default class GameScene extends Phaser.Scene {
   }
 
   create() {
+    if (localStorage.getItem('volume')) {
+      this.localVolume = +localStorage.getItem('volume');
+    } else {
+      this.localVolume = 0;
+    }
+
+    this.createSounds(this.localVolume);
     this.input.on('gameobjectdown', function () {
       this.scene.launch('start');
     });
-    this.motor = this.sound.add('motor');
-    this.motor.loop = true;
-    this.gameSound = this.sound.add('game');
-    this.gameSound.loop = true;
-    this.gameSound.play();
+    this.motor = this.sound.add('motor', { loop: true });
 
     this.scene.scene.events.on('wake', () => {
       this.gameSound.play();
@@ -121,10 +125,9 @@ export default class GameScene extends Phaser.Scene {
       window.isPause = true;
     }, this);
     this.keyUp = this.input.keyboard.addKey('up');
-    this.localVolume = +localStorage.getItem('volume');
     this.keyUp.on('down', function (event) {
       this.motor.play({
-        volume: this.localVolume * 0.001,
+        volume: this.localVolume * 0.0005,
       });
     }, this);
     this.keyUp.on('up', function (event) {
@@ -160,9 +163,24 @@ export default class GameScene extends Phaser.Scene {
     });
   }
 
-  soundPlay() {
-    this.sound.play('game', {
-      volume: this.localVolume * 0.005,
+  createSounds(volume) {
+    this.randomNumForTrack = Phaser.Math.Between(1, 10);
+    this.selectedTrack = `track${this.randomNumForTrack}`;
+    this.sounds = {
+      track1: this.sound.add('track1'),
+      track2: this.sound.add('track2'),
+      track3: this.sound.add('track3'),
+      track4: this.sound.add('track4'),
+      track5: this.sound.add('track5'),
+      track6: this.sound.add('track6'),
+      track7: this.sound.add('track7'),
+      track8: this.sound.add('track8'),
+      track9: this.sound.add('track9'),
+      track10: this.sound.add('track10'),
+    };
+
+    this.sounds[this.selectedTrack].play({
+      volume: volume * 0.01,
       loop: true,
     });
   }
@@ -182,12 +200,11 @@ export default class GameScene extends Phaser.Scene {
       };
       console.log(options);
       sendRequest(routes.submitGame, options);
-      this.gameSound.stop();
+      this.sounds[this.selectedTrack].stop();
       this.scene.start('Finish', { stats: this.stats });
     }
   }
 
-  // вызывается много раз в секунду обновляя состояние сцены
   update(time, dt) {
     this.stats.update(dt);
     this.statsPanel.render();
