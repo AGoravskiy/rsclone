@@ -77,7 +77,7 @@ export default class GameScene extends Phaser.Scene {
     this.s = this.input.keyboard.addKey('S');
     this.a = this.input.keyboard.addKey('A');
     this.d = this.input.keyboard.addKey('D');
-    this.link = 'https://nfs-jsu.herokuapp.com/submit-game';
+    this.link = 'https://nfc-jsu.herokuapp.com/submit-game';
   }
 
   getCarsConfig() {
