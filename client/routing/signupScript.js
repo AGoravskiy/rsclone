@@ -1,7 +1,7 @@
 export default function signupScript() {
   console.log('load signupScript.js');
   localStorage.clear();
-  const HOST = 'https://nfs-jsu.herokuapp.com/user/signup';
+  const HOST = 'https://nfc-jsu.herokuapp.com/user/signup';
   const button = document.querySelector('.sign-up-btn');
   const form = document.querySelector('.form-sign-up');
 

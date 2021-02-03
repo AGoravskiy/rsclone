@@ -1,4 +1,4 @@
-const origin = 'https://nfs-jsu.herokuapp.com';
+const origin = 'https://nfc-jsu.herokuapp.com';
 
 const getRootRoute = (trailing) => `${origin}/${trailing}`;
 const getUserRoute = (trailing) => `${origin}/user/${trailing}`;

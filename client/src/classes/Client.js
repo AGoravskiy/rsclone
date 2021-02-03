@@ -2,7 +2,7 @@
 import Phaser from 'phaser';
 import io from 'socket.io-client';
 
-const HOST = 'https://nfs-jsu.herokuapp.com/';
+const HOST = 'https://nfc-jsu.herokuapp.com/';
 
 export default class Client extends Phaser.Events.EventEmitter {
   constructor() {

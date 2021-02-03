@@ -18,7 +18,7 @@ export default function loginScript() {
     }
     return '';
   }
-  const HOST = 'https://nfs-jsu.herokuapp.com/user/login';
+  const HOST = 'https://nfc-jsu.herokuapp.com/user/login';
   const form = document.querySelector('.form-sign-in');
   const signInButton = document.querySelector('.sign-in-btn');
   const signUpButton = document.querySelector('.sign-up');
