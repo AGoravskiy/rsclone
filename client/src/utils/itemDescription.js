@@ -179,6 +179,12 @@ export const wordLaps = {
   belarusian: 'Кругі: ',
 };
 
+export const wordChoose = {
+  english: 'Choose your language',
+  russian: 'Выберите свой язык',
+  belarusian: 'Выберыце сваю мову',
+};
+
 export const startSceneLang = {
   main: {
     english: 'Main menu',
@@ -240,6 +246,19 @@ export const statisticsSceneLang = {
   },
 };
 
+export const settingsSceneLang = {
+  language: {
+    english: 'Language',
+    russian: 'Язык',
+    belarusian: 'Мова',
+  },
+  volume: {
+    english: 'Volume: ',
+    russian: 'Громкость: ',
+    belarusian: 'Гучнасць: ',
+  },
+};
+
 export const brothersLang = {
   Alexey: {
     english: 'Aleksej Goravskij',
@@ -262,3 +281,14 @@ export const brothersLang = {
     belarusian: 'Іван Швец',
   },
 };
+
+export const dropDownLang = `<select name="parameters" class="language-parameters">
+<option value="" hidden disabled selected class="first-parameters-in-lang">Choose your language</option>
+<option class="lang-parameter" value="english">English</option>
+<option class="lang-parameter" value="russian">Russian</option>
+<option class="lang-parameter" value="belarusian">Belarusian</option>
+</select>`;
+
+export const sliderVolume = `<span class="volume-value-min">0</span>
+<input type="range" min="0" max="100" step="1" class="slider" id="myRange">
+<span class="volume-value-max">100</span>`;

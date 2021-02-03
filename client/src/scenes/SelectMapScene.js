@@ -5,7 +5,7 @@ import {
 
 export default class SelectMapScene extends Phaser.Scene {
   constructor() {
-    super('SelectMapScene');
+    super('SelectMap');
   }
 
   init() {
@@ -18,7 +18,6 @@ export default class SelectMapScene extends Phaser.Scene {
 
   create() {
     this.mapPageWrapper = document.querySelector('.map-page-wrapper');
-    this.mapWrapper = document.querySelector('.map-wrapper');
     if (this.mapPageWrapper.firstChild) {
       while (this.mapPageWrapper.firstChild) {
         this.mapPageWrapper.removeChild(this.mapPageWrapper.firstChild);

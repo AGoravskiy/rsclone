@@ -6,128 +6,6 @@ body {
   background-color: #1f2c38;
 }
 
-/* Стили для сцены НАСТРОЕК */
-
-.settings-background {
-  opacity: 0;
-  visibility: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url(../images/settings.jpg) no-repeat;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  z-index: 2;
-}
-
-.settings-overlay {
-  opacity: 0;
-  visibility: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.6);
-  z-index: 3;
-}
-
-.settings-menu {
-  opacity: 0;
-  visibility: hidden;
-  width: 90%;
-  height: 80%;
-  max-width: 1000px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 4;
-  text-align: center;
-  padding: 10px;
-  border-radius: 3px;
-  background-color: rgb(109, 109, 109, 0.5);
-  transition: 0.3s all;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-}
-
-.language-text {
-  color: wheat;
-  margin: 20px;
-}
-
-.language-parameters {
-  width: 35%;
-  height: 35px;
-  border-radius: 5px;
-  font-size: 15px;
-  text-align: center;
-  background-color: teal;
-  color: wheat;
-  cursor: pointer;
-  position: relative;
-}
-
-.volume-text-value {
-  color: wheat;
-  margin: 20px;
-}
-
-.slidecontainer {
-  width: 100%;
-}
-
-.slider {
-  -webkit-appearance: none;
-  width: 20%;
-  height: 10px;
-  border-radius: 5px;
-  background: teal;
-  outline: none;
-  opacity: 0.7;
-  -webkit-transition: 0.2s;
-  transition: opacity 0.2s;
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
-.slider:hover {
-  opacity: 1;
-}
-
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 30px;
-  height: 30px;
-  border: 0;
-  background: url(../images/icons/car-sport.svg);
-  cursor: pointer;
-}
-
-.slider::-moz-range-thumb {
-  width: 30px;
-  height: 24px;
-  border: 0;
-  background: url(../images/icons/car-sport.svg);
-  cursor: pointer;
-}
-
-.volume-value-min,
-.volume-value-max {
-  color: wheat;
-  font-size: 15px;
-}
-
-.quit-btn {
-  margin-top: 20px;
-}
 
 /* Стили для сцены СТАТИСТИКИ */
 
@@ -863,7 +741,7 @@ body {
   display: flex;
 }
 
-.illustration-wrapper {
+.map-illustration-wrapper {
   width: 100%;
   height: 100%;
   margin-left: -3%;
@@ -1112,7 +990,7 @@ body {
 }
 
 @media screen and (max-width: 767px) {
-  .car-illustarion-wrapper {
+  .car-illustration-wrapper {
     display: none;
   }
   .car-wrapper {
@@ -1128,27 +1006,36 @@ body {
 }
 
 /* !settings */
-.settings-illustarion-wrapper {
-  width: 60%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.settings-wrapper {
+.settings-page-wrapper {
   background-color: #1f2c38;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: 2;
   width: 100%;
   height: 100%;
   display: flex;
+  align-items: center;  
+  opacity: 0;
+  visibility: hidden;
 }
 
-.setting-content {
-  width: 40%;
+.settings-wrapper {
+  width: 50%;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding-left: 10%;
+}
+
+.settings-illustration-wrapper {
+  width: 50%;
+  height: 100%;
+  margin-left: -3%;
+  background-image: url('../design/setting-back.png');
+  background-position: left center;
+  background-repeat: no-repeat;
 }
 
 .settings-button {
@@ -1167,8 +1054,18 @@ body {
 }
 
 .settings-description-block {
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 36px;
+  color: #f3c178;
+  text-shadow: 0px 4px 4px #0b0500;
   margin-bottom: 36px;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
   gap: 1rem;
 }
 
@@ -1185,14 +1082,72 @@ body {
   width: 180px;
 }
 
-.select-option {
+.setting-lang-block {
+  width: 100%;
 }
 
-.volume-option {
+.language-parameters {
+  width: 200px;
+  height: 100%;
+  font-family: Racing Sans One;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 36px;
+  background-color: #1f2c38;
+  color: #f3c178;
+  border: none;
+  text-shadow: 0px 4px 4px #0b0500;
+  border-bottom: solid 1px #f3c178;
+  margin: 0;
+  padding-bottom: 20px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.setting-volume-block {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 50%;
+  max-width: 160px;
+  height: 20px;
+  border-radius: 5px;
+  background:#f3c178;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  background: url(../images/icons/car-sport.svg);
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 30px;
+  height: 24px;
+  border: 0;
+  background: url(../images/icons/car-sport.svg);
+  cursor: pointer;
 }
 
 @media screen and (max-width: 767px) {
-  .settings-illustarion-wrapper {
+  .settings-illustration-wrapper {
     display: none;
   }
 

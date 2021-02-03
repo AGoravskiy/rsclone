@@ -1,4 +1,4 @@
-import Phaser, { Data } from 'phaser';
+import Phaser from 'phaser';
 import Client from '../classes/Client';
 import WebFontFile from '../classes/WebFontFile';
 import { startSceneLang } from '../utils/itemDescription';
@@ -164,14 +164,8 @@ export default class StartScene extends Phaser.Scene {
 
   selectSettings() {
     this.scene.start('Settings');
-    this.settingsOverlay = document.querySelector('.settings-overlay');
-    this.settingsOverlay.classList.add('active');
-
-    this.settingsBg = document.querySelector('.settings-background');
-    this.settingsBg.classList.add('active');
-
-    this.settingsMenu = document.querySelector('.settings-menu');
-    this.settingsMenu.classList.add('active');
+    this.settingsPageWrapper = document.querySelector('.settings-page-wrapper');
+    this.settingsPageWrapper.classList.add('active');
   }
 
   playMusic() {
@@ -184,15 +178,10 @@ export default class StartScene extends Phaser.Scene {
       this.scene.stop('Game');
       window.isPause = false;
     }
-    this.scene.switch('SelectMapScene');
-
+    // this.scene.switch('SelectMap');
+    this.scene.start('SelectMap');
     this.mapPageWrapper = document.querySelector('.map-page-wrapper');
     this.mapPageWrapper.classList.add('active');
-
-    const lapsContainer = document.querySelector('.lapsSelect__container');
-    if (lapsContainer) {
-      lapsContainer.style.visibility = 'visible';
-    }
   }
 
   viewCredits() {
@@ -202,7 +191,7 @@ export default class StartScene extends Phaser.Scene {
   requestGame() {
     this.client = new Client();
     this.client.init();
-    this.client.on('game', this.startGame(), this);
+    this.client.on('game', this.startGame, this);
   }
 
   startGame(car, carProperty, map) {

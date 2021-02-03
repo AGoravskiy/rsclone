@@ -16,7 +16,7 @@ function sortArrByField(field) {
   return (a, b) => (a[field] > b[field] ? 1 : -1);
 }
 
-function createDivElem(mainDiv, content, style) {
+export function createDivElem(mainDiv, content, style) {
   const elem = document.createElement('div');
   elem.classList.add(style);
   elem.innerHTML = content;

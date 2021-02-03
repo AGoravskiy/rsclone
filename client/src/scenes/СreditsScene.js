@@ -143,18 +143,3 @@ export default class CreditsScene extends Phaser.Scene {
     });
   }
 }
-
-// quit() {
-//     this.quitBtn = document.createElement('button');
-//     this.quitBtn.classList.add('btn', 'btn-primary', 'quit-from-select-map');
-//     this.quitBtn.textContent = 'QUIT';
-//     this.wrapper.appendChild(this.quitBtn);
-//     this.quitBtn.addEventListener('click', () => {
-//       this.mapsBg = document.querySelector('.maps-background');
-//       this.mapsBg.classList.remove('active');
-
-//       this.mapsSlider = document.querySelector('.maps-slider-wrapper');
-//       this.mapsSlider.classList.remove('active-block');
-//       this.scene.start('Start');
-//     });
-//   }
