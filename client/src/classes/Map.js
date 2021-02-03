@@ -98,6 +98,8 @@ export default class Map {
   }
 
   getPlayerPosition(positionName) {
+    console.log(positionName);
+    console.log(this.tilemap);
     return this.tilemap.findObject(positionName, (position) => position.name === positionName);
   }
 

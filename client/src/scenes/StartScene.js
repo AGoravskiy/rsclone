@@ -180,11 +180,8 @@ export default class StartScene extends Phaser.Scene {
     }
     this.scene.switch('SelectMapScene');
 
-    this.mapsBg = document.querySelector('.maps-background');
-    this.mapsBg.classList.add('active');
-
-    this.mapsSlider = document.querySelector('.maps-slider-wrapper');
-    this.mapsSlider.classList.add('active-block');
+    this.mapPageWrapper = document.querySelector('.map-page-wrapper');
+    this.mapPageWrapper.classList.add('active');
 
     const lapsContainer = document.querySelector('.lapsSelect__container');
     if (lapsContainer) {
@@ -197,15 +194,13 @@ export default class StartScene extends Phaser.Scene {
   }
 
   requestGame() {
-    // инициализируем клиента
     this.client = new Client();
-    // отправляем запрос игры на сервер
     this.client.init();
-    // когда получили противника то стартуем игру
-    this.client.on('game', this.startGame, this);
+    this.client.on('game', this.startGame(), this);
   }
 
   startGame(car, carProperty, map) {
+    console.log(car, carProperty, map);
     this.scene.start('Game', {
       client: this.client,
       car,
