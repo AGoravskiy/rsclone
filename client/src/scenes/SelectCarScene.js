@@ -178,10 +178,10 @@ export default class SelectCarScene extends Phaser.Scene {
     this.sliderItem.dataset.car = this.carModel;
     this.createCarHeader(this.sliderItem, content, path);
     this.createCarDescriptionBlock(this.sliderItem,
-      carPropertyLang.ACCELERATION[this.lang],
+      carPropertyLang.MAXSPEED[this.lang],
       full1, empty1);
     this.createCarDescriptionBlock(this.sliderItem,
-      carPropertyLang.MAXSPEED[this.lang],
+      carPropertyLang.ACCELERATION[this.lang],
       full2, empty2);
     this.createCarDescriptionBlock(this.sliderItem,
       carPropertyLang.SLIDE_ANGLE[this.lang],
@@ -199,10 +199,10 @@ export default class SelectCarScene extends Phaser.Scene {
     this.track.classList.add('cars-slider-track');
 
     this.createSliderItem(this.track, carProperty.car_black_1[lang], 'car_black_1.png', 6, 4, 8, 2, 9, 1, 4, 6);
-    this.createSliderItem(this.track, carProperty.car_blue_1[lang], 'car_blue_1.png', 5, 5, 5, 5, 5, 5, 5, 5);
-    this.createSliderItem(this.track, carProperty.car_green_1[lang], 'car_green_1.png', 6, 4, 8, 2, 9, 1, 4, 6);
-    this.createSliderItem(this.track, carProperty.car_red_1[lang], 'car_red_1.png', 6, 4, 8, 2, 9, 1, 4, 6);
-    this.createSliderItem(this.track, carProperty.car_yellow_1[lang], 'car_yellow_1.png', 6, 4, 8, 2, 9, 1, 4, 6);
+    this.createSliderItem(this.track, carProperty.car_blue_1[lang], 'car_blue_1.png', 6, 4, 1, 9, 8, 2, 5, 5);
+    this.createSliderItem(this.track, carProperty.car_green_1[lang], 'car_green_1.png', 9, 1, 5, 5, 9, 1, 5, 5);
+    this.createSliderItem(this.track, carProperty.car_red_1[lang], 'car_red_1.png', 4, 6, 3, 7, 6, 4, 6, 4);
+    this.createSliderItem(this.track, carProperty.car_yellow_1[lang], 'car_yellow_1.png', 3, 7, 2, 8, 4, 6, 9, 1);
 
     this.sliderContainer.appendChild(this.track);
     mainDiv.appendChild(this.sliderContainer);
