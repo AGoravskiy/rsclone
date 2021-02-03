@@ -36,10 +36,6 @@ export default class LoadingBar {
       .fillRect(this.style.x, this.style.y, this.style.width * value, this.style.height);
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  onFileProgress(file) {
-  }
-
   onLoadComplete() {
     this.progressBar.destroy();
     this.progressBox.destroy();

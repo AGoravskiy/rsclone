@@ -4,7 +4,6 @@ import Map from '../classes/Map';
 import Player from '../classes/Player';
 import Stats from '../classes/Stats';
 import StatsPanel from '../classes/StatsPanel';
-import StatsPopup from '../classes/StatsPopup';
 import { sendRequest } from '../utils/ajax/sendRequest';
 import { LOCAL_STORAGE_KEY } from '../utils/localStorage';
 import { routes } from '../utils/routes';
@@ -134,7 +133,6 @@ export default class GameScene extends Phaser.Scene {
       this.motor.stop();
     }, this);
 
-    // this.soundPlay();
     this.map = new Map(this, this.mapa);
 
     const car = this.getCarsConfig();
@@ -188,7 +186,6 @@ export default class GameScene extends Phaser.Scene {
   onLapComplete(lap) {
     this.stats.onLapComplete();
     if (this.stats.complete) {
-      // this.StatsPopup = new StatsPopup(this, this.stats);
       this.motor.stop();
       this.email = localStorage.getItem(LOCAL_STORAGE_KEY.email);
       const options = {
@@ -198,7 +195,6 @@ export default class GameScene extends Phaser.Scene {
           game: this.getStat(),
         }),
       };
-      console.log(options);
       sendRequest(routes.submitGame, options);
       this.sounds[this.selectedTrack].stop();
       this.scene.start('Finish', { stats: this.stats });
