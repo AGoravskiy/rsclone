@@ -47,37 +47,9 @@ const cssLoaders = (extra) => {
 const loadPlugins = () => {
   const plugins = [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, './pages/game.html'),
-      filename: 'game.html',
-      favicon: './assets/images/icons/car-sport.svg',
-      chunks: ['game', 'main'],
-      minify: {
-        collapseWhitespace: isProd,
-      },
-    }),
-    new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './index.html'),
       filename: 'index.html',
       favicon: './assets/images/icons/car-sport.svg',
-      chunks: [],
-      minify: {
-        collapseWhitespace: isProd,
-      },
-    }),
-    new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, './pages/login.html'),
-      filename: 'login.html',
-      favicon: './assets/images/icons/car-sport.svg',
-      chunks: ['login', 'main'],
-      minify: {
-        collapseWhitespace: isProd,
-      },
-    }),
-    new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, './pages/signup.html'),
-      filename: 'signup.html',
-      favicon: './assets/images/icons/car-sport.svg',
-      chunks: ['signup', 'main'],
       minify: {
         collapseWhitespace: isProd,
       },
@@ -129,16 +101,13 @@ const jsLoaders = () => {
 
 module.exports = {
   entry: {
-    main: ['@babel/polyfill', './src/utils/index.js'],
-    game: ['./src/pages/game.js'],
-    login: ['./src/pages/login.js'],
-    signup: ['./src/pages/signup.js'],
+    main: ['@babel/polyfill', './routing/app.js'],
+  },
+  output: {
+    path: path.resolve(__dirname, './dist'),
+    filename: 'main.bundle.js',
   },
   mode: 'development',
-  output: {
-    filename: filename('js'),
-    path: path.resolve(__dirname, './dist'),
-  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),

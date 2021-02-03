@@ -11,40 +11,45 @@ import CreditsScene from '../scenes/СreditsScene';
 import FinishScene from '../scenes/FinishScene';
 import { routes, sendRequest } from '../utils';
 
-const config = {
-  type: Phaser.AUTO,
-  width: 1280,
-  height: 720,
-  parent: 'CanvasDiv',
-  dom: {
-    createContainer: true,
-  },
-  scene: [
-    // BootScene,
-    PreloadScene,
-    StartScene,
-    SettingsScene,
-    StatisticsScene,
-    SelectMapScene,
-    SelectCarScene,
-    GameScene,
-    CreditsScene,
-    FinishScene,
-  ],
-  scale: {
-    mode: Phaser.Scale.FIT,
-    autoCenter: Phaser.Scale.CENTER_BOTH,
-  },
-  physics: {
-    default: 'matter',
-    matter: {
-      gravity: { x: 0, y: 0 },
+export default function gameScript() {
+  window.value = document.querySelector('.output-value');
+  const config = {
+    type: Phaser.AUTO,
+    width: 1280,
+    height: 720,
+    parent: 'CanvasDiv',
+    dom: {
+      createContainer: true,
     },
-  },
-};
-
-document.addEventListener('DOMContentLoaded', () => {
+    scene: [
+      // BootScene,
+      PreloadScene,
+      StartScene,
+      SettingsScene,
+      StatisticsScene,
+      SelectMapScene,
+      SelectCarScene,
+      GameScene,
+      CreditsScene,
+      FinishScene,
+    ],
+    scale: {
+      mode: Phaser.Scale.FIT,
+      autoCenter: Phaser.Scale.CENTER_BOTH,
+    },
+    physics: {
+      default: 'matter',
+      matter: {
+        gravity: { x: 0, y: 0 },
+      },
+    },
+  };
   sendRequest(routes.user.checkToken, { method: 'GET' }).then(() => {
     const game = new Phaser.Game(config);
   });
-});
+}
+// document.addEventListener('DOMContentLoaded', () => {
+//   sendRequest(routes.user.checkToken, { method: 'GET' }).then(() => {
+//     const game = new Phaser.Game(config);
+//   });
+// });
