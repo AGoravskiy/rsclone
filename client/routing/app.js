@@ -27,15 +27,15 @@ window.addEventListener('load', () => {
 });
 window.onhashchange = function () {
   if (window.location.href.substr(window.location.href.length - 2, window.location.href.length - 1) === 'up') {
-    setTimeout(signupScript, 100);
+    setTimeout(signupScript, 1000);
   } else if (window.location.href.substr(window.location.href.length - 2, window.location.href.length - 1) === 'in') {
-    setTimeout(loginScript, 100);
+    setTimeout(loginScript, 1000);
     while (document.body.childNodes.length > 5) {
       document.body.lastChild.remove();
     }
   } else if (window.location.href.substr(window.location.href.length - 1, window.location.href.length - 1) === '/') {
-    setTimeout(introScript, 100);
+    setTimeout(introScript, 1000);
   } else if (window.location.href.substr(window.location.href.length - 2, window.location.href.length - 1) === 'me') {
-    setTimeout(gameScript, 100);
+    setTimeout(gameScript, 1000);
   }
 };
