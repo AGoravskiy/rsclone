@@ -3,7 +3,21 @@ body {
   padding: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #1f2c38;
+  background-color: #1f2c38 !important ;
+}
+.loading {
+  width: 798px;
+  height: 720px;
+  background-image: url('../design/loading-map.png');
+  animation: load 3s linear infinite alternate;
+}
+@keyframes load {
+  0% {
+    height: 720px;
+  }
+  100% {
+    height: 0px;
+  }
 }
 
 /* Стили для сцены НАСТРОЕК */

@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 
-const output = document.querySelector('.output-value');
+// const output = document.querySelector('.output-value');
 
 export default class SettingsScene extends Phaser.Scene {
   constructor() {
@@ -23,11 +23,13 @@ export default class SettingsScene extends Phaser.Scene {
 
   changeVolume() {
     this.slider = document.getElementById('myRange');
-    output.innerHTML = localStorage.getItem('volume') || '0';
+    // output.innerHTML = localStorage.getItem('volume') || '0';
+    window.value.innerHTML = localStorage.getItem('volume') || '0';
     this.slider.value = localStorage.getItem('volume') || '0';
     this.slider.oninput = function () {
       localStorage.setItem('volume', this.value);
-      output.innerHTML = this.value;
+      // output.innerHTML = this.value;
+      window.value.innerHTML = this.value;
     };
   }
 
