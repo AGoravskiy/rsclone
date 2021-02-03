@@ -32,7 +32,7 @@ export default class StartScene extends Phaser.Scene {
       function (event) {
         if (window.isPause) {
           this.scene.wake('Game');
-          this.scene.sleep('Start');
+          this.scene.pause('Start');
           window.isPause = false;
         }
       },

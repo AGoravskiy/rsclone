@@ -11,7 +11,7 @@ export default function introScript(cb) {
 
   function proceedToLogin() {
     window.location.href = '#login';
-    setTimeout(loginScript, 100);
+    // setTimeout(loginScript, 100);
   }
 
   if (start) {
@@ -19,7 +19,7 @@ export default function introScript(cb) {
   }
   window.addEventListener('keydown', () => {
     if (window.location.href.substr(window.location.href.length - 1, window.location.href.length - 1) === '/') {
-      proceedToLogin();
+      setTimeout(proceedToLogin(), 100);
     }
   });
 }
