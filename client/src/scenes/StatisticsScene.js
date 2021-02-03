@@ -1,6 +1,9 @@
 import Phaser from 'phaser';
 import { createGameResult, createTitle } from '../utils/simpleFunc/tableFunc';
 import { routes, sendRequest } from '../utils';
+import {
+  startSceneLang, refreshButtonLang, backButtonLang, statisticsSceneLang,
+} from '../utils/itemDescription';
 
 export default class Statistics extends Phaser.Scene {
   constructor() {
@@ -8,6 +11,13 @@ export default class Statistics extends Phaser.Scene {
   }
 
   create() {
+    if (localStorage.getItem('language')) {
+      this.lang = localStorage.getItem('language');
+    } else {
+      this.lang = 'english';
+    }
+    this.mainTitle = document.querySelector('.section-title');
+    this.mainTitle.innerHTML = `${startSceneLang.statistics[this.lang]}`;
     this.createTable();
     this.getStat('all');
     this.showStat();
@@ -17,7 +27,9 @@ export default class Statistics extends Phaser.Scene {
   createTable() {
     this.statWrapper = document.querySelector('.statistics-results');
     this.statWrapper.innerHTML = '';
-    createTitle(this.statWrapper);
+    createTitle(this.statWrapper, this.lang);
+    this.dropDown = document.querySelector('.all-maps-parameter');
+    this.dropDown.innerHTML = statisticsSceneLang.allTracks[this.lang];
     this.statResult = document.createElement('div');
     this.statResult.classList.add('stat-result');
     this.statWrapper.appendChild(this.statResult);
@@ -25,6 +37,7 @@ export default class Statistics extends Phaser.Scene {
 
   quit() {
     this.quitBtn = document.querySelector('.back-button');
+    this.quitBtn.innerHTML = `${backButtonLang[this.lang]}`;
     this.quitBtn.addEventListener('click', () => {
       this.statisticsWrapper = document.querySelector('.section-wrapper');
       this.statisticsWrapper.classList.remove('active');
@@ -37,6 +50,7 @@ export default class Statistics extends Phaser.Scene {
 
   showStat() {
     this.getStatBtn = document.querySelector('.get-stat-btn');
+    this.getStatBtn.innerHTML = `${refreshButtonLang[this.lang]}`;
     this.getStatBtn.addEventListener('click', () => {
       this.getStat();
     });

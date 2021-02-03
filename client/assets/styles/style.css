@@ -643,6 +643,10 @@ body {
   cursor: pointer;
 }
 
+.get-stat-btn {
+  width: 148px;
+}
+
 .stat-row:hover {
   background-color: #0b0500;
 }

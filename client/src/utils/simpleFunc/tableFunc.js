@@ -1,6 +1,8 @@
+import { statisticsSceneLang } from '../itemDescription';
+
 const dropDownMap = `
 <select id="select-map" class="maps-parameters">
-<option class="parameter" value="all">All tracks</option>
+<option class="parameter all-maps-parameter" value="all">All tracks</option>
 <option class="parameter" value="adelaidemap">Adelaide</option>
 <option class="parameter" value="algarvemap">Algarve</option>
 <option class="parameter" value="brandshatchmap">Brandshatch</option>
@@ -35,15 +37,15 @@ function filterArr(arr, parameter, value) {
   return arr.filter((elem) => elem[parameter] === value);
 }
 
-export function createTitle(mainDiv) {
+export function createTitle(mainDiv, lang) {
   const title = document.createElement('div');
   title.classList.add('stat-title');
   createDivElem(title, '#', 'stat-title-elem');
-  createDivElem(title, 'Driver', 'stat-title-elem');
-  createDivElem(title, 'Date', 'stat-title-elem');
+  createDivElem(title, `${statisticsSceneLang.driver[lang]}`, 'stat-title-elem');
+  createDivElem(title, `${statisticsSceneLang.date[lang]}`, 'stat-title-elem');
   createDivElem(title, dropDownMap, 'stats-dropdown');
-  createDivElem(title, 'Car', 'stat-title-elem');
-  createDivElem(title, 'Best Lap', 'stat-title-elem');
+  createDivElem(title, `${statisticsSceneLang.car[lang]}`, 'stat-title-elem');
+  createDivElem(title, `${statisticsSceneLang.bestLap[lang]}`, 'stat-title-elem');
   mainDiv.appendChild(title);
 }
 
