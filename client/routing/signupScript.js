@@ -32,7 +32,7 @@ export default function signupScript() {
       .then((data) => {
         if (data.code === 200) {
           alert('Now you are logged in');
-          window.location.href = 'login.html';
+          window.location.href = '#login';
         } else {
           alert('Ooops! something wrong :(');
         }

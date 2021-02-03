@@ -1,4 +1,5 @@
 export default function loginScript() {
+  console.log('load loginScript.js');
   localStorage.clear();
   const statistics = {};
 
