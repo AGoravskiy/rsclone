@@ -24,9 +24,9 @@ const form = document.querySelector('.form-sign-up');
 form.addEventListener('submit', (event) => {
   event.preventDefault();
   postData(routes.user.signup, {
-    email: document.forms[0].elements[0].value,
-    password: document.forms[0].elements[1].value,
-    name: document.forms[0].elements[2].value,
+    email: document.forms[0].elements[1].value,
+    password: document.forms[0].elements[2].value,
+    name: document.forms[0].elements[0].value,
   }).then((data) => {
     if (data.code === 200) {
       alert('Now you are logged in');
