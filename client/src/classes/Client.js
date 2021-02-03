@@ -1,10 +1,14 @@
-/* eslint-disable no-console */
+/* eslint-disable no-useless-constructor */
 import Phaser from 'phaser';
 import io from 'socket.io-client';
 
 const HOST = 'https://nfs-jsu.herokuapp.com/';
 
-export default class extends Phaser.Events.EventEmitter {
+export default class Client extends Phaser.Events.EventEmitter {
+  constructor() {
+    super();
+  }
+
   init() {
     this.sent = {};
     this.master = false;
