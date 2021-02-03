@@ -235,7 +235,6 @@ export default class SelectCarScene extends Phaser.Scene {
       if (this.carDataNum < 5) {
         this.carDataNum += 1;
       }
-      const selectedCar = carData[this.carDataNum];
 
       this.setPosition();
       this.checkBtns();
@@ -250,7 +249,6 @@ export default class SelectCarScene extends Phaser.Scene {
       if (this.carDataNum >= 0) {
         this.carDataNum -= 1;
       }
-      const selectedCar = carData[this.carDataNum];
 
       this.setPosition();
       this.checkBtns();
