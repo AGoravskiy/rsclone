@@ -11,7 +11,7 @@ export default function introScript(cb) {
 
   function proceedToLogin() {
     window.location.href = '#login';
-    setTimeout(loginScript, 100);
+    // setTimeout(loginScript, 100);
   }
 
   if (start) {
