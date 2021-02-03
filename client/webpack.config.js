@@ -55,7 +55,9 @@ const loadPlugins = () => {
       },
     }),
     new CopyWebpackPlugin({
-      patterns: [{ from: './assets', to: './assets' }],
+      patterns: [{ from: './assets', to: './assets' },
+        { from: './pages', to: './pages' },
+      ],
     }),
     new MiniCssExtractPlugin({
       filename: filename('css'),

@@ -83,31 +83,31 @@ export default class SelectMapScene extends Phaser.Scene {
       this.track,
       'adelaidemap',
       mapsDescription.adelaidemap.english,
-      '../assets/images/adelaidemap.png'
+      '../assets/images/adelaidemap.png',
     );
     this.createSliderItem(
       this.track,
       'algarvemap',
       mapsDescription.adelaidemap.english,
-      '../assets/images/algarvemap.png'
+      '../assets/images/algarvemap.png',
     );
     this.createSliderItem(
       this.track,
       'brandshatchmap',
       mapsDescription.adelaidemap.english,
-      '../assets/images/brandshatchmap.png'
+      '../assets/images/brandshatchmap.png',
     );
     this.createSliderItem(
       this.track,
       'catalunyamap',
       mapsDescription.adelaidemap.english,
-      '../assets/images/catalunyamap.png'
+      '../assets/images/catalunyamap.png',
     );
     this.createSliderItem(
       this.track,
       'detroitmap',
       mapsDescription.adelaidemap.english,
-      '../assets/images/detroitmap.png'
+      '../assets/images/detroitmap.png',
     );
 
     this.sliderContainer.appendChild(this.track);
@@ -159,22 +159,22 @@ export default class SelectMapScene extends Phaser.Scene {
     this.createSelectLapsWord(
       this.selectLapsContainer,
       `${wordLaps[this.lang]}`,
-      'lap-number-title'
+      'lap-number-title',
     );
     this.createSelectLapsBtnLess(
       this.selectLapsContainer,
       '-',
-      'lap-number-title-control'
+      'lap-number-title-control',
     );
     this.createSelectLapsCount(
       this.selectLapsContainer,
       '5',
-      'lap-number-title'
+      'lap-number-title',
     );
     this.createSelectLapsBtnMore(
       this.selectLapsContainer,
       '+',
-      'lap-number-title-control'
+      'lap-number-title-control',
     );
     mainDiv.appendChild(this.selectLapsContainer);
   }
@@ -229,7 +229,7 @@ export default class SelectMapScene extends Phaser.Scene {
     this.createBackButton(this.buttonsBlock, `${backButtonLang[this.lang]}`);
     this.createSelectButton(
       this.buttonsBlock,
-      `${selectButtonLang[this.lang]}🏁`
+      `${selectButtonLang[this.lang]}🏁`,
     );
     mainDiv.appendChild(this.buttonsBlock);
   }
@@ -274,12 +274,11 @@ export default class SelectMapScene extends Phaser.Scene {
     }
 
     this.btnNext.addEventListener('click', () => {
-      const mapsLeft =
-        this.mapsCount -
-        (Math.abs(this.position) + this.sliderToShow * this.mapsWidth) /
-          this.mapsWidth;
-      this.position -=
-        mapsLeft >= this.sliderToScroll
+      const mapsLeft = this.mapsCount
+        - (Math.abs(this.position) + this.sliderToShow * this.mapsWidth)
+          / this.mapsWidth;
+      this.position
+        -= mapsLeft >= this.sliderToScroll
           ? this.movePosition
           : this.mapsLeft * this.mapsWidth;
       if (this.mapDataNum < 5) {
@@ -291,8 +290,8 @@ export default class SelectMapScene extends Phaser.Scene {
 
     this.btnPrev.addEventListener('click', () => {
       const mapsLeft = Math.abs(this.position) / this.mapsWidth;
-      this.position +=
-        mapsLeft >= this.sliderToScroll
+      this.position
+        += mapsLeft >= this.sliderToScroll
           ? this.movePosition
           : this.mapsLeft * this.mapsWidth;
       if (this.mapDataNum >= 0) {
@@ -316,8 +315,8 @@ export default class SelectMapScene extends Phaser.Scene {
       this.btnPrev.style.cursor = 'pointer';
     }
     if (
-      this.position <=
-      -(this.mapsCount - this.sliderToShow) * this.mapsWidth
+      this.position
+      <= -(this.mapsCount - this.sliderToShow) * this.mapsWidth
     ) {
       this.btnNext.disabled = true;
       this.btnNext.style.cursor = 'auto';
