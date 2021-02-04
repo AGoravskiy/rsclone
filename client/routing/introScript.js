@@ -19,7 +19,7 @@ export default function introScript(cb) {
   }
   window.addEventListener('keydown', () => {
     if (window.location.href.substr(window.location.href.length - 1, window.location.href.length - 1) === '/') {
-      proceedToLogin();
+      setTimeout(proceedToLogin(), 100);
     }
   });
 }

@@ -9,7 +9,11 @@ body {
   width: 798px;
   height: 720px;
   background-image: url('../design/loading-map.png');
+  background-repeat:no-repeat;
   animation: load 3s linear infinite alternate;
+  position:relative;
+  top: 20%;
+  left: 30%;
 }
 @keyframes load {
   0% {
