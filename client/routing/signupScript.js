@@ -1,28 +1,40 @@
 import { routes } from '../src/utils';
-import postData from '../src/utils/simpleFunc/asyncFunc';
 
 export default function signupScript() {
   console.log('load signupScript.js');
   localStorage.clear();
   const signupLink = routes.user.signup;
   const formRegister = document.querySelector('#formRegister');
-  const nicknameRegister = document.querySelector('#nicknameRegister');
-  const emailRegister = document.querySelector('#emailRegister');
-  const passwordRegister = document.querySelector('#passwordRegister');
+
+  async function postData(url, data) {
+    const response = await fetch(url, {
+      method: 'POST',
+      mode: 'cors',
+      cache: 'no-cache',
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      redirect: 'follow',
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(data),
+    });
+    return response.json();
+  }
+
   formRegister.addEventListener('submit', (event) => {
     event.preventDefault();
     postData(signupLink, {
-      email: emailRegister.value,
-      password: passwordRegister.value,
-      nickname: nicknameRegister.value,
-    })
-      .then((data) => {
-        if (data.code === 200) {
-          alert('Now you are logged in');
-          window.location.href = '#login';
-        } else {
-          alert('Ooops! something wrong :(');
-        }
-      });
+      email: document.forms[0].elements[1].value,
+      password: document.forms[0].elements[2].value,
+      name: document.forms[0].elements[0].value,
+    }).then((data) => {
+      if (data.code === 200) {
+        alert('Now you are logged in');
+        window.location.href = '#login';
+      } else {
+        alert('Ooops! something wrong :(');
+      }
+    });
   });
 }

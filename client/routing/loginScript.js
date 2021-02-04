@@ -13,7 +13,6 @@ export default function loginScript() {
   formLogin.addEventListener('submit', (event) => {
     event.preventDefault();
     localStorage.setItem('email', emailLogin.value);
-
     postData(loginLink, {
       email: emailLogin.value,
       password: passwordLogin.value,

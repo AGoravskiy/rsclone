@@ -19,7 +19,6 @@ export default class LoadingBar {
 
   setEvents() {
     this.scene.load.on('progress', this.showProgressBar, this);
-    this.scene.load.on('fileprogress', this.onFileProgress, this);
     this.scene.load.on('complete', this.onLoadComplete, this);
   }
 
