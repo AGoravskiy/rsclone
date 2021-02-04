@@ -13,7 +13,6 @@ export default class StartScene extends Phaser.Scene {
     this.load.addFile(
       new WebFontFile(this.load, ['Racing Sans One', 'Oswald']),
     );
-    // this.load.addFile(new WebFontFile(this.load, 'Oswald'));
   }
 
   create() {
@@ -22,7 +21,6 @@ export default class StartScene extends Phaser.Scene {
     } else {
       this.lang = 'english';
     }
-    this.createSounds();
     this.createBackground();
     this.createButtons();
     this.setEvents();
@@ -38,13 +36,6 @@ export default class StartScene extends Phaser.Scene {
       },
       this,
     );
-  }
-
-  createSounds() {
-    this.sounds = {
-      // roar: this.sound.add('roar', { volume: 0.1 }),
-      // game: this.sound.add('game', { volume: 0.2, loop: true }),
-    };
   }
 
   createBackground() {
@@ -70,13 +61,6 @@ export default class StartScene extends Phaser.Scene {
     };
 
     const styleOver = { fill: '#FE5E41' };
-
-    // const resumeBtn = this.add.text(96, 224, 'Resume', menuItemsStyle);
-    // this.resumeBtn = resumeBtn;
-    // resumeBtn.setShadow(0, 4, '#0B0500', 4);
-    // resumeBtn.setInteractive();
-    // resumeBtn.inputEnabled;
-    // resumeBtn.useHandCursor = true;
 
     const onePlayerBtn = this.add.text(96, 252, `${startSceneLang.one[this.lang]}`, menuItemsStyle);
     this.onePlayerBtn = onePlayerBtn;
@@ -174,11 +158,9 @@ export default class StartScene extends Phaser.Scene {
 
   selectMap() {
     if (window.isPause) {
-      console.log('Game stop');
       this.scene.stop('Game');
       window.isPause = false;
     }
-    // this.scene.switch('SelectMap');
     this.scene.start('SelectMap');
     this.mapPageWrapper = document.querySelector('.map-page-wrapper');
     this.mapPageWrapper.classList.add('active');
@@ -195,7 +177,6 @@ export default class StartScene extends Phaser.Scene {
   }
 
   startGame(car, carProperty, map) {
-    console.log(car, carProperty, map);
     this.scene.start('Game', {
       client: this.client,
       car,

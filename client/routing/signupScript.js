@@ -1,33 +1,20 @@
+import { routes } from '../src/utils';
+import postData from '../src/utils/simpleFunc/asyncFunc';
+
 export default function signupScript() {
   console.log('load signupScript.js');
   localStorage.clear();
-  const HOST = 'https://nfc-jsu.herokuapp.com/user/signup';
-  const button = document.querySelector('.sign-up-btn');
-  const form = document.querySelector('.form-sign-up');
-
-  async function postData(url, data) {
-    const response = await fetch(url, {
-      method: 'POST', // *GET, POST, PUT, DELETE, etc.
-      mode: 'cors', // no-cors, *cors, same-origin
-      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-      credentials: 'same-origin', // include, *same-origin, omit
-      headers: {
-        'Content-Type': 'application/json',
-      // 'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      redirect: 'follow', // manual, *follow, error
-      referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-      body: JSON.stringify(data), // body data type must match "Content-Type" header
-    });
-    return response.json(); // parses JSON response into native JavaScript objects
-  }
-
-  form.addEventListener('submit', (event) => {
+  const signupLink = routes.user.signup;
+  const formRegister = document.querySelector('#formRegister');
+  const nicknameRegister = document.querySelector('#nicknameRegister');
+  const emailRegister = document.querySelector('#emailRegister');
+  const passwordRegister = document.querySelector('#passwordRegister');
+  formRegister.addEventListener('submit', (event) => {
     event.preventDefault();
-    postData(HOST, {
-      email: document.forms[0].elements[0].value,
-      password: document.forms[0].elements[1].value,
-      name: document.forms[0].elements[2].value,
+    postData(signupLink, {
+      email: emailRegister.value,
+      password: passwordRegister.value,
+      nickname: nicknameRegister.value,
     })
       .then((data) => {
         if (data.code === 200) {

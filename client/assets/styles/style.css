@@ -629,6 +629,14 @@ body {
   margin: auto;
 }
 
+.form-sign-in {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  /* width: 60%; */
+  margin: auto;
+}
+
 .form__field {
   display: flex;
   flex-direction: column;

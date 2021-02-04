@@ -92,19 +92,10 @@ export default class CreditsScene extends Phaser.Scene {
   }
 
   createBackBtn() {
-    // const menuItemsStyle = {
-    //     fontFamily: '"Oswald"',
-    //     fontSize: '36px',
-    //     fill: '#F3C178',
-    //     cursor: 'pointer',
-    //   };
-
     const buttonBack = this.add.graphics();
     this.buttonBack = buttonBack;
-    // shadow
     buttonBack.fillRect(96, 544, 128, 52);
     buttonBack.fillStyle(2042936);
-    // button
     buttonBack.fillRect(96, 544, 128, 48);
     buttonBack.fillStyle(722176, 0.7);
 

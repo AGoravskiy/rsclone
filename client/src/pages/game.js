@@ -1,5 +1,4 @@
 import Phaser from 'phaser';
-// import BootScene from '../scenes/BootScene';
 import PreloadScene from '../scenes/PreloadScene';
 import GameScene from '../scenes/GameScene';
 import StartScene from '../scenes/StartScene';
@@ -47,8 +46,3 @@ export default function gameScript() {
     const game = new Phaser.Game(config);
   });
 }
-// document.addEventListener('DOMContentLoaded', () => {
-//   sendRequest(routes.user.checkToken, { method: 'GET' }).then(() => {
-//     const game = new Phaser.Game(config);
-//   });
-// });

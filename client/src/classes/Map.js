@@ -62,7 +62,6 @@ export default class Map {
   createCollisions() {
     this.tilemap.findObject('collisions', (collision) => {
       const sprite = this.correctObjectPosition(collision);
-      // sprite.setOrigin(0, 1);
       sprite.angle = collision.rotation;
       sprite.setStatic(true);
     });
@@ -71,8 +70,8 @@ export default class Map {
   createOils() {
     this.tilemap.findObject('oils', (oil) => {
       const sprite = this.scene.matter.add.sprite(oil.x + oil.width / 2, oil.y - oil.height / 2, 'objects', oil.name);
-      sprite.setStatic(true); // отключаем обработку физических воздействий
-      sprite.setSensor(true); // можно ехать по лужам
+      sprite.setStatic(true);
+      sprite.setSensor(true);
     });
   }
 
@@ -81,7 +80,7 @@ export default class Map {
       const sprite = this.scene.matter.add.sprite(arrow.x, arrow.y, 'objects', arrow.name);
       sprite.setOrigin(0, 1);
       sprite.angle = arrow.rotation;
-      sprite.setStatic(true); // отключаем обработку физических воздействий
+      sprite.setStatic(true);
       sprite.setSensor(true);
     });
   }
@@ -98,8 +97,6 @@ export default class Map {
   }
 
   getPlayerPosition(positionName) {
-    console.log(positionName);
-    console.log(this.tilemap);
     return this.tilemap.findObject(positionName, (position) => position.name === positionName);
   }
 
