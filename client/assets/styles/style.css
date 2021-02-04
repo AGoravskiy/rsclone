@@ -1,0 +1,1359 @@
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #1f2c38 !important ;
+}
+.loading {
+  width: 798px;
+  height: 720px;
+  background-image: url('../design/loading-map.png');
+  background-repeat:no-repeat;
+  animation: load 3s linear infinite alternate;
+  position:relative;
+  top: 20%;
+  left: 30%;
+}
+@keyframes load {
+  0% {
+    height: 720px;
+  }
+  100% {
+    height: 0px;
+  }
+}
+
+/* Стили для сцены СТАТИСТИКИ */
+
+.statistics-results {
+  width: 100%;
+  height: 500px;
+}
+.statistics-list {
+  width: 100%;
+  list-style: none;
+  height: 500px;
+  overflow: auto;
+}
+
+.statistics-list > [data-scroll] {
+  cursor: pointer;
+  text-align: center;
+  display: block;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* intro */
+
+.video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translateX(calc((100% - 100vw) / 2));
+  z-index: -1;
+}
+
+.title-wrapper {
+  display: flex;
+
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 20%;
+  /* transition: 2s; */
+  transition: 2s cubic-bezier(0.075, 1.22, 0.165, 1.11);
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  z-index: 2;
+}
+
+.title {
+  font-family: Racing Sans One;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 144px;
+  line-height: 181px;
+  color: #f3c178;
+  text-shadow: 0px 4px 4px #0b0500;
+  margin: 0;
+  text-align: right;
+}
+
+.sub-title {
+  font-family: Racing Sans One;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 96px;
+  line-height: 121px;
+  color: #fe5e41;
+  text-shadow: 0px 4px 4px #0b0500;
+  margin: 0;
+  text-align: right;
+}
+
+.block {
+  display: block;
+  text-align: right;
+}
+
+.footer-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 1rem;
+  transition: 2s cubic-bezier(0.075, 1.22, 0.165, 1.11);
+  /* transition: 2s; */
+  margin-top: 4%;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer-text {
+  font-family: Racing Sans One;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 30px;
+  color: #fe5e41;
+  margin: 0;
+}
+
+.reflection {
+  transform: scale(1, -1);
+}
+
+.footer-img {
+  width: 100px;
+}
+
+.hide {
+  animation: hide 4s linear;
+}
+
+@keyframes hide {
+  0% {
+    transform: translateX(100%);
+  }
+  10% {
+    transform: translateX(90%);
+  }
+  20% {
+    transform: translateX(80%);
+  }
+
+  30% {
+    transform: translateX(70%);
+  }
+  40% {
+    transform: translateX(60%);
+  }
+  50% {
+    transform: translateX(50%);
+  }
+
+  60% {
+    transform: translateX(40%);
+  }
+  70% {
+    transform: translateX(30%);
+  }
+  80% {
+    transform: translateX(20%);
+  }
+
+  90% {
+    transform: translateX(10%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.proceed-wrapper {
+  padding-top: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.proceed {
+  font-family: Racing Sans One;
+  font-size: 24px;
+  color: #fe5e41;
+}
+
+#blink {
+  -webkit-animation: blink 2s linear infinite;
+  animation: blink 2s linear infinite;
+}
+@-webkit-keyframes blink {
+  50% {
+    color: #fe5e41;
+  }
+  51% {
+    opacity: 0;
+  }
+  100% {
+    color: #fe5e41;
+  }
+}
+@keyframes blink {
+  50% {
+    color: #fe5e41;
+  }
+  51% {
+    opacity: 0;
+  }
+
+  100% {
+    color: #fe5e41;
+  }
+}
+
+@media screen and (max-width: 1920px) {
+  .sub-title {
+    font-size: 84px;
+    line-height: 116px;
+  }
+
+  .title {
+    font-size: 124px;
+    line-height: 174px;
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  .sub-title {
+    font-size: 64px;
+    line-height: 90px;
+  }
+
+  .title {
+    font-size: 96px;
+    line-height: 121px;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .sub-title {
+    font-size: 48px;
+    line-height: 68px;
+  }
+
+  .title {
+    font-size: 84px;
+    line-height: 116px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .sub-title {
+    font-size: 48px;
+    line-height: 64px;
+  }
+
+  .title {
+    font-size: 64px;
+    line-height: 96px;
+  }
+  .footer-img {
+    width: 80px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .title-wrapper {
+    margin-top: 15%;
+  }
+
+  .sub-title {
+    font-size: 36px;
+    line-height: 48px;
+  }
+
+  .title {
+    font-size: 48px;
+    line-height: 64px;
+  }
+  .footer-wrapper {
+    width: 80%;
+  }
+
+  .footer-text {
+    font-size: 16px;
+    line-height: 28px;
+  }
+  .footer-img {
+    width: 60px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .sub-title {
+    font-size: 24px;
+    line-height: 36px;
+  }
+
+  .title {
+    font-size: 36px;
+    line-height: 48px;
+  }
+
+  .footer-text {
+    font-size: 14px;
+    line-height: 24px;
+  }
+  .footer-img {
+    width: 50px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .sub-title {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .title {
+    font-size: 24px;
+    line-height: 36px;
+  }
+
+  .footer-text {
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .footer-img {
+    width: 40px;
+  }
+}
+
+/* ! laps */
+
+.lapsSelect__container {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 200px;
+  z-index: 4;
+  gap: 20px;
+}
+.lapsBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnLeft,
+.btnRight {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  font-size: 60px;
+  border: 1px solid;
+  cursor: pointer;
+}
+.lapsCount,
+.laps {
+  font-size: 40px;
+}
+
+.game-html-background {
+  background-color: #1f2c38;
+}
+
+/* ! stats style */
+
+.stats-background {
+  background-color: #1f2c38;
+  /* background-image: url('../design/track.png'); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.section-wrapper {
+  /* background-image: url(../); */
+  padding-top: 5%;
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.section-title {
+  font-family: Racing Sans One;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 72px;
+  line-height: 91px;
+  text-align: center;
+  color: #f3c178;
+  opacity: 0.8;
+  text-shadow: 0px 4px 4px #0b0500;
+  margin-bottom: 5%;
+}
+
+.statistics-results {
+  width: 100%;
+  height: 500px;
+}
+
+.stat-title {
+  height: 60px;
+  width: 100%;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.stat-title-elem {
+  width: 200px;
+  height: 100%;
+  font-family: Racing Sans One;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 36px;
+  color: #f3c178;
+  text-shadow: 0px 4px 4px #0b0500;
+  border-bottom: solid 1px #f3c178;
+
+  text-align: center;
+}
+
+.maps-parameters {
+  width: 200px;
+  height: 100%;
+  font-family: Racing Sans One;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 36px;
+  background-color: #1f2c38;
+  color: #f3c178;
+  border: none;
+  text-shadow: 0px 4px 4px #0b0500;
+  border-bottom: solid 1px #f3c178;
+  margin: 0;
+  padding-bottom: 20px;
+
+  /* text-align: center; */
+}
+
+.parameter {
+  background-color: #1f2c38;
+  color: #f3c178;
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+}
+.stat-result {
+  height: 440px;
+  overflow-y: scroll;
+}
+
+.stat-result::-webkit-scrollbar {
+  width: 2px;
+  height: 2px; /* ширина для вертикального скролла */
+  color: #f3c178;
+}
+
+.stat-result::-webkit-scrollbar-thumb {
+  background: #fe5e41;
+  border-radius: 5px; /* Закругление углов ползунка скроллбара */
+}
+
+.stat-row {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.stat-row-elem {
+  width: 200px;
+  height: 100%;
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  /* line-height: 40px; */
+  color: #f3c178;
+  text-shadow: 0px 4px 4px #0b0500;
+  text-align: center;
+}
+
+.row-number {
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 40px;
+  color: #f3c178;
+  text-shadow: 0px 4px 4px #0b0500;
+  text-align: center;
+}
+
+.back-button {
+  background: #1f2c38;
+  box-shadow: 0px 4px 4px #0b0500;
+  border: none;
+  width: 128px;
+  height: 48px;
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 48px;
+  text-align: center;
+  color: #f3c178;
+  margin: 10% auto 0 auto;
+}
+
+.back-button:hover {
+  color: #fe5e41;
+  cursor: pointer;
+}
+
+.get-stat-btn {
+  width: 148px;
+}
+
+.stat-row:hover {
+  background-color: #0b0500;
+}
+
+.button-block {
+  margin: 5% auto 0 auto;
+  display: flex;
+  gap: 1rem;
+}
+
+@media screen and (max-width: 1200px) {
+  .stat-title-elem {
+    font-size: 18px;
+  }
+  .stat-row-elem {
+    font-size: 14px;
+  }
+  .section-wrapper {
+    width: 90%;
+  }
+
+  .stat-title {
+    font-size: 18px;
+  }
+
+  .maps-parameters {
+    font-size: 18px;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .stat-title-elem {
+    font-size: 16px;
+  }
+  .stat-row-elem {
+    font-size: 14px;
+  }
+  .stat-title {
+    font-size: 16px !important;
+  }
+  .maps-parameters {
+    font-size: 16px;
+    width: 100px;
+  }
+
+  .stat-title {
+    font-size: 48px;
+  }
+
+  .back-button {
+    width: 72px;
+    height: 36px;
+    font-size: 18px;
+    line-height: 36px;
+  }
+}
+
+/* !login & registration */
+
+.section-button {
+  background: #1f2c38;
+  box-shadow: 0px 4px 4px #0b0500;
+  border: none;
+  width: 184px;
+  height: 58px;
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  text-align: center;
+  color: #f3c178;
+  margin: 5% auto 0 auto;
+}
+
+.section-button:hover {
+  color: #fe5e41;
+  cursor: pointer;
+}
+
+.form-sign-up {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  /* width: 60%; */
+  margin: auto;
+}
+
+.form-sign-in {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  /* width: 60%; */
+  margin: auto;
+}
+
+.form__field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  margin-bottom: 1%;
+}
+
+.section-text-form {
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  color: #f3c178;
+  text-shadow: 0px 4px 4px #0b0500;
+}
+
+.section-text-button {
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  color: #f3c178;
+  text-shadow: 0px 4px 4px #0b0500;
+  margin: 3% auto 0 auto;
+}
+.section-text-button:hover {
+  color: #fe5e41;
+}
+
+.section-text-error {
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  color: #fe5e41;
+  text-shadow: 0px 4px 4px #0b0500;
+}
+
+.form-title {
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 53px;
+  text-align: right;
+  color: #f3c178;
+  text-shadow: 0px 4px 4px #0b0500;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.section-form {
+  border-radius: 5px;
+  border: solid 1px #fe5e41;
+  background-color: #1f2c38;
+  width: 320px;
+  height: 36px;
+  padding-left: 10px;
+  padding-bottom: 1%;
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  color: #f3c178;
+  margin: 0;
+}
+
+.section-form::placeholder {
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 36px;
+  color: #f3c178;
+}
+
+.form-description {
+  width: 320px;
+  margin-bottom: 2%;
+}
+
+/* !maps select */
+.map-page-wrapper {
+  background-color: #1f2c38;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.map-wrapper {
+  width: 600px;
+  padding-left: 3%;
+}
+
+.maps-slider-container {
+  overflow: hidden;
+}
+
+.maps-slider-track {
+  display: flex;
+  transition: 0.6s;
+}
+
+.maps-slider-item {
+  width: 100%;
+  height: 100%;
+  padding: 2%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.map-info-container {
+  display: flex;
+}
+
+.map-illustration-wrapper {
+  width: 100%;
+  height: 100%;
+  margin-left: -3%;
+  background-image: url('../design/map-illustratiom.png');
+  background-position: left center;
+  background-repeat: no-repeat;
+}
+
+.track-title {
+  font-family: Racing Sans One;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 72px;
+  line-height: 91px;
+  color: #f3c178;
+  opacity: 0.8;
+  text-shadow: 0px 4px 4px #0b0500;
+  margin-bottom: 5%;
+}
+
+.track-header {
+  display: flex;
+  gap: 1rem;
+}
+
+.lap-track-header {
+  display: flex;
+  gap: 1rem;
+  padding: 2%;
+}
+
+.lap-number-title-control {
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 53px;
+  text-align: right;
+  color: #fe5e41;
+  text-shadow: 0px 4px 4px #0b0500;
+}
+
+.track-header-title {
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  text-align: left;
+  font-size: 36px;
+  line-height: 53px;
+  color: #fe5e41;
+  text-shadow: 0px 4px 4px #0b0500;
+}
+
+.lap-number-title {
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 53px;
+  text-align: right;
+  color: #f3c178;
+  text-shadow: 0px 4px 4px #0b0500;
+}
+
+.lap-number-title-control {
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 53px;
+  text-align: right;
+  color: #f3c178;
+  text-shadow: 0px 4px 4px #0b0500;
+}
+
+.lap-number-title-control:hover {
+  color: #fe5e41;
+  cursor: pointer;
+}
+
+.map-description {
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 29px;
+  color: #f3c178;
+}
+
+.track-illustration {
+  width: 50%;
+  padding-left: 3%;
+  /* background-image: url('../images/adelaidemap.png');
+  background-position: cover;
+  height: 256px; */
+}
+
+.track-block {
+  display: flex;
+}
+
+.buttons-block {
+  display: flex;
+  justify-content: space-between;
+}
+
+.track-info {
+  width: 50%;
+}
+
+.arrow {
+  z-index: 10;
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 96px;
+  line-height: 142px;
+  /* text-align: right; */
+  color: #f3c178;
+  text-shadow: 0px 4px 4px #0b0500;
+  width: 5%;
+  background-color: #1f2c38;
+  border: none;
+}
+
+.arrow:hover {
+  color: #fe5e41;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1200px) {
+  .illustration-wrapper {
+    display: none;
+  }
+
+  .track-block {
+    flex-direction: column;
+  }
+  .track-info {
+    width: 100%;
+  }
+
+  .track-illustration {
+    /* width: 100%; */
+    padding: 0;
+  }
+
+  .track-title {
+    font-size: 48px;
+  }
+
+  .map-wrapper {
+    width: 90%;
+  }
+
+  .arrow {
+    margin: 1%;
+    font-size: 64px;
+  }
+  .map-page-wrapper {
+    background-image: url('../design/track.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+    z-index: 2;
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* !car select */
+.car-page-wrapper {
+  background-color: #1f2c38;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.car-wrapper {
+  width: 450px;
+  padding: 2%;
+}
+
+.car-illustration-wrapper {
+  width: 50%;
+  height: 100%;
+  margin-left: -3%;
+  background-image: url('../design/car-select-back.png');
+  background-position: left center;
+  background-repeat: no-repeat;
+}
+
+.cars-slider-container {
+  overflow: hidden;
+}
+
+.cars-slider-track {
+  display: flex;
+  transition: 0.6s;
+}
+
+.cars-slider-item {
+  width: 100%;
+  height: 100%;
+  padding: 2%;
+}
+
+.car-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  align-items: center;
+  width: 90%;
+}
+
+.car-img {
+  transform: rotate(90deg);
+  width: 50px;
+}
+
+.car-description-block {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.car-description {
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 36px;
+  margin: 0;
+  padding: 0;
+  color: #f3c178;
+  text-shadow: 0px 4px 4px #0b0500;
+  width: 180px;
+}
+
+.car-rating {
+  display: flex;
+  gap: 8px;
+  margin-left: 24px;
+}
+
+.rating-full {
+  width: 8px;
+  height: 24px;
+  background: #fe5e41;
+  box-shadow: 0px 4px 4px #0b0500;
+}
+
+.rating-empty {
+  width: 8px;
+  height: 24px;
+  background: #1f2c38;
+  box-shadow: 0px 4px 4px #0b0500;
+}
+
+@media screen and (max-width: 767px) {
+  .car-illustration-wrapper {
+    display: none;
+  }
+  .car-wrapper {
+    width: 100%;
+  }
+
+  .page-wrapper {
+    background-image: url('../design/track.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+}
+
+/* !settings */
+.settings-page-wrapper {
+  background-color: #1f2c38;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.settings-wrapper {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 10%;
+}
+
+.settings-illustration-wrapper {
+  width: 50%;
+  height: 100%;
+  margin-left: -3%;
+  background-image: url('../design/setting-back.png');
+  background-position: left center;
+  background-repeat: no-repeat;
+}
+
+.settings-button {
+  background: #1f2c38;
+  box-shadow: 0px 4px 4px #0b0500;
+  border: none;
+  width: 144px;
+  height: 48;
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  text-align: center;
+  color: #f3c178;
+  margin-top: 36px;
+}
+
+.settings-button:hover {
+  color: #fe5e41;
+}
+
+.settings-description-block {
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 36px;
+  color: #f3c178;
+  text-shadow: 0px 4px 4px #0b0500;
+  margin-bottom: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.setting-description {
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 36px;
+  margin: 0;
+  padding: 0;
+  color: #f3c178;
+  text-shadow: 0px 4px 4px #0b0500;
+  width: 180px;
+}
+
+.setting-lang-block {
+  width: 100%;
+}
+
+.language-parameters {
+  /* width: 200px; */
+  height: 100%;
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 36px;
+  background-color: #1f2c38;
+  color: #f3c178;
+  border: none;
+  text-shadow: 0px 4px 4px #0b0500;
+  /* border-bottom: solid 1px #f3c178; */
+  margin: 0;
+  /* padding-bottom: 20px; */
+  cursor: pointer;
+  text-align: center;
+}
+
+.setting-volume-block {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 50%;
+  max-width: 160px;
+  height: 20px;
+  border-radius: 5px;
+  background: #f3c178;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  background: url(../images/icons/car-sport.svg);
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 30px;
+  height: 24px;
+  border: 0;
+  background: url(../images/icons/car-sport.svg);
+  cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+  .settings-illustration-wrapper {
+    display: none;
+  }
+
+  .settings-wrapper {
+    background-image: url('../design/track.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  .setting-content {
+    width: 100%;
+  }
+}
+
+/* !finish screen */
+
+.finish-wrapper {
+  background-color: #1f2c38;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding-top: 15%;
+}
+
+.finish-title {
+  font-family: Racing Sans One;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 72px;
+  line-height: 91px;
+  text-align: center;
+  color: #f3c178;
+  opacity: 0.8;
+  text-shadow: 0px 4px 4px #0b0500;
+  margin-bottom: 5%;
+}
+
+.race-result-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  justify-content: center;
+}
+
+.result {
+  display: flex;
+}
+
+.result-name {
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 36px;
+  margin: 0;
+  padding: 0;
+  color: #f3c178;
+  text-shadow: 0px 4px 4px #0b0500;
+  width: 240px;
+  text-align: right;
+  padding-right: 16px;
+  margin-bottom: 20px;
+}
+
+.result-number {
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 36px;
+  margin: 0;
+  padding: 0;
+  color: #fe5e41;
+  text-shadow: 0px 4px 4px #0b0500;
+}
+
+/* .flag-animation {
+  font-size: 192px;
+  line-height: 0;
+  animation: rotate linear 4s infinite alternate;
+  transform-origin: 640px 480px;
+} */
+
+.menu-button {
+  background: #1f2c38;
+  box-shadow: 0px 4px 4px #0b0500;
+  border: none;
+  width: 128px;
+  height: 48;
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  text-align: center;
+  color: #f3c178;
+  margin: 5% auto 0 auto;
+}
+
+.flag-animation {
+  font-size: 192px;
+  margin-top: -24px;
+  animation: rotate linear 1s infinite alternate;
+  transform-origin: 0 200px;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(10deg);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .finish-title {
+    font-size: 48px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .race-result-wrapper {
+    display: block;
+  }
+  .finish-title {
+    font-size: 36px;
+  }
+
+  .result-name,
+  .result-number {
+    font-size: 18px;
+  }
+
+  .menu-button {
+    background: #1f2c38;
+    box-shadow: 0px 4px 4px #0b0500;
+    border: none;
+    width: 72px;
+    height: 48px;
+    font-family: Oswald;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    text-align: center;
+    color: #f3c178;
+    margin: 5% auto 0 auto;
+  }
+}
+
+.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.active-block {
+  display: block;
+  opacity: 1;
+}
