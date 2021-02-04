@@ -82,31 +82,31 @@ export default class SelectMapScene extends Phaser.Scene {
     this.createSliderItem(
       this.track,
       'adelaidemap',
-      mapsDescription.adelaidemap.english,
+      mapsDescription.adelaidemap[this.lang],
       '../assets/images/adelaidemap.png',
     );
     this.createSliderItem(
       this.track,
       'algarvemap',
-      mapsDescription.adelaidemap.english,
+      mapsDescription.algarvemap[this.lang],
       '../assets/images/algarvemap.png',
     );
     this.createSliderItem(
       this.track,
       'brandshatchmap',
-      mapsDescription.adelaidemap.english,
+      mapsDescription.brandshatchmap[this.lang],
       '../assets/images/brandshatchmap.png',
     );
     this.createSliderItem(
       this.track,
       'catalunyamap',
-      mapsDescription.adelaidemap.english,
+      mapsDescription.catalunyamap[this.lang],
       '../assets/images/catalunyamap.png',
     );
     this.createSliderItem(
       this.track,
       'detroitmap',
-      mapsDescription.adelaidemap.english,
+      mapsDescription.detroitmap[this.lang],
       '../assets/images/detroitmap.png',
     );
 

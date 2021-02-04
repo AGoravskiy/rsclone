@@ -109,49 +109,47 @@ export const mapsDescription = {
    Уся інфраструктура носіць часовы характар і будуецца толькі для гоначнага ўік-энду.`,
   },
   algarvemap: {
-    english: `Track is situated in the australian city Adelaide. 
-   It goes throught the hippodrome Victoria Park and streets of downtown. 
-   All infrastructure is temporary and constructed only for racing weekend.`,
-    russian: `Трасса расположена в австралийском городе Аделаида.
-  Он проходит через ипподром Виктория-парк и улицы центра города.
-  Вся инфраструктура носит временный характер и строится только для гоночного уик-энда.`,
-    belarusian: `Траса размешчана ў аўстралійскім горадзе Адэлаіда.
-  Ён праходзіць праз іпадром Вікторыя-парк і вуліцы цэнтра горада.
-  Уся інфраструктура носіць часовы характар і будуецца толькі для гоначнага ўік-энду.`,
+    english: `Commonly referred to as the <<circuit Portimao>>. Located in Portman, Portugal.
+    The construction and certification of the circuit was completed in October 2008. In 2020, the Portuguese Grand Prix
+    (and the Portuguese had to wait for it for a long 24 years) was held on this map.`,
+    russian: `Обычно упоминается как <<автодром Портимао>>. Находится в Портимане, Португалия.
+    Строительство и сертификация автодрома были завершены в октябре 2008 года. В 2020 году Гран При Португалии
+    (а ждать его португальцам пришлось долгих 24 года) проводился именно на этой карте.`,
+    belarusian: `Звычайна згадваецца як <<аўтадром Портимао>>. Знаходзіцца ў Портимане, Партугалія.
+    Будаўніцтва і сертыфікацыя аўтадрома былі завершаны ў кастрычніку 2008 года. У 2020 годзе Гран пры Партугаліі
+    (а чакаць яго партугальцам прыйшлося доўгіх 24 года) праводзіўся менавіта на гэтай карце.`,
   },
   brandshatchmap: {
-    english: `Track is situated in the australian city Adelaide. 
-   It goes throught the hippodrome Victoria Park and streets of downtown. 
-   All infrastructure is temporary and constructed only for racing weekend.`,
-    russian: `Трасса расположена в австралийском городе Аделаида.
-  Он проходит через ипподром Виктория-парк и улицы центра города.
-  Вся инфраструктура носит временный характер и строится только для гоночного уик-энда.`,
-    belarusian: `Траса размешчана ў аўстралійскім горадзе Адэлаіда.
-  Ён праходзіць праз іпадром Вікторыя-парк і вуліцы цэнтра горада.
-  Уся інфраструктура носіць часовы характар і будуецца толькі для гоначнага ўік-энду.`,
+    english: `Brand Hatch is a circuit in Kent, southeast of London, near the viilage of West Kingsdown.
+    Originally used as a country track for cyclists.`,
+    russian: `Брэндс-Хэтч (от гаэльского слова Брондехач, где <<брон>> - деревянный склон, <<хач>> - опушка леса) 
+    - гоночная трасса в графстве Кент, Велигобритания. Первоначально использовалась как
+    просёлочная трасса для велосипедистов.`,
+    belarusian: `Брэндс-Хэтч (ад гаэльскага слова Брондехач, дзе <<брон>> - драўляны схіл, <<хач>> -
+      узлесак лесу) - гоначная траса ў графстве Кент, Велигобритания. Першапачаткова выкарыстоўвалася як
+    прасёлкавая траса для веласіпедыстаў.`,
   },
-
   catalunyamap: {
-    english: `Track is situated in the australian city Adelaide. 
-   It goes throught the hippodrome Victoria Park and streets of downtown. 
-   All infrastructure is temporary and constructed only for racing weekend.`,
-    russian: `Трасса расположена в австралийском городе Аделаида.
-  Он проходит через ипподром Виктория-парк и улицы центра города.
-  Вся инфраструктура носит временный характер и строится только для гоночного уик-энда.`,
-    belarusian: `Траса размешчана ў аўстралійскім горадзе Адэлаіда.
-  Ён праходзіць праз іпадром Вікторыя-парк і вуліцы цэнтра горада.
-  Уся інфраструктура носіць часовы характар і будуецца толькі для гоначнага ўік-энду.`,
+    english: `The Circuit de Barcelona-Catalunya is used for the Formula 1 Spanish Grand Prix race and others
+    racing series in ring racing. The circuit was built in 1991 Montmelo, in the Northern province of Barcelona.
+    Many Formula 1 Grand Prix events at this track have gone down in the history of motor racing.`,
+    russian: `Автодром Барселона-Каталунья используется для гонки Формулы-1 Гран-при Испании и других
+    гоночный серий по кольцевым гонкам. Автодром был построен в 1991 году в Монмело, на севере провинции Барселона.
+    Многие Гран-при Формулы-1 на этой трассе вошли в историю автогонок.`,
+    belarusian: `Аўтадром Барселона-Каталунья выкарыстоўваецца для гонкі Формулы - 1 Гран-пры Іспаніі і іншых
+    гоначны серый па колцавых гонках. Аўтадром быў пабудаваны ў 1991 годзе ў Монмело, на поўначы правінцыі Барселона.
+    Многія Гран-Пры Формулы-1 на гэтай трасе ўвайшлі ў гісторыю аўтагонак.`,
   },
   detroitmap: {
-    english: `Track is situated in the australian city Adelaide. 
-   It goes throught the hippodrome Victoria Park and streets of downtown. 
-   All infrastructure is temporary and constructed only for racing weekend.`,
-    russian: `Трасса расположена в австралийском городе Аделаида.
-  Он проходит через ипподром Виктория-парк и улицы центра города.
-  Вся инфраструктура носит временный характер и строится только для гоночного уик-энда.`,
-    belarusian: `Траса размешчана ў аўстралійскім горадзе Адэлаіда.
-  Ён праходзіць праз іпадром Вікторыя-парк і вуліцы цэнтра горада.
-  Уся інфраструктура носіць часовы характар і будуецца толькі для гоначнага ўік-энду.`,
+    english: `Detroit (street circuit) - a circuit laid in the city of Detroit (Michigan, USA),
+    along the roads of the general use. This track hosted the Formula 1 Grand Prix from 1982 to 1988.
+    Most of the riders were not impressed with the track, complaining that the track is boring, bumpy and very slippery.`,
+    russian: `Детройт (уличная трасса) - трасса, проложенная в городе Детройте (штат Мичиган, США), по дорогам общего
+    пользования. На этой трассе проходили Гран-при Формулы-1 с 1982 по 1988 года. Большинство гонщиков не были впечатлены трассой,
+    жалуясь, что трек скучный, ухабистый и очень скользкий.`,
+    belarusian: `Дэтройт (вулічная траса) - траса, пракладзеная ў горадзе Дэтройце (штат Мічыган, ЗША),
+    па дарогах агульнага карыстання. На гэтай трасе праходзілі Гран-Пры Формулы - 1 з 1982 па 1988 года.
+    Большасць гоншчыкаў не былі ўражаныя трасай, скардзячыся, што трэк сумны, выбоістай і вельмі слізкі.`,
   },
 };
 

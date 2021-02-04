@@ -111,13 +111,9 @@ export default class GameScene extends Phaser.Scene {
     });
     this.motor = this.sound.add('motor', { loop: true });
 
-    // this.scene.scene.events.on('wake', () => {
-    //   this.gameSound.play();
-    // });
-
     this.esc = this.input.keyboard.addKey('ESC');
     this.esc.on('down', function (event) {
-      console.log("press esc in Game");
+      console.log('press esc in Game');
       this.scene.launch('Start');
       this.scene.sleep('Game');
       this.motor.stop();
