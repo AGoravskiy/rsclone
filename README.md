@@ -20,3 +20,5 @@ left - 'a' or Left Arrows
 right - 'd' or Right Arrows
 
 nitro (improvement of car parameters) - left shift or right shift
+
+pause / continue - Esc
